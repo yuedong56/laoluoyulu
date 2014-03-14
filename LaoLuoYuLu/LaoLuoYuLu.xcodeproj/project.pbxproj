@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		70133FCA18CAE05B001AD6E5 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70133FC918CAE05B001AD6E5 /* DataList.plist */; };
+		3061C31B18D2D26200D5D023 /* dataList.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3061C31A18D2D26200D5D023 /* dataList.sqlite */; };
+		3061C31E18D2D2C000D5D023 /* LYDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C31D18D2D2C000D5D023 /* LYDataManager.m */; };
+		3061C32518D2D5C900D5D023 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C32418D2D5C900D5D023 /* MenuModel.m */; };
+		3061C32818D2D5FC00D5D023 /* VoiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C32718D2D5FC00D5D023 /* VoiceModel.m */; };
 		703A3EE018C9FEC2009179DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703A3EDF18C9FEC2009179DE /* Foundation.framework */; };
 		703A3EE218C9FEC2009179DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703A3EE118C9FEC2009179DE /* CoreGraphics.framework */; };
 		703A3EE418C9FEC2009179DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703A3EE318C9FEC2009179DE /* UIKit.framework */; };
@@ -47,7 +50,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		70133FC918CAE05B001AD6E5 /* DataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataList.plist; sourceTree = "<group>"; };
+		3061C31A18D2D26200D5D023 /* dataList.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = dataList.sqlite; sourceTree = "<group>"; };
+		3061C31C18D2D2C000D5D023 /* LYDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYDataManager.h; sourceTree = "<group>"; };
+		3061C31D18D2D2C000D5D023 /* LYDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYDataManager.m; sourceTree = "<group>"; };
+		3061C32318D2D5C900D5D023 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
+		3061C32418D2D5C900D5D023 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
+		3061C32618D2D5FC00D5D023 /* VoiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceModel.h; sourceTree = "<group>"; };
+		3061C32718D2D5FC00D5D023 /* VoiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceModel.m; sourceTree = "<group>"; };
 		703A3EDC18C9FEC2009179DE /* LaoLuoYuLu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaoLuoYuLu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		703A3EDF18C9FEC2009179DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		703A3EE118C9FEC2009179DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,6 +129,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3061C31918D2D26200D5D023 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3061C31A18D2D26200D5D023 /* dataList.sqlite */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		3061C32218D2D5BB00D5D023 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3061C32318D2D5C900D5D023 /* MenuModel.h */,
+				3061C32418D2D5C900D5D023 /* MenuModel.m */,
+				3061C32618D2D5FC00D5D023 /* VoiceModel.h */,
+				3061C32718D2D5FC00D5D023 /* VoiceModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		703A3ED318C9FEC2009179DE = {
 			isa = PBXGroup;
 			children = (
@@ -157,7 +185,6 @@
 				703A3EEE18C9FEC2009179DE /* LYAppDelegate.h */,
 				703A3EEF18C9FEC2009179DE /* LYAppDelegate.m */,
 				703A3F0E18C9FF29009179DE /* Classes */,
-				703A3F0F18C9FF29009179DE /* Resourse */,
 				703A3EF118C9FEC2009179DE /* Images.xcassets */,
 				703A3EE618C9FEC2009179DE /* Supporting Files */,
 			);
@@ -201,16 +228,9 @@
 				703A3F2418CA0400009179DE /* Public */,
 				703A3F2518CA0400009179DE /* UIs */,
 				703A3F1018CA01EF009179DE /* 3rd */,
+				3061C31918D2D26200D5D023 /* Resource */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		703A3F0F18C9FF29009179DE /* Resourse */ = {
-			isa = PBXGroup;
-			children = (
-				70133FC918CAE05B001AD6E5 /* DataList.plist */,
-			);
-			path = Resourse;
 			sourceTree = "<group>";
 		};
 		703A3F1018CA01EF009179DE /* 3rd */ = {
@@ -243,6 +263,9 @@
 		703A3F2218CA0400009179DE /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				3061C31C18D2D2C000D5D023 /* LYDataManager.h */,
+				3061C31D18D2D2C000D5D023 /* LYDataManager.m */,
+				3061C32218D2D5BB00D5D023 /* Model */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -386,7 +409,7 @@
 			files = (
 				703A3EEA18C9FEC2009179DE /* InfoPlist.strings in Resources */,
 				703A3EF218C9FEC2009179DE /* Images.xcassets in Resources */,
-				70133FCA18CAE05B001AD6E5 /* DataList.plist in Resources */,
+				3061C31B18D2D26200D5D023 /* dataList.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,9 +429,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				703A3F1F18CA01F0009179DE /* MMDrawerVisualState.m in Sources */,
+				3061C32518D2D5C900D5D023 /* MenuModel.m in Sources */,
 				703A3F2018CA01F0009179DE /* MMExampleDrawerVisualStateManager.m in Sources */,
 				703A3F4318CA114E009179DE /* FMDatabasePool.m in Sources */,
+				3061C32818D2D5FC00D5D023 /* VoiceModel.m in Sources */,
 				703A3F4418CA114E009179DE /* FMDatabaseQueue.m in Sources */,
+				3061C31E18D2D2C000D5D023 /* LYDataManager.m in Sources */,
 				703A3F2A18CA0464009179DE /* LeftMenuViewController.m in Sources */,
 				703A3F2118CA01F0009179DE /* UIViewController+MMDrawerController.m in Sources */,
 				703A3F4618CA114E009179DE /* FMResultSet.m in Sources */,

@@ -10,5 +10,6 @@
 
 @interface LeftMenuViewController : UITableViewController
 
+@property (nonatomic, strong) NSMutableArray *menuListArr;
 
 @end

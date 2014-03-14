@@ -9,6 +9,8 @@
 #ifndef LaoLuoYuLu_GlobalConfig_h
 #define LaoLuoYuLu_GlobalConfig_h
 
+#import "LYDataManager.h"
+
 //LYAppDelegate
 #define APP_DELEGATE ((LYAppDelegate *)[[UIApplication sharedApplication] delegate])
 //左侧抽屉结构的宽度

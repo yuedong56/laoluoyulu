@@ -8,6 +8,7 @@
 
 #import "LeftMenuViewController.h"
 #import "LeftMenuCell.h"
+#import "MenuModel.h"
 
 @interface LeftMenuViewController ()
 
@@ -22,6 +23,7 @@
     self.view.backgroundColor = LightGrayColor;
     self.navigationController.navigationBarHidden = YES;
     
+    self.menuListArr = [[LYDataManager instance] selectMenuList];
 }
 
 #pragma mark - UITableView DataSource
@@ -33,7 +35,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 5;
+        return self.menuListArr.count;
     } else if (section == 1) {
         return 3;
     } else {
@@ -47,6 +49,10 @@
     LeftMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[LeftMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    if (indexPath.section == 0) {
+        MenuModel *model = [self.menuListArr objectAtIndex:indexPath.row];
+        cell.textLabel.text = model.name;
     }
     
     cell.backgroundColor = [UIColor clearColor];
