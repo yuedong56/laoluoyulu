@@ -11,6 +11,8 @@
 		3061C31E18D2D2C000D5D023 /* LYDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C31D18D2D2C000D5D023 /* LYDataManager.m */; };
 		3061C32518D2D5C900D5D023 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C32418D2D5C900D5D023 /* MenuModel.m */; };
 		3061C32818D2D5FC00D5D023 /* VoiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C32718D2D5FC00D5D023 /* VoiceModel.m */; };
+		30DA00D518D2AC9D004935D7 /* TableHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DA00D418D2AC9D004935D7 /* TableHeadView.m */; };
+		30DA00D918D2ACC3004935D7 /* demoLeftImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DA00D818D2ACC3004935D7 /* demoLeftImage.png */; };
 		703A3EE018C9FEC2009179DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703A3EDF18C9FEC2009179DE /* Foundation.framework */; };
 		703A3EE218C9FEC2009179DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703A3EE118C9FEC2009179DE /* CoreGraphics.framework */; };
 		703A3EE418C9FEC2009179DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703A3EE318C9FEC2009179DE /* UIKit.framework */; };
@@ -57,6 +59,9 @@
 		3061C32418D2D5C900D5D023 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
 		3061C32618D2D5FC00D5D023 /* VoiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceModel.h; sourceTree = "<group>"; };
 		3061C32718D2D5FC00D5D023 /* VoiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceModel.m; sourceTree = "<group>"; };
+		30DA00D318D2AC9D004935D7 /* TableHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableHeadView.h; sourceTree = "<group>"; };
+		30DA00D418D2AC9D004935D7 /* TableHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableHeadView.m; sourceTree = "<group>"; };
+		30DA00D818D2ACC3004935D7 /* demoLeftImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoLeftImage.png; sourceTree = "<group>"; };
 		703A3EDC18C9FEC2009179DE /* LaoLuoYuLu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaoLuoYuLu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		703A3EDF18C9FEC2009179DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		703A3EE118C9FEC2009179DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -132,6 +137,7 @@
 		3061C31918D2D26200D5D023 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				70012B5A18D1F3D400CB53D0 /* Images */,
 				3061C31A18D2D26200D5D023 /* dataList.sqlite */,
 			);
 			path = Resource;
@@ -146,6 +152,14 @@
 				3061C32718D2D5FC00D5D023 /* VoiceModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		70012B5A18D1F3D400CB53D0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				30DA00D818D2ACC3004935D7 /* demoLeftImage.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		703A3ED318C9FEC2009179DE = {
@@ -310,6 +324,8 @@
 				703A3F2918CA0464009179DE /* LeftMenuViewController.m */,
 				703A3F3218CA0E40009179DE /* LeftMenuCell.h */,
 				703A3F3318CA0E40009179DE /* LeftMenuCell.m */,
+				30DA00D318D2AC9D004935D7 /* TableHeadView.h */,
+				30DA00D418D2AC9D004935D7 /* TableHeadView.m */,
 			);
 			path = Left;
 			sourceTree = "<group>";
@@ -409,6 +425,7 @@
 			files = (
 				703A3EEA18C9FEC2009179DE /* InfoPlist.strings in Resources */,
 				703A3EF218C9FEC2009179DE /* Images.xcassets in Resources */,
+				30DA00D918D2ACC3004935D7 /* demoLeftImage.png in Resources */,
 				3061C31B18D2D26200D5D023 /* dataList.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +463,7 @@
 				703A3F4118CA114E009179DE /* FMDatabase.m in Sources */,
 				703A3EF018C9FEC2009179DE /* LYAppDelegate.m in Sources */,
 				703A3F4218CA114E009179DE /* FMDatabaseAdditions.m in Sources */,
+				30DA00D518D2AC9D004935D7 /* TableHeadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

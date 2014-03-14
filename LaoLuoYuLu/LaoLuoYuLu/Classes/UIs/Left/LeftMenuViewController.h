@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TableHeadView.h"
 
 @interface LeftMenuViewController : UITableViewController
 
 @property (nonatomic, strong) NSMutableArray *menuListArr;
+
+@property (nonatomic, strong) TableHeadView *tableHeadView;
 
 @end
