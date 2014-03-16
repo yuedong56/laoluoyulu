@@ -6,7 +6,6 @@
 //  Copyright (c) 2014年 LYue. All rights reserved.
 //
 
-#define TableHeader_Height 100
 #define Header_Height 25
 
 #import "LeftMenuViewController.h"
@@ -63,6 +62,15 @@
     self.tableHeadView = [[TableHeadView alloc] initWithFrame:CGRectMake(0, 0, LeftMenuWidth, TableHeader_Height)];
     self.tableHeadView.backgroundColor = DarkGrayColor;
     self.tableView.tableHeaderView = self.tableHeadView;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleHeadViewTapGesture:)];
+    [self.tableHeadView addGestureRecognizer:tap];
+}
+
+#pragma mark - Gesture
+- (void)handleHeadViewTapGesture:(UITapGestureRecognizer *)gesture
+{
+    NSLog(@"弹出老罗微博页面！");
 }
 
 #pragma mark - UITableView DataSource

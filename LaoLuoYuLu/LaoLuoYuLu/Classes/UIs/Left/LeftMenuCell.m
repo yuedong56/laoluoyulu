@@ -23,7 +23,6 @@
         //titleLabel
         float titleLabel_x = self.leftImageView.frame.origin.x + self.leftImageView.frame.size.width + 10;
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel_x, 0, LeftMenuWidth-titleLabel_x, Row_Height)];
-        self.titleLabel.text = @"";
         self.titleLabel.textColor = WhiteColor;
         self.titleLabel.backgroundColor = ClearColor;
         self.titleLabel.font = [UIFont systemFontOfSize:16];
@@ -36,7 +35,7 @@
 {
     [super setSelected:selected animated:animated];
     
-    self.titleLabel.textColor = selected ? WhiteColor : LightGrayColor;
+    self.titleLabel.textColor = selected ? WhiteColor : [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     self.titleLabel.font = [UIFont systemFontOfSize:selected?18:16];
 }
 

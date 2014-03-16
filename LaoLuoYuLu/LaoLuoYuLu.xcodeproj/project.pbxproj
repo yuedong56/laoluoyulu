@@ -47,6 +47,8 @@
 		7050D06818D58532001492C5 /* left_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 7050D06718D58532001492C5 /* left_setting.png */; };
 		7050D06A18D5881B001492C5 /* left_about.png in Resources */ = {isa = PBXBuildFile; fileRef = 7050D06918D5881B001492C5 /* left_about.png */; };
 		7050D06C18D58A6F001492C5 /* left_recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 7050D06B18D58A6F001492C5 /* left_recommend.png */; };
+		708E173A18D5A0C600D72A1F /* left_sina.png in Resources */ = {isa = PBXBuildFile; fileRef = 708E173918D5A0C600D72A1F /* left_sina.png */; };
+		708E173C18D5A34400D72A1F /* left_luoyonghao.png in Resources */ = {isa = PBXBuildFile; fileRef = 708E173B18D5A34400D72A1F /* left_luoyonghao.png */; };
 		70BA644718D410490043C0D1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA644618D410490043C0D1 /* BaseViewController.m */; };
 		70BA644B18D410880043C0D1 /* UINavigationController+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA644A18D410880043C0D1 /* UINavigationController+Rotate.m */; };
 /* End PBXBuildFile section */
@@ -125,6 +127,8 @@
 		7050D06718D58532001492C5 /* left_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_setting.png; sourceTree = "<group>"; };
 		7050D06918D5881B001492C5 /* left_about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_about.png; sourceTree = "<group>"; };
 		7050D06B18D58A6F001492C5 /* left_recommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_recommend.png; sourceTree = "<group>"; };
+		708E173918D5A0C600D72A1F /* left_sina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_sina.png; sourceTree = "<group>"; };
+		708E173B18D5A34400D72A1F /* left_luoyonghao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_luoyonghao.png; sourceTree = "<group>"; };
 		70BA644518D410490043C0D1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		70BA644618D410490043C0D1 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		70BA644918D410880043C0D1 /* UINavigationController+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Rotate.h"; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				7050D06718D58532001492C5 /* left_setting.png */,
 				7050D06918D5881B001492C5 /* left_about.png */,
 				7050D06B18D58A6F001492C5 /* left_recommend.png */,
+				708E173918D5A0C600D72A1F /* left_sina.png */,
+				708E173B18D5A34400D72A1F /* left_luoyonghao.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -477,8 +483,10 @@
 				7050D06418D57E57001492C5 /* left_four.png in Resources */,
 				703A3EEA18C9FEC2009179DE /* InfoPlist.strings in Resources */,
 				703A3EF218C9FEC2009179DE /* Images.xcassets in Resources */,
+				708E173A18D5A0C600D72A1F /* left_sina.png in Resources */,
 				7050D05C18D579FD001492C5 /* left_all.png in Resources */,
 				7050D06C18D58A6F001492C5 /* left_recommend.png in Resources */,
+				708E173C18D5A34400D72A1F /* left_luoyonghao.png in Resources */,
 				7050D06818D58532001492C5 /* left_setting.png in Resources */,
 				7050D06318D57E57001492C5 /* left_third.png in Resources */,
 				7050D06118D57E57001492C5 /* left_first.png in Resources */,
@@ -645,7 +653,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaoLuoYuLu/LaoLuoYuLu-Prefix.pch";
 				INFOPLIST_FILE = "LaoLuoYuLu/LaoLuoYuLu-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -660,7 +668,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaoLuoYuLu/LaoLuoYuLu-Prefix.pch";
 				INFOPLIST_FILE = "LaoLuoYuLu/LaoLuoYuLu-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
