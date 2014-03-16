@@ -26,7 +26,7 @@
         self.titleLabel.text = @"";
         self.titleLabel.textColor = WhiteColor;
         self.titleLabel.backgroundColor = ClearColor;
-        self.titleLabel.font = [UIFont systemFontOfSize:17];
+        self.titleLabel.font = [UIFont systemFontOfSize:16];
         [self addSubview:self.titleLabel];
     }
     return self;
@@ -35,7 +35,9 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    self.titleLabel.textColor = selected ? DarkGrayColor : WhiteColor;
+    
+    self.titleLabel.textColor = selected ? WhiteColor : LightGrayColor;
+    self.titleLabel.font = [UIFont systemFontOfSize:selected?18:16];
 }
 
 @end

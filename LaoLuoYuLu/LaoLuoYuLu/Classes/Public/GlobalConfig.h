@@ -15,6 +15,7 @@
 #define APP_DELEGATE ((LYAppDelegate *)[[UIApplication sharedApplication] delegate])
 //左侧抽屉结构的宽度
 #define LeftMenuWidth 250.0f
-
+//导航栏主题色
+#define Nav_Color [UIColor colorWithRed:0.1 green:0.2 blue:0.3 alpha:1];
 
 #endif

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 LYue. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface CenterViewController : UIViewController
+@interface CenterViewController : BaseViewController
 
 @end

@@ -15,6 +15,8 @@
 
 @interface LeftMenuViewController ()
 
+@property (nonatomic, strong) NSMutableArray *imagesArr;//左侧图标数组
+
 @end
 
 @implementation LeftMenuViewController
@@ -28,10 +30,30 @@
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     
     self.menuListArr = [[LYDataManager instance] selectMenuList];
+    self.imagesArr = [self getImagesArray];
     
     [self initTableHeadView];
 }
 
+
+/**
+ * @brief 左侧图标数组
+ */
+- (NSMutableArray *)getImagesArray
+{
+    NSArray *section1Arr = [NSArray arrayWithObjects:
+                            @"left_all.png",
+                            @"left_first.png",
+                            @"left_second.png",
+                            @"left_third.png",
+                            @"left_four.png",
+                            @"left_otherVoice.png", nil];
+    NSArray *section2Arr = [NSArray arrayWithObjects:
+                            @"left_setting.png",
+                            @"left_about.png",
+                            @"left_recommend.png", nil];
+    return [NSMutableArray arrayWithObjects:section1Arr,section2Arr, nil];
+}
 
 /**
  * @brief 初始化 TableHeadView
@@ -67,6 +89,11 @@
     if (!cell) {
         cell = [[LeftMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+    UIView *selectedBGView = [[UIView alloc] init];
+    selectedBGView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1];
+    cell.selectedBackgroundView = selectedBGView;
+    
     if (indexPath.section == 0) {
         MenuModel *model = [self.menuListArr objectAtIndex:indexPath.row];
         cell.titleLabel.text = model.name;
@@ -80,8 +107,9 @@
         }
     }
     
-    cell.leftImageView.image = ImageNamed(@"demoLeftImage.png");
-    
+    NSArray *imageArr = [self.imagesArr objectAtIndex:indexPath.section];
+    cell.leftImageView.image = ImageNamed([imageArr objectAtIndex:indexPath.row]);
+
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor clearColor];
     
