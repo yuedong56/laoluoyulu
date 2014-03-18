@@ -27,11 +27,13 @@
     self.view.backgroundColor = DarkGrayColor;
     self.navigationController.navigationBarHidden = YES;
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+    self.tableView.showsVerticalScrollIndicator = NO;
     
     self.menuListArr = [[LYDataManager instance] selectMenuList];
     self.imagesArr = [self getImagesArray];
     
     [self initTableHeadView];
+    [self initTableFootView];
 }
 
 
@@ -67,9 +69,23 @@
     [self.tableHeadView addGestureRecognizer:tap];
 }
 
+/**
+ * @brief 初始化 TableFootView
+ */
+- (void)initTableFootView
+{
+    self.tableFootView = [[TableFootView alloc] initWithFrame:CGRectMake(0, 0, LeftMenuWidth, TableFooter_Height)];
+    self.tableFootView.backgroundColor = DarkGrayColor;
+    self.tableView.tableFooterView = self.tableFootView;
+}
+
 #pragma mark - Gesture
 - (void)handleHeadViewTapGesture:(UITapGestureRecognizer *)gesture
 {
+    if (![LYUtils checkNetworkAvailable]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NONetworkMessage delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        [alertView show];
+    }
     NSLog(@"弹出老罗微博页面！");
 }
 

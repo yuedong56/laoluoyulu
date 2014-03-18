@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {        
-        self.headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, (TableHeader_Height-HeadImage_Width)/2, HeadImage_Width, HeadImage_Width)];
+        self.headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(24, (TableHeader_Height-HeadImage_Width)/2, HeadImage_Width, HeadImage_Width)];
         self.headImageView.layer.cornerRadius = HeadImage_Width/2;
         self.headImageView.layer.masksToBounds = YES;
         self.headImageView.image = ImageNamed(@"left_luoyonghao");

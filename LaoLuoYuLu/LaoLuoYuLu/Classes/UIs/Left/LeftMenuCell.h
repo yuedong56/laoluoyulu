@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 LYue. All rights reserved.
 //
 
-#define Row_Height 40
+#define Row_Height 44
 
 #import <UIKit/UIKit.h>
 
