@@ -38,6 +38,10 @@
 		3014436518D834ED00DDC64A /* TableFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3014436418D834ED00DDC64A /* TableFootView.m */; };
 		3014436818D8398D00DDC64A /* LYUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3014436718D8398D00DDC64A /* LYUtils.m */; };
 		3014436A18D83C5C00DDC64A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3014436918D83C5B00DDC64A /* AssetsLibrary.framework */; };
+		3014436D18D842D100DDC64A /* LYUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 3014436C18D842D100DDC64A /* LYUserDefaults.m */; };
+		3014437018D8480B00DDC64A /* WeiBoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3014436F18D8480B00DDC64A /* WeiBoViewController.m */; };
+		3014437418D8487000DDC64A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3014437318D8487000DDC64A /* MBProgressHUD.m */; };
+		3014437718D848E600DDC64A /* NetWorkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3014437618D848E600DDC64A /* NetWorkRequest.m */; };
 		3061C31E18D2D2C000D5D023 /* LYDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C31D18D2D2C000D5D023 /* LYDataManager.m */; };
 		3061C32518D2D5C900D5D023 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C32418D2D5C900D5D023 /* MenuModel.m */; };
 		3061C32818D2D5FC00D5D023 /* VoiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C32718D2D5FC00D5D023 /* VoiceModel.m */; };
@@ -130,6 +134,14 @@
 		3014436618D8398D00DDC64A /* LYUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYUtils.h; sourceTree = "<group>"; };
 		3014436718D8398D00DDC64A /* LYUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYUtils.m; sourceTree = "<group>"; };
 		3014436918D83C5B00DDC64A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		3014436B18D842D100DDC64A /* LYUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYUserDefaults.h; sourceTree = "<group>"; };
+		3014436C18D842D100DDC64A /* LYUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYUserDefaults.m; sourceTree = "<group>"; };
+		3014436E18D8480B00DDC64A /* WeiBoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiBoViewController.h; sourceTree = "<group>"; };
+		3014436F18D8480B00DDC64A /* WeiBoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiBoViewController.m; sourceTree = "<group>"; };
+		3014437218D8487000DDC64A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		3014437318D8487000DDC64A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		3014437518D848E600DDC64A /* NetWorkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkRequest.h; sourceTree = "<group>"; };
+		3014437618D848E600DDC64A /* NetWorkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkRequest.m; sourceTree = "<group>"; };
 		3061C31C18D2D2C000D5D023 /* LYDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYDataManager.h; sourceTree = "<group>"; };
 		3061C31D18D2D2C000D5D023 /* LYDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYDataManager.m; sourceTree = "<group>"; };
 		3061C32318D2D5C900D5D023 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
@@ -278,6 +290,15 @@
 			path = ASIHTTPRequest;
 			sourceTree = "<group>";
 		};
+		3014437118D8487000DDC64A /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				3014437218D8487000DDC64A /* MBProgressHUD.h */,
+				3014437318D8487000DDC64A /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		3061C32218D2D5BB00D5D023 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +407,7 @@
 		703A3F1018CA01EF009179DE /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				3014437118D8487000DDC64A /* MBProgressHUD */,
 				3014433218D82F6400DDC64A /* ASIHTTPRequest */,
 				703A3F3518CA114E009179DE /* FMDB */,
 				703A3F1118CA01EF009179DE /* MMDrawerController */,
@@ -424,6 +446,8 @@
 		703A3F2318CA0400009179DE /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				3014437518D848E600DDC64A /* NetWorkRequest.h */,
+				3014437618D848E600DDC64A /* NetWorkRequest.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -434,6 +458,8 @@
 				703A3F2E18CA05EB009179DE /* GlobalConfig.h */,
 				3014436618D8398D00DDC64A /* LYUtils.h */,
 				3014436718D8398D00DDC64A /* LYUtils.m */,
+				3014436B18D842D100DDC64A /* LYUserDefaults.h */,
+				3014436C18D842D100DDC64A /* LYUserDefaults.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -495,6 +521,8 @@
 				70BA644818D410690043C0D1 /* Category */,
 				70BA644518D410490043C0D1 /* BaseViewController.h */,
 				70BA644618D410490043C0D1 /* BaseViewController.m */,
+				3014436E18D8480B00DDC64A /* WeiBoViewController.h */,
+				3014436F18D8480B00DDC64A /* WeiBoViewController.m */,
 			);
 			path = PublicUI;
 			sourceTree = "<group>";
@@ -624,6 +652,7 @@
 				703A3F2018CA01F0009179DE /* MMExampleDrawerVisualStateManager.m in Sources */,
 				703A3F4318CA114E009179DE /* FMDatabasePool.m in Sources */,
 				3014434B18D82F6400DDC64A /* ASIDataDecompressor.m in Sources */,
+				3014437018D8480B00DDC64A /* WeiBoViewController.m in Sources */,
 				3061C32818D2D5FC00D5D023 /* VoiceModel.m in Sources */,
 				3014436518D834ED00DDC64A /* TableFootView.m in Sources */,
 				703A3F4418CA114E009179DE /* FMDatabaseQueue.m in Sources */,
@@ -632,15 +661,18 @@
 				703A3F2118CA01F0009179DE /* UIViewController+MMDrawerController.m in Sources */,
 				3014435018D82F6400DDC64A /* ASINetworkQueue.m in Sources */,
 				703A3F4618CA114E009179DE /* FMResultSet.m in Sources */,
+				3014436D18D842D100DDC64A /* LYUserDefaults.m in Sources */,
 				3014434C18D82F6400DDC64A /* ASIDownloadCache.m in Sources */,
 				703A3EEC18C9FEC2009179DE /* main.m in Sources */,
 				703A3F3418CA0E40009179DE /* LeftMenuCell.m in Sources */,
 				3014434D18D82F6400DDC64A /* ASIFormDataRequest.m in Sources */,
+				3014437718D848E600DDC64A /* NetWorkRequest.m in Sources */,
 				70BA644B18D410880043C0D1 /* UINavigationController+Rotate.m in Sources */,
 				703A3F2D18CA0515009179DE /* CenterViewController.m in Sources */,
 				703A3F1D18CA01F0009179DE /* MMDrawerBarButtonItem.m in Sources */,
 				3014434F18D82F6400DDC64A /* ASIInputStream.m in Sources */,
 				703A3F1E18CA01F0009179DE /* MMDrawerController.m in Sources */,
+				3014437418D8487000DDC64A /* MBProgressHUD.m in Sources */,
 				3014434A18D82F6400DDC64A /* ASIDataCompressor.m in Sources */,
 				3014436818D8398D00DDC64A /* LYUtils.m in Sources */,
 				703A3F4118CA114E009179DE /* FMDatabase.m in Sources */,

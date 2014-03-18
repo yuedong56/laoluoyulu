@@ -53,4 +53,21 @@
 }
 
 
+#pragma mark - ProgressHUD
+
+- (void)showProgressHUDWithText:(NSString *)text
+{
+    self.progressHUD = [[MBProgressHUD alloc] initWithWindow:self.window];
+    self.progressHUD.labelText = text;
+    [self.window addSubview:self.progressHUD];
+    [self.progressHUD show:YES];
+}
+
+- (void)hideProgressHUDWithText:(NSString *)text
+{
+    [self.progressHUD hide:YES];
+    [self.progressHUD removeFromSuperview];
+    self.progressHUD = nil;
+}
+
 @end

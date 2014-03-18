@@ -13,8 +13,13 @@
 #import "Reachability.h"
 #import "LYAppDelegate.h"
 #import "LYUtils.h"
-//#import "LYUserDefaults.h"
-//#import "NetWorkRequest.h"
+#import "LYUserDefaults.h"
+#import "NetWorkRequest.h"
+
+//新浪
+#define AppKey @"3452838915"
+#define AppSecret @"eccb513bf56450c93dc4ae375ef8ed50"
+#define RedirectUri @"http://"
 
 //LYAppDelegate
 #define APP_DELEGATE ((LYAppDelegate *)[[UIApplication sharedApplication] delegate])
@@ -23,6 +28,6 @@
 //导航栏主题色
 #define Nav_Color [UIColor colorWithRed:0.1 green:0.2 blue:0.3 alpha:1];
 //无网络提示语
-#define NONetworkMessage @"你他妈的都开没网，点个屌啊！"
+#define NONetworkMessage @"你他妈的都没开网，点个屌啊！"
 
 #endif

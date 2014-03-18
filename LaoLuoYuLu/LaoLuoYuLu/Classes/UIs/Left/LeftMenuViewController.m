@@ -9,6 +9,7 @@
 #define Header_Height 25
 
 #import "LeftMenuViewController.h"
+#import "WeiBoViewController.h"
 #import "LeftMenuCell.h"
 #import "MenuModel.h"
 
@@ -85,8 +86,14 @@
     if (![LYUtils checkNetworkAvailable]) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NONetworkMessage delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
         [alertView show];
+    } else {
+        CLog(@"弹出老罗微博页面！");
+        WeiBoViewController *weiboVC = [WeiBoViewController new];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:weiboVC];
+        [self presentViewController:nav animated:YES completion:^{
+            
+        }];
     }
-    NSLog(@"弹出老罗微博页面！");
 }
 
 #pragma mark - UITableView DataSource
@@ -156,7 +163,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, LeftMenuWidth, Header_Height)];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:headerView.frame];
     titleLabel.backgroundColor = GrayColor;
-    titleLabel.font = [UIFont boldSystemFontOfSize:14];
+    titleLabel.font = [UIFont boldSystemFontOfSize:15];
     titleLabel.textColor = WhiteColor;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [headerView addSubview:titleLabel];
