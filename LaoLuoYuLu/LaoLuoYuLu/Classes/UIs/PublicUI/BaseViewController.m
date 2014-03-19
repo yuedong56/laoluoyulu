@@ -45,13 +45,34 @@
     
     //
     self.leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.leftButton.frame = CGRectMake(0, 0, 44, 44);
+    self.leftButton.frame = CGRectMake(5, 0, 44, 44);
+    [self.leftButton setTitleColor:WhiteColor forState:UIControlStateNormal];
+    [self.leftButton setTitleColor:GrayColor forState:UIControlStateHighlighted];
     [self.navigationController.navigationBar addSubview:self.leftButton];
     
     //
     self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.rightButton setTitleColor:WhiteColor forState:UIControlStateNormal];
+    [self.rightButton setTitleColor:GrayColor forState:UIControlStateHighlighted];
     self.rightButton.frame = CGRectMake(ScreenWidth-44, 0, 44, 44);
     [self.navigationController.navigationBar addSubview:self.rightButton];
+}
+
+#pragma mark - ProgressHUD
+
+- (void)showProgressHUDWithText:(NSString *)text
+{
+    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    self.progressHUD.labelText = text;
+    [self.view addSubview:self.progressHUD];
+    [self.progressHUD show:YES];
+}
+
+- (void)hideProgressHUDWithText:(NSString *)text
+{
+    [self.progressHUD hide:YES];
+    [self.progressHUD removeFromSuperview];
+    self.progressHUD = nil;
 }
 
 @end

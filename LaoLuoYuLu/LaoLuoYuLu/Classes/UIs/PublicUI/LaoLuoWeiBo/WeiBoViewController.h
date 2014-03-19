@@ -7,9 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "WebControlView.h"
 
 @interface WeiBoViewController : BaseViewController<UIWebViewDelegate>
 
-@property (nonatomic, strong) UIWebView *loginWebView;
+@property (nonatomic, strong) UIWebView *weiboWebView;
+@property (nonatomic, strong) WebControlView *webControlView;
 
 @end

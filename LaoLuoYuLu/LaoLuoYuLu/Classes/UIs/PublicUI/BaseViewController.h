@@ -8,6 +8,7 @@
 //  基类
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
 @interface BaseViewController : UIViewController
 
@@ -15,4 +16,8 @@
 @property (nonatomic, strong) UIButton *leftButton;  //左按钮
 @property (nonatomic, strong) UIButton *rightButton; //右按钮
 
+@property (nonatomic, strong) MBProgressHUD *progressHUD;
+
+- (void)showProgressHUDWithText:(NSString *)text;
+- (void)hideProgressHUDWithText:(NSString *)text;
 @end
