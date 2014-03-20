@@ -8,6 +8,12 @@
 
 #import "WeiBoViewController.h"
 
+@interface WeiBoViewController ()
+{
+    BOOL isControlViewHide;
+}
+@end
+
 @implementation WeiBoViewController
 
 - (void)viewDidLoad
@@ -59,6 +65,7 @@
 {
     self.weiboWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, IOS7AndLater?64:0, ScreenWidth, ScreenHeight-(IOS7AndLater?64:64))];
     self.weiboWebView.delegate = self;
+    self.weiboWebView.scrollView.delegate = self;
     [self.view addSubview:self.weiboWebView];
 }
 
@@ -67,13 +74,66 @@
 {
     self.webControlView = [[WebControlView alloc] initWithFrame:CGRectMake(0, ScreenHeight-button_height-(IOS7AndLater?0:64), ScreenWidth, button_height)];
     [self.view addSubview:self.webControlView];
+    
+    [self.webControlView.backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.webControlView.forwardButton addTarget:self action:@selector(forwardButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.webControlView.homeButton addTarget:self action:@selector(homeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.webControlView.refreshButton addTarget:self action:@selector(refreshButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+/** 显示controlView */
+- (void)showControlView
+{
+    self.webControlView.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        float controlView_y = self.weiboWebView.frame.origin.y + self.weiboWebView.frame.size.height;
+        self.webControlView.frame = CGRectMake(0, controlView_y-button_height, ScreenWidth, button_height);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+/** 隐藏controlView */
+- (void)hideControlView
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        float controlView_y = self.weiboWebView.frame.origin.y + self.weiboWebView.frame.size.height;
+        self.webControlView.frame = CGRectMake(0, controlView_y, ScreenWidth, button_height);
+    } completion:^(BOOL finished) {
+        self.webControlView.hidden = YES;
+    }];
 }
 
 #pragma mark - Button Events
-/** 返回按钮 */
+/** 取消按钮 */
 - (void)leftButtonPress:(UIButton *)button
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+/** 后退按钮 */
+- (void)backButtonClick:(UIButton *)button
+{
+    [self.weiboWebView goBack];
+}
+
+/** 前进按钮 */
+- (void)forwardButtonClick:(UIButton *)button
+{
+    [self.weiboWebView goForward];
+}
+
+/** home按钮 */
+- (void)homeButtonClick:(UIButton *)button
+{
+    [self loadingLaoLuoWeiBoWebView];
+}
+
+/** 刷新按钮 */
+- (void)refreshButtonClick:(UIButton *)button
+{
+    [self showProgressHUDWithText:nil];
+    [self.weiboWebView reload];
 }
 
 #pragma mark - UIWebView Delegate
@@ -118,6 +178,22 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     [self hideProgressHUDWithText:nil];
+}
+
+#pragma mark - UIScrollView Delegate
+-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    if (velocity.y > 0) {
+        if (!isControlViewHide) {
+            isControlViewHide = YES;
+            [self hideControlView];
+        }
+    } else {
+        if (isControlViewHide) {
+            isControlViewHide = NO;
+            [self showControlView];
+        }
+    }
 }
 
 @end

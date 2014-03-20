@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "WebControlView.h"
 
-@interface WeiBoViewController : BaseViewController<UIWebViewDelegate>
+@interface WeiBoViewController : BaseViewController<UIWebViewDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIWebView *weiboWebView;
 @property (nonatomic, strong) WebControlView *webControlView;

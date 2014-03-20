@@ -45,7 +45,7 @@
     
     //
     self.leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.leftButton.frame = CGRectMake(5, 0, 44, 44);
+    self.leftButton.frame = CGRectMake(10, 0, 44, 44);
     [self.leftButton setTitleColor:WhiteColor forState:UIControlStateNormal];
     [self.leftButton setTitleColor:GrayColor forState:UIControlStateHighlighted];
     [self.navigationController.navigationBar addSubview:self.leftButton];
