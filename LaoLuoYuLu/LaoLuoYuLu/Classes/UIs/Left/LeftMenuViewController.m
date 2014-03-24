@@ -16,6 +16,7 @@
 @interface LeftMenuViewController ()
 
 @property (nonatomic, strong) NSMutableArray *imagesArr;//左侧图标数组
+@property (nonatomic, strong) NSMutableArray *highlightImageArr;//左侧高亮图标数组
 
 @end
 
@@ -32,6 +33,7 @@
     
     self.menuListArr = [[LYDataManager instance] selectMenuList];
     self.imagesArr = [self getImagesArray];
+    self.highlightImageArr = [self getHighlightImagesArray];
     
     [self initTableHeadView];
     [self initTableFootView];
@@ -56,6 +58,26 @@
                             @"left_recommend.png", nil];
     return [NSMutableArray arrayWithObjects:section1Arr,section2Arr, nil];
 }
+
+/**
+ * @brief 左侧图标数组
+ */
+- (NSMutableArray *)getHighlightImagesArray
+{
+    NSArray *section1Arr = [NSArray arrayWithObjects:
+                            @"left_all_s.png",
+                            @"left_first_s.png",
+                            @"left_second_s.png",
+                            @"left_third_s.png",
+                            @"left_four_s.png",
+                            @"left_otherVoice_s.png", nil];
+    NSArray *section2Arr = [NSArray arrayWithObjects:
+                            @"left_setting_s.png",
+                            @"left_about_s.png",
+                            @"left_recommend_s.png", nil];
+    return [NSMutableArray arrayWithObjects:section1Arr,section2Arr, nil];
+}
+
 
 /**
  * @brief 初始化 TableHeadView
@@ -140,6 +162,8 @@
     
     NSArray *imageArr = [self.imagesArr objectAtIndex:indexPath.section];
     cell.leftImageView.image = ImageNamed([imageArr objectAtIndex:indexPath.row]);
+    NSArray *highlightArr = [self.highlightImageArr objectAtIndex:indexPath.section];
+    cell.leftImageView.highlightedImage = ImageNamed([highlightArr objectAtIndex:indexPath.row]);
 
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor clearColor];
