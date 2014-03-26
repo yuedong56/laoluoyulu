@@ -14,6 +14,16 @@
 
 @implementation CenterViewController
 
+- (instancetype)initWithMenu:(MenuModel *)menu
+{
+    self = [super init];
+    if (self)
+    {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

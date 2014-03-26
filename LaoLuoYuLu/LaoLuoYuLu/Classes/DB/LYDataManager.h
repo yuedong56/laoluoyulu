@@ -22,4 +22,9 @@
  */
 - (NSMutableArray *)selectMenuList;
 
+/**
+ * @brief 根据菜单ID获取语音列表
+ */
+- (NSMutableArray *)selectVoiceListWithMenuID:(NSInteger)menuID;
+
 @end

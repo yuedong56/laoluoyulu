@@ -10,6 +10,7 @@
 
 #import "LeftMenuViewController.h"
 #import "WeiBoViewController.h"
+#import "CenterViewController.h"
 #import "LeftMenuCell.h"
 #import "MenuModel.h"
 
@@ -199,6 +200,16 @@
     }
     
     return headerView;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MenuModel *menu = [self.menuListArr objectAtIndex:indexPath.row];
+    CenterViewController *centerVC = [[CenterViewController alloc] initWithMenu:menu];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:centerVC];
+    [APP_DELEGATE.drawerController setCenterViewController:nav
+                                    withFullCloseAnimation:YES
+                                                completion:nil];
 }
 
 @end

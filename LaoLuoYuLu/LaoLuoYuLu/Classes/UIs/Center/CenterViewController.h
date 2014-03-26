@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "MenuModel.h"
 
 @interface CenterViewController : BaseViewController
+
+- (instancetype)initWithMenu:(MenuModel *)menu;
 
 @end
