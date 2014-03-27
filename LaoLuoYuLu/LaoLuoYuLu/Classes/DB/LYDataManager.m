@@ -74,8 +74,8 @@
     if ([self.lyDB open]) {
         FMResultSet *results = [self.lyDB executeQuery:[NSString stringWithFormat:@"select * from voice where menu_id = %d",menuID]];
         while ([results next]) {
-//            VoiceModel *voiceModel = [[VoiceModel alloc] initMenuFromDataBaseWithDic:results.resultDictionary];
-//            [menuListArr addObject:menuModel];
+            VoiceModel *voiceModel = [[VoiceModel alloc] initVoiceFromDataBaseWithDic:results.resultDictionary];
+            [menuListArr addObject:voiceModel];
         }
         [results close];
     }

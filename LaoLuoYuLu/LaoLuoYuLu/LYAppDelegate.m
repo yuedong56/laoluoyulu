@@ -20,10 +20,10 @@
 
 - (void)initDrawerViewController
 {
-    UINavigationController *leftNC = [[UINavigationController alloc] initWithRootViewController:[LeftMenuViewController new]];
-    UINavigationController *centerNC = [[UINavigationController alloc] initWithRootViewController:[CenterViewController new]];
-    self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:centerNC
-                                                            leftDrawerViewController:leftNC
+    self.leftNavCol = [[UINavigationController alloc] initWithRootViewController:[LeftMenuViewController new]];
+    self.centerNavCol = [[UINavigationController alloc] initWithRootViewController:[CenterViewController new]];
+    self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.centerNavCol
+                                                            leftDrawerViewController:self.leftNavCol
                                                            rightDrawerViewController:nil];
     [self.drawerController setMaximumLeftDrawerWidth:LeftMenuWidth];
     [self.drawerController setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible)

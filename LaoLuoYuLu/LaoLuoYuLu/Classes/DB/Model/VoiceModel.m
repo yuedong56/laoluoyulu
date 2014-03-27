@@ -10,11 +10,16 @@
 
 @implementation VoiceModel
 
-- (instancetype)init
+- (instancetype)initVoiceFromDataBaseWithDic:(NSDictionary *)dic
 {
     self = [super init];
-    if (self) {
-        
+    if (self)
+    {
+        self.ID       = [[dic valueForKey:@"id"] integerValue];
+        self.menuID   = [[dic valueForKey:@"menu_id"] integerValue];
+        self.name     = [NSString stringWithFormat:@"%@",[dic valueForKey:@"name"]];
+        self.duration = [NSString stringWithFormat:@"%@",[dic valueForKey:@"duration"]];
+        self.size     = [NSString stringWithFormat:@"%@",[dic valueForKey:@"size"]];
     }
     return self;
 }

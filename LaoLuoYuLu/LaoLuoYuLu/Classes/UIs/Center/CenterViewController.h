@@ -8,8 +8,14 @@
 
 #import "BaseViewController.h"
 #import "MenuModel.h"
+#import "VoiceModel.h"
 
-@interface CenterViewController : BaseViewController
+@interface CenterViewController : BaseViewController <UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, strong) MenuModel *currentMenuModel;
+
+@property (nonatomic, strong) UITableView *voiceTableView;
+@property (nonatomic, strong) NSMutableArray *voiceListArr;
 
 - (instancetype)initWithMenu:(MenuModel *)menu;
 
