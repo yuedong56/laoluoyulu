@@ -64,4 +64,16 @@
     return cell;
 }
 
+#pragma mark - UITableView dataSource
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
+    [self showPlayerViewWithVoiceModel:voiceModel amation:YES];
+}
+
+- (void)showPlayerViewWithVoiceModel:(VoiceModel *)model amation:(BOOL)amationed
+{
+    [APP_DELEGATE showRightSideView];
+}
+
 @end

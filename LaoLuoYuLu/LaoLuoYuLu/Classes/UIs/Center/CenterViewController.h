@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "PlayerViewController.h"
 #import "MenuModel.h"
 #import "VoiceModel.h"
 
@@ -16,6 +17,8 @@
 
 @property (nonatomic, strong) UITableView *voiceTableView;
 @property (nonatomic, strong) NSMutableArray *voiceListArr;
+
+@property (nonatomic, strong) PlayerViewController *playerView;
 
 - (instancetype)initWithMenu:(MenuModel *)menu;
 

@@ -31,8 +31,8 @@
     
     //导航栏
     UIView *navBgView = [[UIView alloc] initWithFrame:CGRectMake(0, IOS7AndLater?-20:0, ScreenWidth, IOS7AndLater?64:44)];
-    navBgView.backgroundColor = GrayColor;
-    navBgView.alpha = IOS7AndLater?0.5:1;
+    navBgView.backgroundColor = Nav_Color;
+    navBgView.alpha = IOS7AndLater ? 0.6 : 1;
     [self.navigationController.navigationBar addSubview:navBgView];
     
     //导航栏标题

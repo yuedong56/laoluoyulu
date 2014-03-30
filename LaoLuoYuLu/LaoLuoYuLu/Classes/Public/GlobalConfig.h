@@ -23,11 +23,15 @@
 
 //LYAppDelegate
 #define APP_DELEGATE ((LYAppDelegate *)[[UIApplication sharedApplication] delegate])
-//左侧抽屉结构的宽度
+//抽屉结构的宽度
 #define LeftMenuWidth 260.0f
+#define RightMenuWidth 320.0f
 //导航栏主题色
-#define Nav_Color [UIColor colorWithRed:0.1 green:0.2 blue:0.3 alpha:1];
+#define Nav_Color [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1]
 //无网络提示语
-#define NONetworkMessage @"你他妈的都没开网，点个屌啊！"
+#define NONetworkMessage @"你TMD都没开网，点个屌啊！"
+
+//首先将旋转的值由角度转换为弧度
+#define degreesToRadinas(x) (M_PI * (x)/180.0)
 
 #endif
