@@ -12,6 +12,7 @@
 
 @interface BaseViewController : UIViewController
 
+@property (nonatomic, strong) UIView *navBackgroundView;
 @property (nonatomic, strong) UILabel *titleLabel;   //导航栏标题
 @property (nonatomic, strong) UIButton *leftButton;  //左按钮
 @property (nonatomic, strong) UIButton *rightButton; //右按钮

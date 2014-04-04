@@ -6,13 +6,27 @@
 //  Copyright (c) 2014年 LYue. All rights reserved.
 //
 
-#define CDImageView_Width 300.0f
-#define CDImageView_Height 293.0f
+#define SmallCDImageView_Width 120.0f
+#define SmallCDImageView_Height 118.0f
+
+#define BigCDImageView_Width 300.0f
+#define BigCDImageView_Height 293.0f
 
 #import <UIKit/UIKit.h>
 
+@class StylusView;
 @interface CDView : UIView
 
-@property (strong, nonatomic) UIImageView *CDImageView; //大磁带转盘
+/** 磁盘内圈 */
+@property (strong, nonatomic) UIImageView *smallCDImageView;
+/** 磁盘外圈 */
+@property (strong, nonatomic) UIImageView *bigCDImageView;
+/** 唱针 */
+@property (strong, nonatomic) StylusView *stylusView;
+
+@end
+
+
+@interface StylusView : UIView
 
 @end

@@ -209,7 +209,7 @@
         CenterViewController *centerVC = [[CenterViewController alloc] initWithMenu:menu];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:centerVC];
         [APP_DELEGATE.drawerController setCenterViewController:nav
-                                        withFullCloseAnimation:YES
+                                            withCloseAnimation:YES
                                                     completion:nil];
     } else if (indexPath.section == 1) {//设置
         

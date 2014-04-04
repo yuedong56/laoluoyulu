@@ -6,6 +6,9 @@
 //  Copyright (c) 2014年 LYue. All rights reserved.
 //
 
+#define Stylus_Width 51
+#define Stylus_Height 217
+
 #import "CDView.h"
 
 @implementation CDView
@@ -13,22 +16,50 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        float cd_x = (ScreenWidth-CDImageView_Width)/2;
-        self.CDImageView = [[UIImageView alloc] initWithFrame:CGRectMake(cd_x, 0, CDImageView_Width, CDImageView_Height)];
-        self.CDImageView.image = ImageWithFile(@"player_cd.png");
-        [self addSubview:self.CDImageView];
+    if (self)
+    {
+        self.smallCDImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SmallCDImageView_Width, SmallCDImageView_Height)];
+        self.smallCDImageView.image = ImageWithFile(@"icon.png");
+        [self addSubview:self.smallCDImageView];
+        
+        float bcd_x = (ScreenWidth-BigCDImageView_Width)/2;
+        self.bigCDImageView = [[UIImageView alloc] initWithFrame:CGRectMake(bcd_x, 0, BigCDImageView_Width, BigCDImageView_Height)];
+        self.bigCDImageView.image = ImageWithFile(@"player_cd.png");
+        [self addSubview:self.bigCDImageView];
+        self.smallCDImageView.center = self.bigCDImageView.center;
+        
+        self.stylusView = [[StylusView alloc] initWithFrame:CGRectMake(225, 20, Stylus_Width, Stylus_Height)];
+        self.stylusView.transform = CGAffineTransformRotate(self.bigCDImageView.transform, degreesToRadinas(18));
+        [self addSubview:self.stylusView];
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+@end
+
+
+
+@implementation StylusView
+
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    // Drawing code
+    self = [super initWithFrame:frame];
+    if (self) {
+        CGRect stylus_frame = CGRectMake(0, 0, Stylus_Width, Stylus_Height);
+        
+        UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:stylus_frame];
+        bgImageView.image = ImageWithFile(@"player_stylus_lp_bg.png");
+        [self addSubview:bgImageView];
+        
+        UIImageView *lpImageView = [[UIImageView alloc] initWithFrame:stylus_frame];
+        lpImageView.image = ImageWithFile(@"player_stylus_lp.png");
+        [self addSubview:lpImageView];
+        
+        UIImageView *topImageView = [[UIImageView alloc] initWithFrame:stylus_frame];
+        topImageView.image = ImageWithFile(@"player_stylus_lp_top.png");
+        [self addSubview:topImageView];
+    }
+    return self;
 }
-*/
 
 @end

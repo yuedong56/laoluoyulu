@@ -30,10 +30,10 @@
     }
     
     //导航栏
-    UIView *navBgView = [[UIView alloc] initWithFrame:CGRectMake(0, IOS7AndLater?-20:0, ScreenWidth, IOS7AndLater?64:44)];
-    navBgView.backgroundColor = Nav_Color;
-    navBgView.alpha = IOS7AndLater ? 0.6 : 1;
-    [self.navigationController.navigationBar addSubview:navBgView];
+    self.navBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, IOS7AndLater?-20:0, ScreenWidth, IOS7AndLater?64:44)];
+    self.navBackgroundView.backgroundColor = Nav_Color;
+    self.navBackgroundView.alpha = IOS7AndLater ? 0.6 : 1;
+    [self.navigationController.navigationBar addSubview:self.navBackgroundView];
     
     //导航栏标题
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
