@@ -28,7 +28,6 @@
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #define IPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
-#define IOS7AndLater (([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? YES : NO)
 #define IPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
 //颜色

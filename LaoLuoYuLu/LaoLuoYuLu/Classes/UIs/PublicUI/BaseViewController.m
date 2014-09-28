@@ -25,14 +25,11 @@
 //导航栏
 - (void)addNavBarView
 {
-    if (IOS7AndLater) {
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     //导航栏
-    self.navBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, IOS7AndLater?-20:0, ScreenWidth, IOS7AndLater?64:44)];
+    self.navBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, ScreenWidth, 64)];
     self.navBackgroundView.backgroundColor = Nav_Color;
-    self.navBackgroundView.alpha = IOS7AndLater ? 0.6 : 1;
     [self.navigationController.navigationBar addSubview:self.navBackgroundView];
     
     //导航栏标题

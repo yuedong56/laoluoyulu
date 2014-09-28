@@ -25,6 +25,10 @@
     self.view.backgroundColor = COLOR_N(242);
     self.titleLabel.text = self.currentVoiceModel.name;
     
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(backGesture:)];
+    [cancelItem setTintColor:WhiteColor];
+    self.navigationItem.leftBarButtonItem = cancelItem;
+    
     [self initCDView];
     [self initControlView];
     
@@ -39,7 +43,7 @@
  */
 - (void)initCDView
 {
-    self.cdView = [[CDView alloc] initWithFrame:CGRectMake(0, IPhone5?(IOS7AndLater?84:20):(IOS7AndLater?64:0), ScreenWidth, BigCDImageView_Height)];
+    self.cdView = [[CDView alloc] initWithFrame:CGRectMake(0, IPhone5?84:64, ScreenWidth, BigCDImageView_Height)];
     [self.view addSubview:self.cdView];
 }
 
@@ -48,7 +52,7 @@
  */
 - (void)initControlView
 {
-    float control_y = ScreenHeight-ControlView_Height-(IOS7AndLater?0:64)-(IPhone5?20:5);
+    float control_y = ScreenHeight-ControlView_Height-(IPhone5?20:5);
     self.controlView = [[ControlView alloc] initWithFrame:CGRectMake(0, control_y, ScreenWidth, ControlView_Height)];
     [self.view addSubview:self.controlView];
 }

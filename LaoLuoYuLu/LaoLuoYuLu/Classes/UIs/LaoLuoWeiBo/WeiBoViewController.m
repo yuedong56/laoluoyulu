@@ -63,7 +63,7 @@
 /** 初始化webview */
 - (void)initWebView
 {
-    self.weiboWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, IOS7AndLater?64:0, ScreenWidth, ScreenHeight-(IOS7AndLater?64:64))];
+    self.weiboWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)];
     self.weiboWebView.delegate = self;
     self.weiboWebView.scrollView.delegate = self;
     [self.view addSubview:self.weiboWebView];
@@ -72,7 +72,7 @@
 /** 初始化网页控制视图 */
 - (void)initControlView
 {
-    self.webControlView = [[WebControlView alloc] initWithFrame:CGRectMake(0, ScreenHeight-button_height-(IOS7AndLater?0:64), ScreenWidth, button_height)];
+    self.webControlView = [[WebControlView alloc] initWithFrame:CGRectMake(0, ScreenHeight-button_height, ScreenWidth, button_height)];
     [self.view addSubview:self.webControlView];
     
     [self.webControlView.backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -162,6 +162,13 @@
         return  NO;
     }
      */
+//    [NetWorkRequest requestUserInfoWithUID:@""
+//                                     block:^(NSDictionary *jsonDic, NSError *error)
+//    {
+//        if (jsonDic) {
+//            NSLog(@"请求成功！");
+//        }
+//    }];
     return YES;
 }
 

@@ -33,7 +33,7 @@
     
     self.voiceListArr = [[LYDataManager instance] selectVoiceListWithMenuID:self.currentMenuModel.ID];
     
-    self.voiceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, IOS7AndLater?64:0, ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
+    self.voiceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
     self.voiceTableView.dataSource = self;
     self.voiceTableView.delegate = self;
     [self.view addSubview:self.voiceTableView];
