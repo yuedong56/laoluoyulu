@@ -15,7 +15,6 @@
 @property (strong, nonatomic) MMDrawerController *drawerController;
 @property (strong, nonatomic) UINavigationController *centerNavCol;
 @property (strong, nonatomic) UINavigationController *leftNavCol;
-@property (strong, nonatomic) UINavigationController *rightNavCol;
 
 - (void)showLeftSideView;
 - (void)showRightSideView;

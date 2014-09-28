@@ -23,10 +23,8 @@
 {
     self.leftNavCol = [[UINavigationController alloc] initWithRootViewController:[LeftMenuViewController new]];
     self.centerNavCol = [[UINavigationController alloc] initWithRootViewController:[CenterViewController new]];
-    self.rightNavCol = [[UINavigationController alloc] initWithRootViewController:[PlayerViewController new]];
     self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.centerNavCol
-                                                            leftDrawerViewController:self.leftNavCol
-                                                           rightDrawerViewController:self.rightNavCol];
+                                                            leftDrawerViewController:self.leftNavCol];
     [self.drawerController setMaximumLeftDrawerWidth:LeftMenuWidth];
     [self.drawerController setMaximumRightDrawerWidth:RightMenuWidth];
     [self.drawerController setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible)

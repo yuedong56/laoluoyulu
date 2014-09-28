@@ -27,7 +27,11 @@
     
     [self initCDView];
     [self initControlView];
-
+    
+    //下滑返回手势
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backGesture:)];
+    swipe.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:swipe];
 }
 
 /**
@@ -47,6 +51,12 @@
     float control_y = ScreenHeight-ControlView_Height-(IOS7AndLater?0:64)-(IPhone5?20:5);
     self.controlView = [[ControlView alloc] initWithFrame:CGRectMake(0, control_y, ScreenWidth, ControlView_Height)];
     [self.view addSubview:self.controlView];
+}
+
+#pragma mark - 下滑返回手势
+- (void)backGesture:(UISwipeGestureRecognizer *)swipe
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - 定时器

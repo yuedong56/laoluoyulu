@@ -68,12 +68,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
-    [self showPlayerViewWithVoiceModel:voiceModel amation:YES];
-}
-
-- (void)showPlayerViewWithVoiceModel:(VoiceModel *)model amation:(BOOL)amationed
-{
-    [APP_DELEGATE showRightSideView];
+    
+    PlayerViewController *vc = [[PlayerViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:NULL];
 }
 
 @end
