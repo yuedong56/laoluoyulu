@@ -31,12 +31,26 @@
     self.view.backgroundColor = WhiteColor;
     self.titleLabel.text = self.currentMenuModel.name;
     
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    float w = 44;
+    leftButton.frame = CGRectMake(8, 0, w, w);
+    [leftButton setImage:ImageWithFile(@"center_leftButton.png") forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:leftButton];
+    
     self.voiceListArr = [[LYDataManager instance] selectVoiceListWithMenuID:self.currentMenuModel.ID];
     
-    self.voiceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
+    self.voiceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)
+                                                       style:UITableViewStylePlain];
     self.voiceTableView.dataSource = self;
     self.voiceTableView.delegate = self;
     [self.view addSubview:self.voiceTableView];
+}
+
+#pragma mark - Button Events
+- (void)leftButtonClick:(UIButton *)button
+{
+    [APP_DELEGATE showLeftSideView];
 }
 
 #pragma mark - UITableView dataSource
@@ -59,7 +73,7 @@
     }
     
     VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
-    cell.textLabel.text = voiceModel.name;
+    [cell setContentWithModel:voiceModel index:(int)indexPath.row];
     
     return cell;
 }
@@ -67,11 +81,14 @@
 #pragma mark - UITableView dataSource
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    PlayerViewController *vc = [[PlayerViewController alloc] init];
+    VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
+    PlayerViewController *vc = [[PlayerViewController alloc] initWithModel:voiceModel];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:nav animated:YES completion:NULL];
 }
 
 @end
+
+

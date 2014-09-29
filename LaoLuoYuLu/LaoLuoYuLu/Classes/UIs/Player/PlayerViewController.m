@@ -18,6 +18,15 @@
 
 @implementation PlayerViewController
 
+- (instancetype)initWithModel:(VoiceModel *)model
+{
+    self = [super init];
+    if (self) {
+        self.currentVoiceModel = model;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

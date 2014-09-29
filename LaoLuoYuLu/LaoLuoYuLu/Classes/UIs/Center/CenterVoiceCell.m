@@ -13,16 +13,22 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
+    if (self)
+    {
+        self.addImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        [self addSubview:self.addImageView];
     }
     return self;
+}
+
+- (void)setContentWithModel:(VoiceModel *)model index:(int)index
+{
+    self.textLabel.text = [NSString stringWithFormat:@"%d. %@", index+1, model.name];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    
 }
 
 @end

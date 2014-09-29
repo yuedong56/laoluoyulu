@@ -15,7 +15,9 @@
 #import "MenuModel.h"
 
 @interface LeftMenuViewController ()
-
+{
+    NSIndexPath *selectIndexPath;  //当前选择的indexPath
+}
 @property (nonatomic, strong) NSMutableArray *imagesArr;//左侧图标数组
 @property (nonatomic, strong) NSMutableArray *highlightImageArr;//左侧高亮图标数组
 
@@ -40,6 +42,12 @@
     [self initTableFootView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView selectRowAtIndexPath:selectIndexPath
+                                animated:YES
+                          scrollPosition:UITableViewScrollPositionNone];
+}
 
 /**
  * @brief 左侧图标数组
@@ -107,7 +115,7 @@
 - (void)handleHeadViewTapGesture:(UITapGestureRecognizer *)gesture
 {
     if (![LYUtils checkNetworkAvailable]) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NONetworkMessage delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"你妹" message:NONetworkMessage delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
         [alertView show];
     } else {
         CLog(@"弹出老罗微博页面！");
@@ -214,6 +222,8 @@
     } else if (indexPath.section == 1) {//设置
         
     }
+    
+    selectIndexPath = indexPath;
 }
 
 @end

@@ -35,8 +35,10 @@
 {
     [super setSelected:selected animated:animated];
     
-    self.titleLabel.textColor = selected ? WhiteColor : [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
-    self.titleLabel.font = [UIFont systemFontOfSize:selected?18:16];
+    [UIView animateWithDuration:0.2 animations:^{
+        self.titleLabel.textColor = selected ? WhiteColor : COLOR_F(0.85);
+        self.titleLabel.font = selected ? [UIFont boldSystemFontOfSize:18] : [UIFont systemFontOfSize:17];
+    }];
 }
 
 @end

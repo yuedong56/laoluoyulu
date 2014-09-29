@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VoiceModel.h"
 
 @interface CenterVoiceCell : UITableViewCell
+
+@property (nonatomic, strong) UIImageView *addImageView;  //添加到个人列表
+
+- (void)setContentWithModel:(VoiceModel *)model index:(int)index;
 
 @end

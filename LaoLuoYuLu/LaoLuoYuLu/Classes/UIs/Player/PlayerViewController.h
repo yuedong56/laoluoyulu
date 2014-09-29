@@ -18,4 +18,6 @@
 @property (nonatomic, strong) CDView *cdView;
 @property (nonatomic, strong) ControlView *controlView;
 
+- (instancetype)initWithModel:(VoiceModel *)model;
+
 @end
