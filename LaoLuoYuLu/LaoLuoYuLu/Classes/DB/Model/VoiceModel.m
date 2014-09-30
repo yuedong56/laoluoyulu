@@ -20,6 +20,7 @@
         self.name     = [NSString stringWithFormat:@"%@",[dic valueForKey:@"name"]];
         self.duration = [NSString stringWithFormat:@"%@",[dic valueForKey:@"duration"]];
         self.size     = [NSString stringWithFormat:@"%@",[dic valueForKey:@"size"]];
+        self.isCollected = [[NSString stringWithFormat:@"%@", [dic valueForKey:@"isCollected"]] boolValue];
     }
     return self;
 }

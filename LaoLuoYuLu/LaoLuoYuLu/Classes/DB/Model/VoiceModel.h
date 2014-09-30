@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *duration;
 @property (nonatomic, strong) NSString *size;
+@property (nonatomic, assign) BOOL isCollected;  //是否已经收藏入播放列表
 
 - (instancetype)initVoiceFromDataBaseWithDic:(NSDictionary *)dic;
 
