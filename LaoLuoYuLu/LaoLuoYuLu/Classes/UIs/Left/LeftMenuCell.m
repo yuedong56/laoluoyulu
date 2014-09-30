@@ -25,7 +25,7 @@
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel_x, 0, LeftMenuWidth-titleLabel_x, Row_Height)];
         self.titleLabel.textColor = WhiteColor;
         self.titleLabel.backgroundColor = ClearColor;
-        self.titleLabel.font = [UIFont systemFontOfSize:16];
+        self.titleLabel.font = [UIFont systemFontOfSize:17];
         [self addSubview:self.titleLabel];
     }
     return self;
@@ -35,10 +35,7 @@
 {
     [super setSelected:selected animated:animated];
     
-    [UIView animateWithDuration:0.2 animations:^{
-        self.titleLabel.textColor = selected ? WhiteColor : COLOR_F(0.85);
-        self.titleLabel.font = selected ? [UIFont boldSystemFontOfSize:18] : [UIFont systemFontOfSize:17];
-    }];
+    self.titleLabel.textColor = selected ? WhiteColor : COLOR_F(0.85);
 }
 
 @end
