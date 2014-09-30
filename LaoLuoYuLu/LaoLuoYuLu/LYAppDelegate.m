@@ -22,7 +22,8 @@
 - (void)initDrawerViewController
 {
     self.leftNavCol = [[UINavigationController alloc] initWithRootViewController:[LeftMenuViewController new]];
-    self.centerNavCol = [[UINavigationController alloc] initWithRootViewController:[CenterViewController new]];
+    MenuModel *menuMol = [[[LYDataManager instance] selectMenuList] objectAtIndex:0];
+    self.centerNavCol = [[UINavigationController alloc] initWithRootViewController:[[CenterViewController alloc] initWithMenu:menuMol]];
     self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.centerNavCol
                                                             leftDrawerViewController:self.leftNavCol];
     [self.drawerController setMaximumLeftDrawerWidth:LeftMenuWidth];
