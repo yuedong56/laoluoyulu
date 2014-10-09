@@ -21,6 +21,9 @@
 #define AppSecret @"eccb513bf56450c93dc4ae375ef8ed50"
 #define RedirectUri @"http://"
 
+//AppId
+#define AppIdentifier @""
+
 //LYAppDelegate
 #define APP_DELEGATE ((LYAppDelegate *)[[UIApplication sharedApplication] delegate])
 //抽屉结构的宽度
@@ -33,5 +36,8 @@
 
 //首先将旋转的值由角度转换为弧度
 #define degreesToRadinas(x) (M_PI * (x)/180.0)
+
+//分割线
+#define kSeperateLineImage ImageNamed(@"seperate_line.png")
 
 #endif

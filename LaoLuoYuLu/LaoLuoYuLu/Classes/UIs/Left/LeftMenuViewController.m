@@ -13,6 +13,7 @@
 #import "CenterViewController.h"
 #import "LeftMenuCell.h"
 #import "MenuModel.h"
+#import "SettingViewController.h"
 
 @interface LeftMenuViewController ()
 {
@@ -28,6 +29,8 @@
 {
     [super viewDidLoad];
     
+    selectIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
     self.view.backgroundColor = DarkGrayColor;
     self.navigationController.navigationBarHidden = YES;
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
@@ -42,9 +45,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.tableView selectRowAtIndexPath:selectIndexPath
-                                animated:YES
-                          scrollPosition:UITableViewScrollPositionNone];
+    if (selectIndexPath.section==0) {
+        [self.tableView selectRowAtIndexPath:selectIndexPath
+                                    animated:YES
+                              scrollPosition:UITableViewScrollPositionNone];
+    }
 }
 
 /**
@@ -116,7 +121,7 @@
     if (section == 0) {
         return self.menuListArr.count;
     } else if (section == 1) {
-        return 3;
+        return 2;
     } else {
         return 0;
     }
@@ -141,8 +146,6 @@
         if (indexPath.row == 0) {
             cell.titleLabel.text = @"系统设置";
         } else if (indexPath.row == 1) {
-            cell.titleLabel.text = @"关于";
-        } else {
             cell.titleLabel.text = @"应用推荐";
         }
     }
@@ -188,15 +191,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {//老罗语录
+    if (indexPath.section == 0)  //老罗语录
+    {
         MenuModel *menu = [self.menuListArr objectAtIndex:indexPath.row];
         CenterViewController *centerVC = [[CenterViewController alloc] initWithMenu:menu];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:centerVC];
         [APP_DELEGATE.drawerController setCenterViewController:nav
                                             withCloseAnimation:YES
                                                     completion:nil];
-    } else if (indexPath.section == 1) {//设置
-        
+    }
+    else if (indexPath.section == 1)  //设置
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        if (indexPath.row == 0)
+        {//系统设置
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[SettingViewController alloc] init]];
+            [self presentViewController:nav animated:YES completion:NULL];
+        }
+        else if (indexPath.row == 1)
+        {//应用推荐
+            
+        }
     }
     
     selectIndexPath = indexPath;
