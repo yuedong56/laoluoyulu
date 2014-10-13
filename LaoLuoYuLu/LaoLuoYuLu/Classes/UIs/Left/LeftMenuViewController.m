@@ -63,10 +63,10 @@
                             @"left_second.png",
                             @"left_third.png",
                             @"left_four.png",
+                            @"left_five.png",
                             @"left_otherVoice.png", nil];
     NSArray *section2Arr = [NSArray arrayWithObjects:
                             @"left_setting.png",
-                            @"left_about.png",
                             @"left_recommend.png", nil];
     return [NSMutableArray arrayWithObjects:section1Arr,section2Arr, nil];
 }
