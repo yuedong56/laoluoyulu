@@ -38,6 +38,13 @@
     [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:leftButton];
     
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    float r_w = 44;
+    rightButton.frame = CGRectMake(ScreenWidth-r_w-3, 1, r_w, r_w);
+    [rightButton setImage:ImageWithFile(@"center_currentPlay.png") forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:rightButton];
+    
     self.voiceListArr = [[LYDataManager instance] selectVoiceListWithMenuID:self.currentMenuModel.ID];
     
     self.voiceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)
@@ -51,6 +58,11 @@
 - (void)leftButtonClick:(UIButton *)button
 {
     [APP_DELEGATE showLeftSideView];
+}
+
+- (void)rightButtonClick:(UIButton *)button
+{
+//    self presentViewController:<#(UIViewController *)#> animated:<#(BOOL)#> completion:<#^(void)completion#>
 }
 
 #pragma mark - UITableView dataSource
