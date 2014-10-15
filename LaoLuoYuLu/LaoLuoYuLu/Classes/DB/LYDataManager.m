@@ -46,9 +46,7 @@
     return self;
 }
 
-/**
- * @brief 获取菜单列表
- */
+/** 获取菜单列表 */
 - (NSMutableArray *)selectMenuList
 {
     NSMutableArray *menuListArr = [NSMutableArray arrayWithCapacity:0];
@@ -65,14 +63,18 @@
     return menuListArr;
 }
 
-/**
- * @brief 根据菜单ID获取语音列表
- */
+/** 根据菜单ID获取语音列表 */
 - (NSMutableArray *)selectVoiceListWithMenuID:(NSInteger)menuID
 {
     NSMutableArray *menuListArr = [NSMutableArray arrayWithCapacity:0];
     if ([self.lyDB open]) {
-        FMResultSet *results = [self.lyDB executeQuery:[NSString stringWithFormat:@"select * from %@ where menu_id = %d", kVoiceTable, menuID]];
+        NSString *queryStr = nil;
+        if (menuID == 0) {
+            queryStr = [NSString stringWithFormat:@"select * from %@ where is_recommend = 1", kVoiceTable];
+        } else {
+            queryStr = [NSString stringWithFormat:@"select * from %@ where menu_id = %d", kVoiceTable, menuID];
+        }
+        FMResultSet *results = [self.lyDB executeQuery:queryStr];
         while ([results next]) {
             VoiceModel *voiceModel = [[VoiceModel alloc] initVoiceFromDataBaseWithDic:results.resultDictionary];
             [menuListArr addObject:voiceModel];
@@ -84,30 +86,13 @@
     return menuListArr;
 }
 
-/** 获取已收藏的语音列表 */
-- (NSMutableArray *)selectCollectedVoices
-{
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
-    if ([self.lyDB open])
-    {
-        NSString *queryStr = [NSString stringWithFormat:@"select * from %@ where isCollected = 1", kVoiceTable];
-        FMResultSet *results = [self.lyDB executeQuery:queryStr];
-        while ([results next]) {
-            VoiceModel *voiceModel = [[VoiceModel alloc] initVoiceFromDataBaseWithDic:results.resultDictionary];
-            [array addObject:voiceModel];
-        }
-        [results close];
-    }
-    return array;
-}
-
 /** 收藏、取消收藏 */
 - (void)updateVoiceIsCollected:(BOOL)isCollected voiceID:(NSString *)voiceID
 {
     if ([self.lyDB open])
     {
         [self.lyDB beginTransaction];
-        NSString *queryStr = [NSString stringWithFormat:@"update %@ set isCollected = %d where id = '%@'", kVoiceTable, isCollected, voiceID];
+        NSString *queryStr = [NSString stringWithFormat:@"update %@ set is_recommend = %d where id = '%@'", kVoiceTable, isCollected, voiceID];
         [self.lyDB executeUpdate:queryStr];
         [self.lyDB commit];
     }

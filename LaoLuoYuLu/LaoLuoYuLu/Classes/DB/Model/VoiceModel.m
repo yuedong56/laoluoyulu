@@ -20,9 +20,14 @@
         self.name     = [NSString stringWithFormat:@"%@",[dic valueForKey:@"name"]];
         self.duration = [NSString stringWithFormat:@"%@",[dic valueForKey:@"duration"]];
         self.size     = [NSString stringWithFormat:@"%@",[dic valueForKey:@"size"]];
-        self.isCollected = [[NSString stringWithFormat:@"%@", [dic valueForKey:@"isCollected"]] boolValue];
+        self.isCollected = [[NSString stringWithFormat:@"%@", [dic valueForKey:@"is_recommend"]] boolValue];
     }
     return self;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"_ID = %d, _menuID = %d, _name = %@, _duration = %@, _size = %@, _isCollected = %d", (int)_ID, (int)_menuID, _name, _duration, _size, _isCollected];
 }
 
 @end

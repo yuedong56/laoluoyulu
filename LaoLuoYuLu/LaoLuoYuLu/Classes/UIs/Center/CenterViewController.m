@@ -46,7 +46,7 @@
     [self.navigationController.navigationBar addSubview:rightButton];
     
     self.voiceListArr = [[LYDataManager instance] selectVoiceListWithMenuID:self.currentMenuModel.ID];
-    
+
     self.voiceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)
                                                        style:UITableViewStylePlain];
     self.voiceTableView.dataSource = self;
@@ -63,6 +63,21 @@
 - (void)rightButtonClick:(UIButton *)button
 {
 //    self presentViewController:<#(UIViewController *)#> animated:<#(BOOL)#> completion:<#^(void)completion#>
+}
+
+- (void)collectButtonClick:(UIButton *)button event:(id)event
+{
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.voiceTableView];
+    NSIndexPath *indexPath = [self.voiceTableView indexPathForRowAtPoint:currentTouchPosition];
+    
+    VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
+    voiceModel.isCollected = !voiceModel.isCollected;
+    [[LYDataManager instance] updateVoiceIsCollected:voiceModel.isCollected
+                                             voiceID:[NSString stringWithFormat:@"%d", voiceModel.ID]];
+    
+    [self.voiceTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - UITableView dataSource
@@ -86,6 +101,9 @@
     
     VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
     [cell setContentWithModel:voiceModel index:(int)indexPath.row];
+    [cell.collectButton addTarget:self
+                           action:@selector(collectButtonClick:event:)
+                 forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }

@@ -21,18 +21,11 @@
 
 + (id)instance;
 
-/**
- * @brief 获取菜单列表
- */
+/** 获取菜单列表 */
 - (NSMutableArray *)selectMenuList;
 
-/**
- * @brief 根据菜单ID获取语音列表
- */
+/** 根据菜单ID获取语音列表 */
 - (NSMutableArray *)selectVoiceListWithMenuID:(NSInteger)menuID;
-
-/** 获取已收藏的语音列表 */
-- (NSMutableArray *)selectCollectedVoices;
 
 /** 收藏、取消收藏 */
 - (void)updateVoiceIsCollected:(BOOL)isCollected voiceID:(NSString *)voiceID;
