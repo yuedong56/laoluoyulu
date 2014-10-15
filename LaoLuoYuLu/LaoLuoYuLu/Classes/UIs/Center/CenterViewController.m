@@ -72,12 +72,15 @@
     CGPoint currentTouchPosition = [touch locationInView:self.voiceTableView];
     NSIndexPath *indexPath = [self.voiceTableView indexPathForRowAtPoint:currentTouchPosition];
     
-    VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
-    voiceModel.isCollected = !voiceModel.isCollected;
-    [[LYDataManager instance] updateVoiceIsCollected:voiceModel.isCollected
-                                             voiceID:[NSString stringWithFormat:@"%d", voiceModel.ID]];
-    
-    [self.voiceTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    if (indexPath)
+    {
+        VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
+        voiceModel.isCollected = !voiceModel.isCollected;
+        [[LYDataManager instance] updateVoiceIsCollected:voiceModel.isCollected
+                                                 voiceID:[NSString stringWithFormat:@"%d", (int)voiceModel.ID]];
+        
+        [self.voiceTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 #pragma mark - UITableView dataSource
