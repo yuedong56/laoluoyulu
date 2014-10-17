@@ -6,10 +6,11 @@
 //  Copyright (c) 2014年 LYue. All rights reserved.
 //
 
-#define kHeaderColor COLOR_F(0.95)
-#define kHeaderHeight 30
+#define kHeaderColor COLOR_F(0.9)
+#define kHeaderHeight 26
 
 #import "SettingViewController.h"
+#import "SettingCell.h"
 
 @interface SettingViewController ()
 {
@@ -34,9 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = kHeaderColor;
-    
+        
     self.titleLabel.text = @"系统设置";
     [self.leftButton setTitle:@"返回" forState:UIControlStateNormal];
     [self.leftButton addTarget:self
@@ -69,6 +68,9 @@
 - (void)initTableView
 {
     table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight) style:UITableViewStylePlain];
+    table.separatorStyle = UITableViewCellSeparatorStyleNone;
+    table.backgroundColor = kHeaderColor;
+    table.bounces = NO;
     table.dataSource = self;
     table.delegate = self;
     [self.view addSubview:table];
@@ -96,24 +98,22 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIndetifier = @"cellIndetifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndetifier];
+    SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndetifier];
     
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:cellIndetifier];
+        cell = [[SettingCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                  reuseIdentifier:cellIndetifier];
     }
     
-    for (UIView *view in cell.subviews) {
-        if ([view isKindOfClass:[UIImageView class]]) [view removeFromSuperview];
+    if (indexPath.section==1 && indexPath.row==0)  //分割线
+    {
+        UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 43.5, ScreenWidth, 1)];
+        line.image = kSeperateLineImage;
+        [cell addSubview:line];
     }
-    
-    UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(15, 43.5, 290, 1)];
-    line.image = kSeperateLineImage;
-    [cell.contentView addSubview:line];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.contentView.backgroundColor = kHeaderColor;
     
     NSMutableArray *secArr = [lists objectAtIndex:indexPath.section];
     NSString *title = [secArr objectAtIndex:indexPath.row];

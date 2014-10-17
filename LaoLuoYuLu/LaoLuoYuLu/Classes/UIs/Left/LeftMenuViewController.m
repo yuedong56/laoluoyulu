@@ -14,6 +14,7 @@
 #import "LeftMenuCell.h"
 #import "MenuModel.h"
 #import "SettingViewController.h"
+#import "RecommendViewController.h"
 
 @interface LeftMenuViewController ()
 {
@@ -45,11 +46,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if (selectIndexPath.section==0) {
+//    if (selectIndexPath.section==0) {
         [self.tableView selectRowAtIndexPath:selectIndexPath
                                     animated:YES
                               scrollPosition:UITableViewScrollPositionNone];
-    }
+//    }
 }
 
 /**
@@ -199,6 +200,7 @@
         [APP_DELEGATE.drawerController setCenterViewController:nav
                                             withCloseAnimation:YES
                                                     completion:nil];
+        selectIndexPath = indexPath;
     }
     else if (indexPath.section == 1)  //设置
     {
@@ -210,11 +212,11 @@
         }
         else if (indexPath.row == 1)
         {//应用推荐
-            
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[RecommendViewController alloc] init]];
+            [self presentViewController:nav animated:YES completion:NULL];
         }
     }
     
-    selectIndexPath = indexPath;
 }
 
 @end

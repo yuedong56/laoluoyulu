@@ -35,13 +35,12 @@
         [self.playButton setImage:ImageWithFile(@"player_play_h.png") forState:UIControlStateHighlighted];
         [self addSubview:self.playButton];
         
-        //中
+        //后
         self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.nextButton.frame = CGRectMake(ScreenWidth/2+PlayButton_Width/2, playButton_y, PrevAndNextButton_Width, PrevAndNextButton_Height);
         [self.nextButton setImage:ImageWithFile(@"player_next.png") forState:UIControlStateNormal];
         [self.nextButton setImage:ImageWithFile(@"player_next_h.png") forState:UIControlStateHighlighted];
         [self addSubview:self.nextButton];
-        
     }
     return self;
 }

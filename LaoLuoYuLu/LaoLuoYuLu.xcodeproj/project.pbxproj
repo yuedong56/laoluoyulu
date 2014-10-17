@@ -63,6 +63,7 @@
 		30F0CD8719E6823A0056A8DB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F0CD8619E6823A0056A8DB /* AboutViewController.m */; };
 		30F0CD8A19E682B40056A8DB /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F0CD8919E682B40056A8DB /* RecommendViewController.m */; };
 		30F0CD8C19E693DF0056A8DB /* seperate_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F0CD8B19E693DF0056A8DB /* seperate_line.png */; };
+		30F27B3E19F0BABB00807F57 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F27B3D19F0BABB00807F57 /* SettingCell.m */; };
 		70012B5918D1E1FD00CB53D0 /* TableHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70012B5818D1E1FD00CB53D0 /* TableHeadView.m */; };
 		703A3EE018C9FEC2009179DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703A3EDF18C9FEC2009179DE /* Foundation.framework */; };
 		703A3EE218C9FEC2009179DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703A3EE118C9FEC2009179DE /* CoreGraphics.framework */; };
@@ -203,6 +204,8 @@
 		30F0CD8819E682B40056A8DB /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
 		30F0CD8919E682B40056A8DB /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
 		30F0CD8B19E693DF0056A8DB /* seperate_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seperate_line.png; sourceTree = "<group>"; };
+		30F27B3C19F0BABB00807F57 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
+		30F27B3D19F0BABB00807F57 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		70012B5718D1E1FD00CB53D0 /* TableHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableHeadView.h; sourceTree = "<group>"; };
 		70012B5818D1E1FD00CB53D0 /* TableHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableHeadView.m; sourceTree = "<group>"; };
 		703A3EDC18C9FEC2009179DE /* LaoLuoYuLu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaoLuoYuLu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -414,6 +417,8 @@
 			children = (
 				306B6C6919E4ED4F000300DC /* SettingViewController.h */,
 				306B6C6A19E4ED4F000300DC /* SettingViewController.m */,
+				30F27B3C19F0BABB00807F57 /* SettingCell.h */,
+				30F27B3D19F0BABB00807F57 /* SettingCell.m */,
 				30F0CD8519E6823A0056A8DB /* AboutViewController.h */,
 				30F0CD8619E6823A0056A8DB /* AboutViewController.m */,
 				30F0CD8819E682B40056A8DB /* RecommendViewController.h */,
@@ -850,6 +855,7 @@
 				3014434A18D82F6400DDC64A /* ASIDataCompressor.m in Sources */,
 				3014436818D8398D00DDC64A /* LYUtils.m in Sources */,
 				703A3F4118CA114E009179DE /* FMDatabase.m in Sources */,
+				30F27B3E19F0BABB00807F57 /* SettingCell.m in Sources */,
 				703A3EF018C9FEC2009179DE /* LYAppDelegate.m in Sources */,
 				705DEFA518E5BA5300C34FC6 /* WeiBoViewController.m in Sources */,
 				703A3F4218CA114E009179DE /* FMDatabaseAdditions.m in Sources */,
