@@ -54,6 +54,15 @@
     [self.drawerController openDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
+/** 初始化播放器界面 */
+- (void)initPlayerView
+{
+    if (!self.playerView) {
+        self.playerView = [[PlayerView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        self.playerView.hidden = YES;
+        [self.window addSubview:self.playerView];
+    }
+}
 
 #pragma mark - AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -63,6 +72,7 @@
     [self.window makeKeyAndVisible];
     
     [self initDrawerViewController];
+    [self initPlayerView];
     
     return YES;
 }

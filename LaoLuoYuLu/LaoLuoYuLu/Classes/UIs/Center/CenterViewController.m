@@ -117,9 +117,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
-    PlayerViewController *vc = [[PlayerViewController alloc] initWithModel:voiceModel];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    [self presentViewController:nav animated:YES completion:NULL];
+    
+    [APP_DELEGATE.playerView showWithModel:voiceModel];
+//    PlayerViewController *vc = [[PlayerViewController alloc] initWithModel:voiceModel];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+//    [self presentViewController:nav animated:YES completion:NULL];
 }
 
 @end

@@ -64,6 +64,8 @@
 		30F0CD8A19E682B40056A8DB /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F0CD8919E682B40056A8DB /* RecommendViewController.m */; };
 		30F0CD8C19E693DF0056A8DB /* seperate_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F0CD8B19E693DF0056A8DB /* seperate_line.png */; };
 		30F27B3E19F0BABB00807F57 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F27B3D19F0BABB00807F57 /* SettingCell.m */; };
+		30F27B4119F0FA7300807F57 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F27B4019F0FA7300807F57 /* PlayerView.m */; };
+		30F27B4419F1080800807F57 /* MMDrawerController+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F27B4319F1080800807F57 /* MMDrawerController+Rotate.m */; };
 		70012B5918D1E1FD00CB53D0 /* TableHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70012B5818D1E1FD00CB53D0 /* TableHeadView.m */; };
 		703A3EE018C9FEC2009179DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703A3EDF18C9FEC2009179DE /* Foundation.framework */; };
 		703A3EE218C9FEC2009179DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703A3EE118C9FEC2009179DE /* CoreGraphics.framework */; };
@@ -206,6 +208,10 @@
 		30F0CD8B19E693DF0056A8DB /* seperate_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seperate_line.png; sourceTree = "<group>"; };
 		30F27B3C19F0BABB00807F57 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		30F27B3D19F0BABB00807F57 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
+		30F27B3F19F0FA7300807F57 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		30F27B4019F0FA7300807F57 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		30F27B4219F1080800807F57 /* MMDrawerController+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMDrawerController+Rotate.h"; sourceTree = "<group>"; };
+		30F27B4319F1080800807F57 /* MMDrawerController+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMDrawerController+Rotate.m"; sourceTree = "<group>"; };
 		70012B5718D1E1FD00CB53D0 /* TableHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableHeadView.h; sourceTree = "<group>"; };
 		70012B5818D1E1FD00CB53D0 /* TableHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableHeadView.m; sourceTree = "<group>"; };
 		703A3EDC18C9FEC2009179DE /* LaoLuoYuLu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaoLuoYuLu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -661,6 +667,8 @@
 				7059540218E854EA002C77D9 /* CDView.m */,
 				7059540418E854F9002C77D9 /* ControlView.h */,
 				7059540518E854F9002C77D9 /* ControlView.m */,
+				30F27B3F19F0FA7300807F57 /* PlayerView.h */,
+				30F27B4019F0FA7300807F57 /* PlayerView.m */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -680,6 +688,8 @@
 			children = (
 				70BA644918D410880043C0D1 /* UINavigationController+Rotate.h */,
 				70BA644A18D410880043C0D1 /* UINavigationController+Rotate.m */,
+				30F27B4219F1080800807F57 /* MMDrawerController+Rotate.h */,
+				30F27B4319F1080800807F57 /* MMDrawerController+Rotate.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -835,9 +845,11 @@
 				3061C31E18D2D2C000D5D023 /* LYDataManager.m in Sources */,
 				703A3F2A18CA0464009179DE /* LeftMenuViewController.m in Sources */,
 				703A3F2118CA01F0009179DE /* UIViewController+MMDrawerController.m in Sources */,
+				30F27B4419F1080800807F57 /* MMDrawerController+Rotate.m in Sources */,
 				3014435018D82F6400DDC64A /* ASINetworkQueue.m in Sources */,
 				306B6C6B19E4ED4F000300DC /* SettingViewController.m in Sources */,
 				703A3F4618CA114E009179DE /* FMResultSet.m in Sources */,
+				30F27B4119F0FA7300807F57 /* PlayerView.m in Sources */,
 				3014436D18D842D100DDC64A /* LYUserDefaults.m in Sources */,
 				3014434C18D82F6400DDC64A /* ASIDownloadCache.m in Sources */,
 				703A3EEC18C9FEC2009179DE /* main.m in Sources */,

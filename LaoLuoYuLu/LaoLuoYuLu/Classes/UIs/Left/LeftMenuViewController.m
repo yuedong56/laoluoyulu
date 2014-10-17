@@ -69,7 +69,7 @@
     NSArray *section2Arr = [NSArray arrayWithObjects:
                             @"left_setting.png",
                             @"left_recommend.png", nil];
-    return [NSMutableArray arrayWithObjects:section1Arr,section2Arr, nil];
+    return [NSMutableArray arrayWithObjects:section1Arr, section2Arr, nil];
 }
 
 /**
