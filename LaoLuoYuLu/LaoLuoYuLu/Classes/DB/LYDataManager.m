@@ -72,7 +72,7 @@
         if (menuID == 0) {
             queryStr = [NSString stringWithFormat:@"select * from %@ where is_recommend = 1", kVoiceTable];
         } else {
-            queryStr = [NSString stringWithFormat:@"select * from %@ where menu_id = %d", kVoiceTable, menuID];
+            queryStr = [NSString stringWithFormat:@"select * from %@ where menu_id = %d", kVoiceTable, (int)menuID];
         }
         FMResultSet *results = [self.lyDB executeQuery:queryStr];
         while ([results next]) {
