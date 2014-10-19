@@ -25,7 +25,7 @@
 - (NSMutableArray *)selectMenuList;
 
 /** 根据菜单ID获取语音列表 */
-- (NSMutableArray *)selectVoiceListWithMenuID:(NSInteger)menuID;
+- (NSMutableArray *)selectVoiceListWithMenuID:(NSString *)menuID;
 
 /** 收藏、取消收藏 */
 - (void)updateVoiceIsCollected:(BOOL)isCollected voiceID:(NSString *)voiceID;

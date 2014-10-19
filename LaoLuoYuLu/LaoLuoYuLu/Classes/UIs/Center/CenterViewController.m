@@ -77,9 +77,33 @@
         VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
         voiceModel.isCollected = !voiceModel.isCollected;
         [[LYDataManager instance] updateVoiceIsCollected:voiceModel.isCollected
-                                                 voiceID:[NSString stringWithFormat:@"%d", (int)voiceModel.ID]];
+                                                 voiceID:voiceModel.ID];
         
         [self.voiceTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
+#pragma mark - 播放音频
+- (void)playWithModel:(VoiceModel *)model
+{
+    if ([model.ID isEqualToString:APP_DELEGATE.currentVoiceModel.ID] && [model.menuID isEqualToString:APP_DELEGATE.currentVoiceModel.menuID])
+    {
+        return;
+    }
+    APP_DELEGATE.currentVoiceModel = model;
+    
+    NSString *voiceName = [NSString stringWithFormat:@"%@_%@", model.menuID, model.ID];
+    [APP_DELEGATE.audioPlayer stop];
+    APP_DELEGATE.audioPlayer = nil;
+    
+    NSString *string = [[NSBundle mainBundle] pathForResource:voiceName ofType:@"mp3"];
+    NSURL *url = [NSURL fileURLWithPath:string];
+    if (url) {
+        APP_DELEGATE.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+        [APP_DELEGATE.audioPlayer prepareToPlay];
+        [APP_DELEGATE.audioPlayer play];
+    } else {
+        CLog(@"音频播放错误：获取音频的URL为空！");
     }
 }
 
@@ -119,10 +143,11 @@
     VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
     
     [APP_DELEGATE.playerView showWithModel:voiceModel];
-//    PlayerViewController *vc = [[PlayerViewController alloc] initWithModel:voiceModel];
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//    [self presentViewController:nav animated:YES completion:NULL];
+    
+    //播放语音
+    [self playWithModel:voiceModel];
 }
+
 
 @end
 

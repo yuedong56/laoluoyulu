@@ -10,6 +10,7 @@
 #import "MMDrawerController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "PlayerView.h"
+#import "VoiceModel.h"
 
 @interface LYAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -19,8 +20,8 @@
 @property (strong, nonatomic) UINavigationController *leftNavCol;
 
 @property (strong, nonatomic) PlayerView *playerView;
-@property (strong, nonatomic) AVAudioPlayer *currentPlayer;
-@property (strong, nonatomic) NSString *currentVoiceID;
+@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
+@property (strong, nonatomic) VoiceModel *currentVoiceModel;
 
 - (void)showLeftSideView;
 - (void)showRightSideView;

@@ -11,6 +11,7 @@
 #import "CenterViewController.h"
 #import "PlayerViewController.h"
 #import "MMExampleDrawerVisualStateManager.h"
+#import "UIView+Common.h"
 
 @implementation LYAppDelegate
 

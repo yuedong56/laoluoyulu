@@ -11,7 +11,7 @@
 
 @interface MenuModel : NSObject
 
-@property (nonatomic, assign) NSInteger ID;
+@property (nonatomic, strong) NSString *ID;
 @property (nonatomic, strong) NSString *name;
 
 - (id)initMenuFromDataBaseWithDic:(NSDictionary *)dic;

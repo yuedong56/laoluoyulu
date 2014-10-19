@@ -47,7 +47,7 @@
         [self.playBgView addSubview:self.titleLabel];
         
         //进度条
-        float slider_y = self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 10;
+        float slider_y = self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 15;
         self.playSlider = [[UISlider alloc] initWithFrame:CGRectMake(10, slider_y, ScreenWidth-20, Slider_Height)];
         self.playSlider.minimumTrackTintColor = COLOR_F(0.2);
         self.playSlider.maximumTrackTintColor = LightGrayColor;

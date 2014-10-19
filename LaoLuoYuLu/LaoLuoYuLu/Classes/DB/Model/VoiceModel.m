@@ -15,8 +15,8 @@
     self = [super init];
     if (self)
     {
-        self.ID       = [[dic valueForKey:@"id"] integerValue];
-        self.menuID   = [[dic valueForKey:@"menu_id"] integerValue];
+        self.ID       = [NSString stringWithFormat:@"%@", [dic valueForKey:@"id"]];
+        self.menuID   = [NSString stringWithFormat:@"%@", [dic valueForKey:@"menu_id"]];
         self.name     = [NSString stringWithFormat:@"%@",[dic valueForKey:@"name"]];
         self.duration = [NSString stringWithFormat:@"%@",[dic valueForKey:@"duration"]];
         self.size     = [NSString stringWithFormat:@"%@",[dic valueForKey:@"size"]];
@@ -27,7 +27,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"_ID = %d, _menuID = %d, _name = %@, _duration = %@, _size = %@, _isCollected = %d", (int)_ID, (int)_menuID, _name, _duration, _size, _isCollected];
+    return [NSString stringWithFormat:@"_ID = %@, _menuID = %@, _name = %@, _duration = %@, _size = %@, _isCollected = %d", _ID, _menuID, _name, _duration, _size, _isCollected];
 }
 
 @end

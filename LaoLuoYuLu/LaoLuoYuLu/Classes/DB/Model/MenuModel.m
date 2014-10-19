@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        self.ID = [[dic valueForKey:@"id"] integerValue];
+        self.ID = [NSString stringWithFormat:@"%@", [dic valueForKey:@"id"]];
         self.name = [NSString stringWithFormat:@"%@",[dic valueForKey:@"name"]];
     }
     return self;

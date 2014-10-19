@@ -11,8 +11,8 @@
 
 @interface VoiceModel : NSObject
 
-@property (nonatomic, assign) NSInteger ID;
-@property (nonatomic, assign) NSInteger menuID;
+@property (nonatomic, strong) NSString *ID;
+@property (nonatomic, strong) NSString *menuID;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *duration;
 @property (nonatomic, strong) NSString *size;

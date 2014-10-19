@@ -64,15 +64,15 @@
 }
 
 /** 根据菜单ID获取语音列表 */
-- (NSMutableArray *)selectVoiceListWithMenuID:(NSInteger)menuID
+- (NSMutableArray *)selectVoiceListWithMenuID:(NSString *)menuID
 {
     NSMutableArray *menuListArr = [NSMutableArray arrayWithCapacity:0];
     if ([self.lyDB open]) {
         NSString *queryStr = nil;
-        if (menuID == 0) {
+        if ([menuID isEqualToString:@"0"]) {
             queryStr = [NSString stringWithFormat:@"select * from %@ where is_recommend = 1", kVoiceTable];
         } else {
-            queryStr = [NSString stringWithFormat:@"select * from %@ where menu_id = %d", kVoiceTable, (int)menuID];
+            queryStr = [NSString stringWithFormat:@"select * from %@ where menu_id = %@", kVoiceTable, menuID];
         }
         FMResultSet *results = [self.lyDB executeQuery:queryStr];
         while ([results next]) {
