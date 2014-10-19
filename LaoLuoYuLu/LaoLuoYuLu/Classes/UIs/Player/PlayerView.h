@@ -17,6 +17,8 @@
 @property (nonatomic, strong) UIView *playBgView;
 
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *currentTimeLabel;
+@property (nonatomic, strong) UILabel *totalTimeLabel;
 @property (nonatomic, strong) UISlider *playSlider;
 @property (nonatomic, strong) UIButton *preButton;
 @property (nonatomic, strong) UIButton *playButton;

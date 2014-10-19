@@ -14,11 +14,7 @@
 
 @implementation LYAppDelegate
 
-
-/**
- * @brief 初始化抽屉结构
- */
-
+/** 初始化抽屉结构 */
 - (void)initDrawerViewController
 {
     self.leftNavCol = [[UINavigationController alloc] initWithRootViewController:[LeftMenuViewController new]];
@@ -78,3 +74,5 @@
 }
 
 @end
+
+

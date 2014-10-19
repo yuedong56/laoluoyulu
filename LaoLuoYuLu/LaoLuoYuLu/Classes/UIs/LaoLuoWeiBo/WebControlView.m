@@ -25,7 +25,7 @@
         //
         self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.backButton.frame = CGRectMake(0, 0, button_width, button_height);
-        [self.backButton setTitle:@"返回" forState:UIControlStateNormal];
+        [self.backButton setTitle:@"后退" forState:UIControlStateNormal];
         [self.backButton setTitleColor:titleColor_N forState:UIControlStateNormal];
         [self.backButton setTitleColor:titleColor_H forState:UIControlStateHighlighted];
         [self addSubview:self.backButton];
@@ -51,15 +51,15 @@
         [self.refreshButton setTitleColor:titleColor_H forState:UIControlStateHighlighted];
         [self addSubview:self.refreshButton];
         
-        self.backButton.backgroundColor = LightGrayColor;
-        self.forwardButton.backgroundColor = GrayColor;
-        self.homeButton.backgroundColor = LightGrayColor;
-        self.refreshButton.backgroundColor = GrayColor;
+        self.backButton.backgroundColor = BlackColor;
+        self.forwardButton.backgroundColor = BlackColor;
+        self.homeButton.backgroundColor = BlackColor;
+        self.refreshButton.backgroundColor = BlackColor;
 
-        self.backButton.alpha = 0.8;
-        self.forwardButton.alpha = 0.8;
-        self.homeButton.alpha = 0.8;
-        self.refreshButton.alpha = 0.8;
+        self.backButton.alpha = 0.4;
+        self.forwardButton.alpha = 0.4;
+        self.homeButton.alpha = 0.4;
+        self.refreshButton.alpha = 0.4;
     }
     return self;
 }

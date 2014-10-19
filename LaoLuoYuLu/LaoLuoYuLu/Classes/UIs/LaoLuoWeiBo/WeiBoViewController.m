@@ -7,11 +7,17 @@
 //
 
 #import "WeiBoViewController.h"
+#import "WeiBoNavView.h"
+#import "MBProgressHUD.h"
 
 @interface WeiBoViewController ()
 {
     BOOL isControlViewHide;
+    WeiBoNavView *navView;
 }
+
+@property (nonatomic, strong) MBProgressHUD *progressHUD;
+
 @end
 
 @implementation WeiBoViewController
@@ -21,13 +27,9 @@
     [super viewDidLoad];
     
 	self.view.backgroundColor = WhiteColor;
+    self.navigationController.navigationBarHidden = YES;
     
-    self.titleLabel.text = @"老罗的微博";
-    [self.leftButton setTitle:@"取消" forState:UIControlStateNormal];
-    [self.leftButton addTarget:self
-                        action:@selector(leftButtonPress:)
-              forControlEvents:UIControlEventTouchUpInside];
-    
+    [self initNavBar];
     [self loadingLaoLuoWeiBoWebView];
     [self initControlView];
 }
@@ -47,13 +49,26 @@
 }
 */
 
+/** 设置导航栏 */
+- (void)initNavBar
+{
+    //导航栏
+    navView = [[WeiBoNavView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
+    [self.view addSubview:navView];
+    
+    //返回按钮添加事件
+    [navView.leftButton addTarget:self
+                           action:@selector(leftButtonPress:)
+                 forControlEvents:UIControlEventTouchUpInside];
+}
+
 /** 加载老罗的微博页面 */
 - (void)loadingLaoLuoWeiBoWebView
 {
     if (!self.weiboWebView) {
         [self initWebView];
     }
-    NSURL *url = [NSURL URLWithString:@"http://weibo.com/laoluoyonghao?from=feed&loc=nickname"];
+    NSURL *url = [NSURL URLWithString:@"http://m.weibo.cn/u/1640571365"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.weiboWebView loadRequest:request];
     
@@ -82,10 +97,14 @@
 }
 
 /** 显示controlView */
-- (void)showControlView
+- (void)showNavAndControlView
 {
-    self.webControlView.hidden = NO;
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        //导航栏
+        navView.frame = CGRectMake(0, 0, ScreenWidth, 64);
+        //webView
+        self.weiboWebView.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight-64);
+        //底部控制栏
         float controlView_y = self.weiboWebView.frame.origin.y + self.weiboWebView.frame.size.height;
         self.webControlView.frame = CGRectMake(0, controlView_y-button_height, ScreenWidth, button_height);
     } completion:^(BOOL finished) {
@@ -94,13 +113,18 @@
 }
 
 /** 隐藏controlView */
-- (void)hideControlView
+- (void)hideNavAndControlView
 {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        //导航栏
+        navView.frame = CGRectMake(0, -64, ScreenWidth, 64);
+        //webView
+        self.weiboWebView.frame = CGRectMake(0, 20, ScreenWidth, ScreenHeight-20);
+        //底部控制栏
         float controlView_y = self.weiboWebView.frame.origin.y + self.weiboWebView.frame.size.height;
         self.webControlView.frame = CGRectMake(0, controlView_y, ScreenWidth, button_height);
     } completion:^(BOOL finished) {
-        self.webControlView.hidden = YES;
+        
     }];
 }
 
@@ -193,14 +217,32 @@
     if (velocity.y > 0) {
         if (!isControlViewHide) {
             isControlViewHide = YES;
-            [self hideControlView];
+            [self hideNavAndControlView];
         }
     } else {
         if (isControlViewHide) {
             isControlViewHide = NO;
-            [self showControlView];
+            [self showNavAndControlView];
         }
     }
 }
+
+#pragma mark - ProgressHUD
+- (void)showProgressHUDWithText:(NSString *)text
+{
+    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    self.progressHUD.labelText = text;
+    self.progressHUD.userInteractionEnabled = NO;
+    [self.view addSubview:self.progressHUD];
+    [self.progressHUD show:YES];
+}
+
+- (void)hideProgressHUDWithText:(NSString *)text
+{
+    [self.progressHUD hide:YES];
+    [self.progressHUD removeFromSuperview];
+    self.progressHUD = nil;
+}
+
 
 @end

@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 LYue. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import <UIKit/UIKit.h>
 #import "WebControlView.h"
 
-@interface WeiBoViewController : BaseViewController<UIWebViewDelegate,UIScrollViewDelegate>
+@interface WeiBoViewController : UIViewController<UIWebViewDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIWebView *weiboWebView;
 @property (nonatomic, strong) WebControlView *webControlView;

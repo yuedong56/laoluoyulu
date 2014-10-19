@@ -13,6 +13,7 @@
 #define PlayButton_Width 85
 
 #import "PlayerView.h"
+#import "UIView+Common.h"
 
 @implementation PlayerView
 
@@ -37,10 +38,12 @@
         [self.mainBgView addGestureRecognizer:tap];
         
         //标题
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, Title_Height)];
-        self.titleLabel.backgroundColor = COLOR_F(0.95);
-        self.titleLabel.textColor = BlackColor;
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        CGRect titleFrame = CGRectMake(0, 0, ScreenWidth, Title_Height);
+        self.titleLabel = [self labelWithFrame:titleFrame
+                                          font:[UIFont systemFontOfSize:17]
+                                     textColor:BlackColor
+                                       bgColor:COLOR_F(0.95)
+                                     alignment:NSTextAlignmentCenter];
         [self.playBgView addSubview:self.titleLabel];
         
         //进度条
@@ -49,6 +52,29 @@
         self.playSlider.minimumTrackTintColor = COLOR_F(0.2);
         self.playSlider.maximumTrackTintColor = LightGrayColor;
         [self.playBgView addSubview:self.playSlider];
+        
+        //当前时间
+        float curLabel_x = self.playSlider.frame.origin.x + 5;
+        float curLabel_y = slider_y + Slider_Height;
+        float curLabel_w = 60;
+        float curLabel_h = 20;
+        self.currentTimeLabel = [self labelWithFrame:CGRectMake(curLabel_x, curLabel_y, curLabel_w, curLabel_h)
+                                                font:[UIFont systemFontOfSize:12]
+                                           textColor:LightGrayColor
+                                             bgColor:ClearColor
+                                           alignment:NSTextAlignmentLeft];
+        self.currentTimeLabel.text = @"23:31";
+        [self.playBgView addSubview:self.currentTimeLabel];
+        
+        //总时间
+        float totLabel_x = ScreenWidth - curLabel_x - curLabel_w;
+        self.totalTimeLabel = [self labelWithFrame:CGRectMake(totLabel_x, curLabel_y, curLabel_w, curLabel_h)
+                                              font:[UIFont systemFontOfSize:12]
+                                         textColor:LightGrayColor
+                                           bgColor:ClearColor
+                                         alignment:NSTextAlignmentRight];
+        self.totalTimeLabel.text = @"23:31";
+        [self.playBgView addSubview:self.totalTimeLabel];
         
         //前
         float playButton_y = kPlayerView_H - PrevAndNextButton_Height - 10;
