@@ -62,7 +62,7 @@
 
 - (void)rightButtonClick:(UIButton *)button
 {
-//    self presentViewController:<#(UIViewController *)#> animated:<#(BOOL)#> completion:<#^(void)completion#>
+    [APP_DELEGATE.playerView showWithModel:APP_DELEGATE.currentVoiceModel];
 }
 
 - (void)collectButtonClick:(UIButton *)button event:(id)event
@@ -98,11 +98,16 @@
     
     NSString *string = [[NSBundle mainBundle] pathForResource:voiceName ofType:@"mp3"];
     NSURL *url = [NSURL fileURLWithPath:string];
-    if (url) {
+    if (url)
+    {
         APP_DELEGATE.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
         [APP_DELEGATE.audioPlayer prepareToPlay];
         [APP_DELEGATE.audioPlayer play];
-    } else {
+        
+        //
+    }
+    else
+    {
         CLog(@"音频播放错误：获取音频的URL为空！");
     }
 }

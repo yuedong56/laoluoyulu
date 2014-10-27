@@ -63,7 +63,6 @@
                                            textColor:LightGrayColor
                                              bgColor:ClearColor
                                            alignment:NSTextAlignmentLeft];
-        self.currentTimeLabel.text = @"23:31";
         [self.playBgView addSubview:self.currentTimeLabel];
         
         //总时间
@@ -73,7 +72,6 @@
                                          textColor:LightGrayColor
                                            bgColor:ClearColor
                                          alignment:NSTextAlignmentRight];
-        self.totalTimeLabel.text = @"23:31";
         [self.playBgView addSubview:self.totalTimeLabel];
         
         //前

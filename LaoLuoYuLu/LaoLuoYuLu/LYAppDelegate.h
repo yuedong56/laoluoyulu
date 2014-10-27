@@ -22,6 +22,7 @@
 @property (strong, nonatomic) PlayerView *playerView;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (strong, nonatomic) VoiceModel *currentVoiceModel;
+@property (strong, nonatomic) NSTimer *instanceTimer;    //播放器定时器
 
 - (void)showLeftSideView;
 - (void)showRightSideView;
