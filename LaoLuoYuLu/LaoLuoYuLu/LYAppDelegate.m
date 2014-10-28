@@ -61,6 +61,41 @@
     }
 }
 
+#pragma mark - toastView
+- (void)showToastView:(NSString *)text
+{
+    if (!toastView)
+    {
+        CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:17]
+                       constrainedToSize:CGSizeMake(200, MAXFLOAT)
+                           lineBreakMode:NSLineBreakByWordWrapping];
+        toastView = [[LYToastView alloc] initWithFrame:CGRectMake((ScreenWidth-size.width)/2, ScreenHeight-100, size.width+26, size.height+16)];
+    }
+    toastView.textLabel.text = text;
+    toastView.hidden = NO;
+    [APP_DELEGATE.window addSubview:toastView];
+    
+    
+    //3秒后消失
+    [self hideToastViewAfter:0.8];
+}
+
+- (void)hideToastViewAfter:(NSTimeInterval)duration
+{
+    [UIView animateWithDuration:0.5
+                          delay:duration
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^
+     {
+         toastView.alpha = 0;
+     } completion:^(BOOL finished)
+     {
+         toastView.hidden = YES;
+         [toastView removeFromSuperview];
+         toastView = nil;
+     }];
+}
+
 #pragma mark - AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

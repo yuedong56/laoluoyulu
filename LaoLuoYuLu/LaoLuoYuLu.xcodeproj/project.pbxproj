@@ -47,6 +47,9 @@
 		3061C32818D2D5FC00D5D023 /* VoiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C32718D2D5FC00D5D023 /* VoiceModel.m */; };
 		3067E5F518E3EAA9005932F9 /* CenterVoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3067E5F418E3EAA9005932F9 /* CenterVoiceCell.m */; };
 		306B6C6B19E4ED4F000300DC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306B6C6A19E4ED4F000300DC /* SettingViewController.m */; };
+		307BDB1F19FF964800D576D7 /* LYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307BDB1E19FF964800D576D7 /* LYToastView.m */; };
+		307BDB3119FFA6CD00D576D7 /* center_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307BDB3019FFA6CD00D576D7 /* center_delete@2x.png */; };
+		307BDB3319FFA76500D576D7 /* center_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 307BDB3219FFA76500D576D7 /* center_delete.png */; };
 		30A179BD18ED5A8A00A42A81 /* player_stylus_lp_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A179BA18ED5A8A00A42A81 /* player_stylus_lp_bg.png */; };
 		30A179BE18ED5A8A00A42A81 /* player_stylus_lp_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A179BB18ED5A8A00A42A81 /* player_stylus_lp_top.png */; };
 		30A179BF18ED5A8A00A42A81 /* player_stylus_lp.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A179BC18ED5A8A00A42A81 /* player_stylus_lp.png */; };
@@ -336,6 +339,10 @@
 		3067E5F418E3EAA9005932F9 /* CenterVoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterVoiceCell.m; sourceTree = "<group>"; };
 		306B6C6919E4ED4F000300DC /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		306B6C6A19E4ED4F000300DC /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		307BDB1D19FF964800D576D7 /* LYToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYToastView.h; sourceTree = "<group>"; };
+		307BDB1E19FF964800D576D7 /* LYToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYToastView.m; sourceTree = "<group>"; };
+		307BDB3019FFA6CD00D576D7 /* center_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "center_delete@2x.png"; sourceTree = "<group>"; };
+		307BDB3219FFA76500D576D7 /* center_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = center_delete.png; sourceTree = "<group>"; };
 		30A179BA18ED5A8A00A42A81 /* player_stylus_lp_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_stylus_lp_bg.png; sourceTree = "<group>"; };
 		30A179BB18ED5A8A00A42A81 /* player_stylus_lp_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_stylus_lp_top.png; sourceTree = "<group>"; };
 		30A179BC18ED5A8A00A42A81 /* player_stylus_lp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_stylus_lp.png; sourceTree = "<group>"; };
@@ -647,6 +654,8 @@
 				30AF43CD19D93630004CA2F6 /* center_leftButton@2x.png */,
 				30D4F4D019EE48F3009FDEB5 /* center_currentPlay.png */,
 				30D4F4D119EE48F3009FDEB5 /* center_currentPlay@2x.png */,
+				307BDB3219FFA76500D576D7 /* center_delete.png */,
+				307BDB3019FFA6CD00D576D7 /* center_delete@2x.png */,
 				705953EF18E84F77002C77D9 /* player_cd.png */,
 				705953FE18E8541F002C77D9 /* player_prev.png */,
 				705953FD18E8541F002C77D9 /* player_prev_h.png */,
@@ -976,6 +985,8 @@
 				70BA644818D410690043C0D1 /* Category */,
 				70BA644518D410490043C0D1 /* BaseViewController.h */,
 				70BA644618D410490043C0D1 /* BaseViewController.m */,
+				307BDB1D19FF964800D576D7 /* LYToastView.h */,
+				307BDB1E19FF964800D576D7 /* LYToastView.m */,
 			);
 			path = PublicUI;
 			sourceTree = "<group>";
@@ -1230,6 +1241,7 @@
 				70D3D39019F3E5C900A22096 /* 5_143.mp3 in Resources */,
 				70D3D34F19F3E5C900A22096 /* 2_78.mp3 in Resources */,
 				70D3D38619F3E5C900A22096 /* 4_133.MP3 in Resources */,
+				307BDB3319FFA76500D576D7 /* center_delete.png in Resources */,
 				70D3D32E19F3E5C900A22096 /* 2_45.mp3 in Resources */,
 				70D3D32419F3E5C900A22096 /* 1_35.mp3 in Resources */,
 				70D3D30519F3E5C900A22096 /* 1_4.mp3 in Resources */,
@@ -1342,6 +1354,7 @@
 				3014432E18D82EC600DDC64A /* left_second.png in Resources */,
 				70D3D35A19F3E5C900A22096 /* 3_89.mp3 in Resources */,
 				70D3D32519F3E5C900A22096 /* 1_36.mp3 in Resources */,
+				307BDB3119FFA6CD00D576D7 /* center_delete@2x.png in Resources */,
 				70D3D32B19F3E5C900A22096 /* 2_42.mp3 in Resources */,
 				70D3D35319F3E5C900A22096 /* 3_82.mp3 in Resources */,
 				70D3D39519F3E5C900A22096 /* 20_148.mp3 in Resources */,
@@ -1464,6 +1477,7 @@
 				703A3F2D18CA0515009179DE /* CenterViewController.m in Sources */,
 				703A3F1D18CA01F0009179DE /* MMDrawerBarButtonItem.m in Sources */,
 				3014434F18D82F6400DDC64A /* ASIInputStream.m in Sources */,
+				307BDB1F19FF964800D576D7 /* LYToastView.m in Sources */,
 				703A3F1E18CA01F0009179DE /* MMDrawerController.m in Sources */,
 				705DEFA418E5BA5300C34FC6 /* WebControlView.m in Sources */,
 				7059540318E854EA002C77D9 /* CDView.m in Sources */,

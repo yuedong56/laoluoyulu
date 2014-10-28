@@ -20,6 +20,7 @@
     self = [super init];
     if (self) {
         self.currentMenuModel = menu;
+        APP_DELEGATE.currentMenuModel = menu;
     }
     return self;
 }
@@ -138,6 +139,12 @@
                  forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CenterVoiceCell *cell = (CenterVoiceCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+    return cell.frame.size.height;
 }
 
 #pragma mark - UITableView dataSource
