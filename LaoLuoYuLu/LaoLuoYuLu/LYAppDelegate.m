@@ -76,13 +76,13 @@
     [APP_DELEGATE.window addSubview:toastView];
     
     
-    //3秒后消失
-    [self hideToastViewAfter:0.8];
+    //1秒后消失
+    [self hideToastViewAfter:1];
 }
 
 - (void)hideToastViewAfter:(NSTimeInterval)duration
 {
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.6
                           delay:duration
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^

@@ -73,15 +73,19 @@
     CGPoint currentTouchPosition = [touch locationInView:self.voiceTableView];
     NSIndexPath *indexPath = [self.voiceTableView indexPathForRowAtPoint:currentTouchPosition];
     
-    if (indexPath)
+    if (!indexPath)
     {
-        VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
-        voiceModel.isCollected = !voiceModel.isCollected;
-        [[LYDataManager instance] updateVoiceIsCollected:voiceModel.isCollected
-                                                 voiceID:voiceModel.ID];
-        
-        [self.voiceTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        return;
     }
+
+    VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
+    voiceModel.isCollected = YES;
+    [[LYDataManager instance] updateVoiceIsCollected:voiceModel.isCollected
+                                             voiceID:voiceModel.ID];
+    
+    [self.voiceTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    
+    [APP_DELEGATE showToastView:@"已加入收藏!"];
 }
 
 #pragma mark - 播放音频
@@ -160,6 +164,30 @@
     [self playWithModel:voiceModel];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [self.voiceListArr removeObjectAtIndex:indexPath.row];
+        
+        VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
+        voiceModel.isCollected = NO;
+        [[LYDataManager instance] updateVoiceIsCollected:voiceModel.isCollected
+                                                 voiceID:voiceModel.ID];
+
+        [self.voiceTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
+}
 
 @end
 
