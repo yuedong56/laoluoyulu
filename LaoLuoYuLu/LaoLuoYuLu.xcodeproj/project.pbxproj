@@ -108,6 +108,7 @@
 		705DEFA418E5BA5300C34FC6 /* WebControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DEFA118E5BA5300C34FC6 /* WebControlView.m */; };
 		705DEFA518E5BA5300C34FC6 /* WeiBoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DEFA318E5BA5300C34FC6 /* WeiBoViewController.m */; };
 		705DEFA918E5BE3300C34FC6 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DEFA818E5BE3300C34FC6 /* PlayerViewController.m */; };
+		70B14A5C1A04E102005E24F2 /* LYTimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B14A5B1A04E102005E24F2 /* LYTimeUtils.m */; };
 		70BA644718D410490043C0D1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA644618D410490043C0D1 /* BaseViewController.m */; };
 		70BA644B18D410880043C0D1 /* UINavigationController+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA644A18D410880043C0D1 /* UINavigationController+Rotate.m */; };
 		70D3D26819F3BCEF00A22096 /* WeiBoNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D3D26719F3BCEF00A22096 /* WeiBoNavView.m */; };
@@ -432,6 +433,8 @@
 		705DEFA318E5BA5300C34FC6 /* WeiBoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiBoViewController.m; sourceTree = "<group>"; };
 		705DEFA718E5BE3300C34FC6 /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
 		705DEFA818E5BE3300C34FC6 /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		70B14A5A1A04E102005E24F2 /* LYTimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTimeUtils.h; sourceTree = "<group>"; };
+		70B14A5B1A04E102005E24F2 /* LYTimeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTimeUtils.m; sourceTree = "<group>"; };
 		70BA644518D410490043C0D1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		70BA644618D410490043C0D1 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		70BA644918D410880043C0D1 /* UINavigationController+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Rotate.h"; sourceTree = "<group>"; };
@@ -889,6 +892,8 @@
 				703A3F2E18CA05EB009179DE /* GlobalConfig.h */,
 				3014436618D8398D00DDC64A /* LYUtils.h */,
 				3014436718D8398D00DDC64A /* LYUtils.m */,
+				70B14A5A1A04E102005E24F2 /* LYTimeUtils.h */,
+				70B14A5B1A04E102005E24F2 /* LYTimeUtils.m */,
 				3014436B18D842D100DDC64A /* LYUserDefaults.h */,
 				3014436C18D842D100DDC64A /* LYUserDefaults.m */,
 			);
@@ -1489,6 +1494,7 @@
 				703A3EF018C9FEC2009179DE /* LYAppDelegate.m in Sources */,
 				705DEFA518E5BA5300C34FC6 /* WeiBoViewController.m in Sources */,
 				703A3F4218CA114E009179DE /* FMDatabaseAdditions.m in Sources */,
+				70B14A5C1A04E102005E24F2 /* LYTimeUtils.m in Sources */,
 				70012B5918D1E1FD00CB53D0 /* TableHeadView.m in Sources */,
 				3067E5F518E3EAA9005932F9 /* CenterVoiceCell.m in Sources */,
 				3014434918D82F6400DDC64A /* ASIAuthenticationDialog.m in Sources */,

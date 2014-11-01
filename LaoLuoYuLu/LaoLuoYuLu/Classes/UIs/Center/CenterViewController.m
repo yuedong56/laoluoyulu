@@ -8,9 +8,12 @@
 
 #import "CenterViewController.h"
 #import "CenterVoiceCell.h"
+#import "UIView+Common.h"
 
-@interface CenterViewController ()
-
+@interface CenterViewController ()<UIAlertViewDelegate>
+{
+    NSIndexPath *cancelCollectIndexPath;  //要取消收藏的语音
+}
 @end
 
 @implementation CenterViewController
@@ -19,7 +22,6 @@
 {
     self = [super init];
     if (self) {
-        self.currentMenuModel = menu;
         APP_DELEGATE.currentMenuModel = menu;
     }
     return self;
@@ -30,7 +32,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = WhiteColor;
-    self.titleLabel.text = self.currentMenuModel.name;
+    self.titleLabel.text = APP_DELEGATE.currentMenuModel.name;
     
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     float w = 44;
@@ -46,10 +48,11 @@
     [rightButton addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:rightButton];
     
-    self.voiceListArr = [[LYDataManager instance] selectVoiceListWithMenuID:self.currentMenuModel.ID];
+    self.voiceListArr = [[LYDataManager instance] selectVoiceListWithMenuID:APP_DELEGATE.currentMenuModel.ID];
 
     self.voiceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)
                                                        style:UITableViewStylePlain];
+    self.voiceTableView.separatorColor = ClearColor;
     self.voiceTableView.dataSource = self;
     self.voiceTableView.delegate = self;
     [self.view addSubview:self.voiceTableView];
@@ -66,6 +69,7 @@
     [APP_DELEGATE.playerView showWithModel:APP_DELEGATE.currentVoiceModel];
 }
 
+/** 添加收藏、删除收藏按钮 */
 - (void)collectButtonClick:(UIButton *)button event:(id)event
 {
     NSSet *touches = [event allTouches];
@@ -73,19 +77,51 @@
     CGPoint currentTouchPosition = [touch locationInView:self.voiceTableView];
     NSIndexPath *indexPath = [self.voiceTableView indexPathForRowAtPoint:currentTouchPosition];
     
-    if (!indexPath)
-    {
+    if (!indexPath) {
         return;
     }
 
     VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
-    voiceModel.isCollected = YES;
+    
+    if ([APP_DELEGATE.currentMenuModel.ID intValue] == 0) //收藏
+    {
+        cancelCollectIndexPath = indexPath;
+        [UIView showAlertWithTitle:@"提示" msg:[NSString stringWithFormat:@"确定删除对 [%@] 的收藏？删除只会删掉该收藏记录，不会删掉语音！", voiceModel.name] tag:1000 delegate:self btnTitle:@"确定删除" otherBtnTitle:@"取消"];
+    }
+    else
+    {
+        voiceModel.isCollected = YES;
+        [[LYDataManager instance] updateVoiceIsCollected:voiceModel.isCollected
+                                                 voiceID:voiceModel.ID];
+        
+        [self.voiceTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        
+        [APP_DELEGATE showToastView:@"已加入收藏!"];
+    }
+}
+
+/** 取消收藏语音 */
+- (void)cancelCollectWithIndexPaht:(NSIndexPath *)indexPath
+{
+    VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
+    voiceModel.isCollected = NO;
     [[LYDataManager instance] updateVoiceIsCollected:voiceModel.isCollected
                                              voiceID:voiceModel.ID];
     
-    [self.voiceTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    
-    [APP_DELEGATE showToastView:@"已加入收藏!"];
+    [self.voiceListArr removeObjectAtIndex:indexPath.row];
+    [self.voiceTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+#pragma mark - UIAlertView Delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1000)
+    {
+        if (buttonIndex == 0)
+        {  //删除收藏
+            [self cancelCollectWithIndexPaht:cancelCollectIndexPath];
+        }
+    }
 }
 
 #pragma mark - 播放音频
@@ -133,7 +169,7 @@
     static NSString *CellIdentifier = @"cell";
     CenterVoiceCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[CenterVoiceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[CenterVoiceCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
@@ -162,6 +198,8 @@
     
     //播放语音
     [self playWithModel:voiceModel];
+    
+    [tableView reloadData];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -173,14 +211,7 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [self.voiceListArr removeObjectAtIndex:indexPath.row];
-        
-        VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
-        voiceModel.isCollected = NO;
-        [[LYDataManager instance] updateVoiceIsCollected:voiceModel.isCollected
-                                                 voiceID:voiceModel.ID];
-
-        [self.voiceTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self cancelCollectWithIndexPaht:indexPath];
     }
 }
 
@@ -190,5 +221,6 @@
 }
 
 @end
+
 
 

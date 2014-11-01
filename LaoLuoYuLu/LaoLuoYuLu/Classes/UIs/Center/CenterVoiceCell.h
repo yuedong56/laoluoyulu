@@ -6,14 +6,15 @@
 //  Copyright (c) 2014年 LYue. All rights reserved.
 //
 
-#define kCenterVoiceCell_H 44
-#define kSelectView_W 8
+#define kCenterVoiceCell_H 54
+#define kSelectView_W 5
 
 #import <UIKit/UIKit.h>
 #import "VoiceModel.h"
 
 @interface CenterVoiceCell : UITableViewCell
 {
+    UIImageView *seperateLine;  //分割线
     UIView *selectView;  //标识正在播放的view
 }
 
@@ -22,3 +23,5 @@
 - (void)setContentWithModel:(VoiceModel *)model index:(int)index;
 
 @end
+
+

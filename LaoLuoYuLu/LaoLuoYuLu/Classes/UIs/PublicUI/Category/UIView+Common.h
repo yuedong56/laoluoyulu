@@ -40,4 +40,13 @@
                 btnTitle:(NSString *)btnTitle
            otherBtnTitle:(NSString *)otherBtnTitle;
 
++ (void)showAlertWithTitle:(NSString *)title
+                       msg:(NSString *)msg
+                       tag:(NSInteger)tag
+                delegate:(id<UIAlertViewDelegate>)delegate
+                btnTitle:(NSString *)btnTitle
+           otherBtnTitle:(NSString *)otherBtnTitle;
+
 @end
+
+

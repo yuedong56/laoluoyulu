@@ -53,6 +53,10 @@
         self.playSlider.maximumTrackTintColor = LightGrayColor;
         [self.playBgView addSubview:self.playSlider];
         
+        [self.playSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+        [self.playSlider addTarget:self action:@selector(sliderTouchDown:) forControlEvents:UIControlEventTouchDown];
+        [self.playSlider addTarget:self action:@selector(sliderTouchUpinside:) forControlEvents:UIControlEventTouchUpInside];
+        
         //当前时间
         float curLabel_x = self.playSlider.frame.origin.x + 5;
         float curLabel_y = slider_y + Slider_Height;
@@ -63,6 +67,7 @@
                                            textColor:LightGrayColor
                                              bgColor:ClearColor
                                            alignment:NSTextAlignmentLeft];
+        self.currentTimeLabel.text = @"--:--";
         [self.playBgView addSubview:self.currentTimeLabel];
         
         //总时间
@@ -72,6 +77,7 @@
                                          textColor:LightGrayColor
                                            bgColor:ClearColor
                                          alignment:NSTextAlignmentRight];
+        self.totalTimeLabel.text = @"--:--";
         [self.playBgView addSubview:self.totalTimeLabel];
         
         //前
@@ -139,6 +145,26 @@
         self.playBgView.hidden = YES;
         self.hidden = YES;
     }];
+}
+
+#pragma mark - events
+- (void)sliderValueChanged:(UISlider *)slider
+{
+    self.currentTimeLabel.text = [LYTimeUtils timeFormatted:slider.value * APP_DELEGATE.audioPlayer.duration];
+}
+
+- (void)sliderTouchDown:(UISlider *)slider
+{
+    CLog(@"%s", __FUNCTION__);
+    [APP_DELEGATE.instanceTimer invalidate];
+    APP_DELEGATE.instanceTimer = nil;
+}
+
+- (void)sliderTouchUpinside:(UISlider *)slider
+{
+    CLog(@"%s", __FUNCTION__);
+    [APP_DELEGATE startPlayerTimer];
+    APP_DELEGATE.audioPlayer.currentTime = slider.value * APP_DELEGATE.audioPlayer.duration;
 }
 
 @end

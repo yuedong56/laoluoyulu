@@ -14,7 +14,7 @@
 #import "MenuModel.h"
 #import "LYToastView.h"
 
-@interface LYAppDelegate : UIResponder <UIApplicationDelegate>
+@interface LYAppDelegate : UIResponder <UIApplicationDelegate, AVAudioPlayerDelegate>
 {
     LYToastView *toastView;
 }
@@ -33,8 +33,14 @@
 - (void)showLeftSideView;
 - (void)showRightSideView;
 
+/** 初始化播放定时器 */
+- (void)startPlayerTimer;
+
 #pragma mark - toastView
 - (void)showToastView:(NSString *)text;
 - (void)hideToastViewAfter:(NSTimeInterval)duration;
 
 @end
+
+
+

@@ -61,6 +61,29 @@
     }
 }
 
+/** 初始化播放定时器 */
+- (void)startPlayerTimer
+{
+    if ([self.instanceTimer isValid]) {
+        [self.instanceTimer invalidate];
+        self.instanceTimer = nil;
+    }
+    self.instanceTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(handlePlayerTimerEvent:) userInfo:nil repeats:YES];
+}
+
+#pragma mark - 播放定时器事件
+- (void)handlePlayerTimerEvent:(NSTimer *)timer
+{
+    if (self.audioPlayer.isPlaying)
+    {
+        self.playerView.currentTimeLabel.text = [LYTimeUtils timeFormatted:self.audioPlayer.currentTime];
+        
+        self.playerView.totalTimeLabel.text = [LYTimeUtils timeFormatted:self.audioPlayer.duration];
+        
+        self.playerView.playSlider.value = self.audioPlayer.currentTime/self.audioPlayer.duration*1.0;
+    }
+}
+
 #pragma mark - toastView
 - (void)showToastView:(NSString *)text
 {
@@ -96,6 +119,12 @@
      }];
 }
 
+#pragma mark - AVAudioPlayer Delegate
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    
+}
+
 #pragma mark - AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -105,6 +134,8 @@
     
     [self initDrawerViewController];
     [self initPlayerView];
+    
+    [self startPlayerTimer];
     
     return YES;
 }
