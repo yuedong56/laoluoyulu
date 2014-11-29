@@ -9,6 +9,7 @@
 #import "CenterViewController.h"
 #import "CenterVoiceCell.h"
 #import "UIView+Common.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface CenterViewController ()<UIAlertViewDelegate>
 {
@@ -53,9 +54,82 @@
     self.voiceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)
                                                        style:UITableViewStylePlain];
     self.voiceTableView.separatorColor = ClearColor;
+    
+    [self.view addSubview:self.voiceTableView];
+    
+    //刷新
+    [self performSelector:@selector(reloadData) withObject:nil afterDelay:0.01];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    //告诉系统，我们要接受远程控制事件
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
+}
+
+-(BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+//刷新reloadData
+- (void)reloadData
+{
     self.voiceTableView.dataSource = self;
     self.voiceTableView.delegate = self;
-    [self.view addSubview:self.voiceTableView];
+//    self.voiceListArr = [[LYDataManager instance] selectVoiceListWithMenuID:APP_DELEGATE.currentMenuModel.ID];
+    [self.voiceTableView reloadData];
+}
+
+-(void)remoteControlReceivedWithEvent:(UIEvent *)event{
+    
+    //if it is a remote control event handle it correctly
+    if (event.type == UIEventTypeRemoteControl) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+            {
+                CLog(@"UIEventSubtypeRemoteControlTogglePlayPause...");
+//                [self pauseOrPlay];
+                break;
+            }
+            case UIEventSubtypeRemoteControlPlay:
+            {
+                CLog(@"UIEventSubtypeRemoteControlPlay...");
+                [APP_DELEGATE.audioPlayer play];
+                break;
+            }
+            case UIEventSubtypeRemoteControlPause:
+            {
+                CLog(@"UIEventSubtypeRemoteControlPause...");
+                [APP_DELEGATE.audioPlayer pause];
+                break;
+            }
+            case UIEventSubtypeRemoteControlStop:
+            {
+                CLog(@"UIEventSubtypeRemoteControlStop...");
+                break;
+            }
+            case UIEventSubtypeRemoteControlNextTrack:
+            {
+                CLog(@"UIEventSubtypeRemoteControlNextTrack...");
+                break;
+            }
+            case UIEventSubtypeRemoteControlPreviousTrack:
+            {
+                CLog(@"UIEventSubtypeRemoteControlPreviousTrack...");
+                break;
+            }
+            default:
+                break;
+        }
+    }
 }
 
 #pragma mark - Button Events
@@ -146,10 +220,30 @@
         [APP_DELEGATE.audioPlayer play];
         
         //
+        [self configNowPlayingInfoCenter];
     }
     else
     {
         CLog(@"音频播放错误：获取音频的URL为空！");
+    }
+}
+
+//设置锁屏状态，显示的歌曲信息
+-(void)configNowPlayingInfoCenter
+{
+    if (NSClassFromString(@"MPNowPlayingInfoCenter"))
+    {
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        [dict setObject:APP_DELEGATE.currentVoiceModel.name forKey:MPMediaItemPropertyTitle];
+        [dict setObject:@"罗永浩" forKey:MPMediaItemPropertyArtist];
+        [dict setObject:APP_DELEGATE.currentMenuModel.name forKey:MPMediaItemPropertyAlbumTitle];
+        [dict setObject:[NSNumber numberWithDouble:APP_DELEGATE.audioPlayer.duration] forKey:MPMediaItemPropertyPlaybackDuration];
+        
+        UIImage *image = [UIImage imageNamed:@"left_luoyonghao.png"];
+        MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:image];
+        [dict setObject:artwork forKey:MPMediaItemPropertyArtwork];
+        
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
     }
 }
 

@@ -77,9 +77,7 @@
     if (self.audioPlayer.isPlaying)
     {
         self.playerView.currentTimeLabel.text = [LYTimeUtils timeFormatted:self.audioPlayer.currentTime];
-        
         self.playerView.totalTimeLabel.text = [LYTimeUtils timeFormatted:self.audioPlayer.duration];
-        
         self.playerView.playSlider.value = self.audioPlayer.currentTime/self.audioPlayer.duration*1.0;
     }
 }
@@ -125,6 +123,32 @@
     
 }
 
+/** 配置播放器，允许后台播放语音 */
+- (void)configAudio
+{
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [session setActive:YES error:nil];
+}
+
+///** 遍历数据库中的语音文件列表 */
+//- (void)initAllVoiceDataFromDataBase
+//{
+//    self.voiceMutableArray = [NSMutableArray array];
+//    self.menuLists = [[LYDataManager instance] selectMenuList];
+//    self.centerNavContainer = [NSMutableArray array];
+//    
+//    for (MenuModel *menuModel in self.menuLists)
+//    {
+//        NSMutableArray *array = [[LYDataManager instance] selectVoiceListWithMenuID:menuModel.ID];
+//        [self.voiceMutableArray addObject:array];
+//        
+//        CenterViewController *centerVC = [[CenterViewController alloc] initWithMenu:menuModel voiceLists:array];
+//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:centerVC];
+//        [self.centerNavContainer addObject:nav];
+//    }
+//}
+
 #pragma mark - AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -133,9 +157,12 @@
     [self.window makeKeyAndVisible];
     
     [self initDrawerViewController];
+    
     [self initPlayerView];
     
     [self startPlayerTimer];
+    
+    [self configAudio];
     
     return YES;
 }
