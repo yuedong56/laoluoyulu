@@ -13,7 +13,6 @@
 #define PlayButton_Width 85
 
 #import "PlayerView.h"
-#import "UIView+Common.h"
 
 @implementation PlayerView
 
@@ -94,6 +93,7 @@
         [self.playButton setImage:ImageWithFile(@"player_play.png") forState:UIControlStateNormal];
         [self.playButton setImage:ImageWithFile(@"player_play_h.png") forState:UIControlStateHighlighted];
         [self.playBgView addSubview:self.playButton];
+        [self.playButton addTarget:self action:@selector(playPauseButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
         //后
         self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -128,7 +128,13 @@
         self.mainBgView.alpha = 0.5;
         self.playBgView.frame = CGRectMake(0, ScreenHeight-kPlayerView_H, ScreenWidth, kPlayerView_H);
     } completion:^(BOOL finished) {
-        
+        if (APP_DELEGATE.audioPlayer.isPlaying) {
+            [self.playButton setImage:ImageWithFile(@"player_pause.png") forState:UIControlStateNormal];
+            [self.playButton setImage:ImageWithFile(@"player_pause_h.png") forState:UIControlStateHighlighted];
+        } else {
+            [self.playButton setImage:ImageWithFile(@"player_play.png") forState:UIControlStateNormal];
+            [self.playButton setImage:ImageWithFile(@"player_play_h.png") forState:UIControlStateHighlighted];
+        }
     }];
 }
 
@@ -147,7 +153,7 @@
     }];
 }
 
-#pragma mark - events
+#pragma mark - slider events
 - (void)sliderValueChanged:(UISlider *)slider
 {
     self.currentTimeLabel.text = [LYTimeUtils timeFormatted:slider.value * APP_DELEGATE.audioPlayer.duration];
@@ -165,6 +171,22 @@
     CLog(@"%s", __FUNCTION__);
     [APP_DELEGATE startPlayerTimer];
     APP_DELEGATE.audioPlayer.currentTime = slider.value * APP_DELEGATE.audioPlayer.duration;
+}
+
+#pragma mark - button event
+- (void)playPauseButtonClick:(UIButton *)button
+{
+    if (APP_DELEGATE.audioPlayer.isPlaying) {
+        [APP_DELEGATE.audioPlayer pause];
+        
+        [self.playButton setImage:ImageWithFile(@"player_play.png") forState:UIControlStateNormal];
+        [self.playButton setImage:ImageWithFile(@"player_play_h.png") forState:UIControlStateHighlighted];
+    } else {
+        [APP_DELEGATE.audioPlayer play];
+        
+        [self.playButton setImage:ImageWithFile(@"player_pause.png") forState:UIControlStateNormal];
+        [self.playButton setImage:ImageWithFile(@"player_pause_h.png") forState:UIControlStateHighlighted];
+    }
 }
 
 @end

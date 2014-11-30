@@ -77,6 +77,7 @@
         FMResultSet *results = [self.lyDB executeQuery:queryStr];
         while ([results next]) {
             VoiceModel *voiceModel = [[VoiceModel alloc] initVoiceFromDataBaseWithDic:results.resultDictionary];
+            voiceModel.menuName = [self selectMenuNameWithID:voiceModel.menuID];
             [menuListArr addObject:voiceModel];
         }
         [results close];
@@ -84,6 +85,21 @@
     
     [self.lyDB close];
     return menuListArr;
+}
+
+/** 根据 menuId 选出 menuName */
+- (NSString *)selectMenuNameWithID:(NSString *)menuID
+{
+    NSString *menuName = nil;
+    NSString *queryStr = [NSString stringWithFormat:@"select name from Menu where id = '%@'", menuID];
+    FMResultSet *results = [self.lyDB executeQuery:queryStr];
+    while ([results next]) {
+        menuName = [NSString stringWithFormat:@"%@", [results.resultDictionary valueForKey:@"name"]];
+    }
+    
+    [results close];
+    
+    return menuName;
 }
 
 /** 收藏、取消收藏 */

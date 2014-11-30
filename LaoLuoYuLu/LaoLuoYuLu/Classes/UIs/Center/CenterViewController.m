@@ -8,7 +8,6 @@
 
 #import "CenterViewController.h"
 #import "CenterVoiceCell.h"
-#import "UIView+Common.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface CenterViewController ()<UIAlertViewDelegate>
@@ -63,6 +62,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+
     //告诉系统，我们要接受远程控制事件
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     [self becomeFirstResponder];
@@ -70,6 +71,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [self resignFirstResponder];
 }
@@ -84,7 +87,7 @@
 {
     self.voiceTableView.dataSource = self;
     self.voiceTableView.delegate = self;
-//    self.voiceListArr = [[LYDataManager instance] selectVoiceListWithMenuID:APP_DELEGATE.currentMenuModel.ID];
+    self.voiceListArr = [[LYDataManager instance] selectVoiceListWithMenuID:APP_DELEGATE.currentMenuModel.ID];
     [self.voiceTableView reloadData];
 }
 
@@ -288,10 +291,11 @@
     
     VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
     
-    [APP_DELEGATE.playerView showWithModel:voiceModel];
-    
     //播放语音
-    [self playWithModel:voiceModel];
+//    [self playWithModel:voiceModel];
+    [self performSelectorInBackground:@selector(playWithModel:) withObject:voiceModel];
+    
+    [APP_DELEGATE.playerView showWithModel:voiceModel];
     
     [tableView reloadData];
 }

@@ -16,7 +16,7 @@
 
 @interface LYAppDelegate : UIResponder <UIApplicationDelegate, AVAudioPlayerDelegate>
 {
-    LYToastView *toastView;
+//    LYToastView *toastView;
 }
 
 @property (strong, nonatomic) UIWindow *window;

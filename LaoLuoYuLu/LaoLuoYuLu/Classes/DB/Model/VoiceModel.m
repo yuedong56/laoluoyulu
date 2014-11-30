@@ -17,9 +17,9 @@
     {
         self.ID       = [NSString stringWithFormat:@"%@", [dic valueForKey:@"id"]];
         self.menuID   = [NSString stringWithFormat:@"%@", [dic valueForKey:@"menu_id"]];
-        self.name     = [NSString stringWithFormat:@"%@",[dic valueForKey:@"name"]];
-        self.duration = [NSString stringWithFormat:@"%@",[dic valueForKey:@"duration"]];
-        self.size     = [NSString stringWithFormat:@"%@",[dic valueForKey:@"size"]];
+        self.name     = [NSString stringWithFormat:@"%@", [dic valueForKey:@"name"]];
+        self.duration = [NSString stringWithFormat:@"%@", [dic valueForKey:@"duration"]];
+        self.size     = [NSString stringWithFormat:@"%@", [dic valueForKey:@"size"]];
         self.isCollected = [[NSString stringWithFormat:@"%@", [dic valueForKey:@"is_recommend"]] boolValue];
     }
     return self;

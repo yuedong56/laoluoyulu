@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *ID;
 @property (nonatomic, strong) NSString *menuID;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *menuName;
 @property (nonatomic, strong) NSString *duration;
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, assign) BOOL isCollected;  //是否已经收藏入播放列表

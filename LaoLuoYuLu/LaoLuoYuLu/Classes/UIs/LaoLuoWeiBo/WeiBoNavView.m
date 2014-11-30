@@ -7,7 +7,6 @@
 //
 
 #import "WeiBoNavView.h"
-#import "UIView+Common.h"
 
 @implementation WeiBoNavView
 

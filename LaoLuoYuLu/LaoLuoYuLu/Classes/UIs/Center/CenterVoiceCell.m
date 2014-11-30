@@ -15,8 +15,23 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
+        //标题
+        self.titleLabel = [self labelWithFrame:CGRectMake(16, 6, 200, 20) font:[UIFont systemFontOfSize:16] textColor:BlackColor bgColor:ClearColor alignment:NSTextAlignmentLeft];
+        [self addSubview:self.titleLabel];
+        
+        //副标题
+        float detail_y = self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 1;
+        float detail_w = self.titleLabel.frame.size.width;
+        self.detailTitleLabel = [self labelWithFrame:CGRectMake(16, detail_y, detail_w, 20) font:[UIFont systemFontOfSize:12] textColor:GrayColor bgColor:ClearColor alignment:NSTextAlignmentLeft];
+        [self addSubview:self.detailTitleLabel];
+        
+        //时长
+        float time_h = 20;
+        self.timeLabel = [self labelWithFrame:CGRectMake(185, (kCenterVoiceCell_H-time_h)/2, 80, time_h) font:[UIFont systemFontOfSize:12] textColor:GrayColor bgColor:ClearColor alignment:NSTextAlignmentRight];
+        [self addSubview:self.timeLabel];
+        
         //选中标志
-        selectView = [[UIView alloc] initWithFrame:CGRectMake(ScreenWidth-kSelectView_W, 0, kSelectView_W, kCenterVoiceCell_H)];
+        selectView = [[UIView alloc] initWithFrame:CGRectMake(0/*ScreenWidth-kSelectView_W*/, 0, kSelectView_W, kCenterVoiceCell_H)];
         selectView.backgroundColor = GrayColor;
         [self addSubview:selectView];
         
@@ -36,8 +51,8 @@
     
     if ([APP_DELEGATE.currentMenuModel.ID intValue] == 0)  //我的收藏
     {
-        self.textLabel.text = [NSString stringWithFormat:@"%@", model.name];
-        self.detailTextLabel.text = [NSString stringWithFormat:@" 时长 : %@", model.duration];
+        self.titleLabel.frame = CGRectMake(16, 6, 200, 20);
+        self.detailTitleLabel.text = model.menuName;
 
         self.collectButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self addSubview:self.collectButton];
@@ -46,8 +61,8 @@
     }
     else  //除收藏外其他
     {
-        self.textLabel.text = [NSString stringWithFormat:@"%d. %@", index+1, model.name];
-        self.detailTextLabel.text = [NSString stringWithFormat:@"     时长 : %@", model.duration];
+        self.titleLabel.frame = CGRectMake(16, (kCenterVoiceCell_H-20)/2, 200, 20);
+        self.titleLabel.text = [NSString stringWithFormat:@"%d. %@", index+1, model.name];
 
         self.collectButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
         self.collectButton.tintColor = GrayColor;
@@ -56,6 +71,9 @@
         self.collectButton.enabled = model.isCollected ? NO : YES;
     }
     
+    self.titleLabel.text = [NSString stringWithFormat:@"%@", model.name];
+    self.timeLabel.text = [NSString stringWithFormat:@"%@", model.duration];
+
     if ([APP_DELEGATE.currentVoiceModel.ID intValue] == [model.ID intValue])
     {
         selectView.hidden = NO;
@@ -71,6 +89,5 @@
 
 
 @end
-
 
 

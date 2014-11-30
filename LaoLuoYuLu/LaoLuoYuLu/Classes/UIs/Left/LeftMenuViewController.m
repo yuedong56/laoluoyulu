@@ -46,6 +46,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
 //    if (selectIndexPath.section==0) {
         [self.tableView selectRowAtIndexPath:selectIndexPath
                                     animated:YES

@@ -81,6 +81,7 @@
     self.weiboWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)];
     self.weiboWebView.delegate = self;
     self.weiboWebView.scrollView.delegate = self;
+    self.weiboWebView.backgroundColor = WhiteColor;
     [self.view addSubview:self.weiboWebView];
 }
 

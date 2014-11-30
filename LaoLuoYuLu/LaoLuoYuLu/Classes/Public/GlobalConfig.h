@@ -16,6 +16,7 @@
 #import "LYTimeUtils.h"
 #import "LYUserDefaults.h"
 #import "NetWorkRequest.h"
+#import "UIView+Common.h"
 
 //新浪
 #define AppKey @"3452838915"

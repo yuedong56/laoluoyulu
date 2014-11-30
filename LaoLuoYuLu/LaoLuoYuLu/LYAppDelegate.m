@@ -11,7 +11,6 @@
 #import "CenterViewController.h"
 #import "PlayerViewController.h"
 #import "MMExampleDrawerVisualStateManager.h"
-#import "UIView+Common.h"
 
 @implementation LYAppDelegate
 
@@ -74,35 +73,40 @@
 #pragma mark - 播放定时器事件
 - (void)handlePlayerTimerEvent:(NSTimer *)timer
 {
-    if (self.audioPlayer.isPlaying)
+    if (self.audioPlayer.isPlaying)  //正在播放
     {
         self.playerView.currentTimeLabel.text = [LYTimeUtils timeFormatted:self.audioPlayer.currentTime];
         self.playerView.totalTimeLabel.text = [LYTimeUtils timeFormatted:self.audioPlayer.duration];
         self.playerView.playSlider.value = self.audioPlayer.currentTime/self.audioPlayer.duration*1.0;
+        
+    }
+    else  //未播放
+    {
+        
     }
 }
 
 #pragma mark - toastView
 - (void)showToastView:(NSString *)text
 {
-    if (!toastView)
-    {
+//    if (!toastView)
+//    {
         CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:17]
                        constrainedToSize:CGSizeMake(200, MAXFLOAT)
                            lineBreakMode:NSLineBreakByWordWrapping];
-        toastView = [[LYToastView alloc] initWithFrame:CGRectMake((ScreenWidth-size.width)/2, ScreenHeight-100, size.width+26, size.height+16)];
-    }
+        LYToastView *toastView = [[LYToastView alloc] initWithFrame:CGRectMake((ScreenWidth-size.width)/2, ScreenHeight-100, size.width+26, size.height+16)];
+//    }
     toastView.textLabel.text = text;
     toastView.hidden = NO;
     [APP_DELEGATE.window addSubview:toastView];
     
-    
     //1秒后消失
-    [self hideToastViewAfter:1];
+    [self hideToastViewAfter:1 toastView:toastView];
 }
 
-- (void)hideToastViewAfter:(NSTimeInterval)duration
+- (void)hideToastViewAfter:(NSTimeInterval)duration toastView:(LYToastView *)view
 {
+    __block LYToastView *toastView = view;
     [UIView animateWithDuration:0.6
                           delay:duration
                         options:UIViewAnimationOptionCurveEaseInOut
