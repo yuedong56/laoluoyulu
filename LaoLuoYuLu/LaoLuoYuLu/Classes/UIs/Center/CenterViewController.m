@@ -8,7 +8,6 @@
 
 #import "CenterViewController.h"
 #import "CenterVoiceCell.h"
-#import <MediaPlayer/MediaPlayer.h>
 
 @interface CenterViewController ()<UIAlertViewDelegate>
 {
@@ -34,6 +33,7 @@
     self.view.backgroundColor = WhiteColor;
     self.titleLabel.text = APP_DELEGATE.currentMenuModel.name;
     
+    //导航栏左按钮
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     float w = 44;
     leftButton.frame = CGRectMake(8, 0, w, w);
@@ -41,6 +41,7 @@
     [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:leftButton];
     
+    //导航栏右按钮
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     float r_w = 44;
     rightButton.frame = CGRectMake(ScreenWidth-r_w-3, 1, r_w, r_w);
@@ -48,38 +49,22 @@
     [rightButton addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:rightButton];
     
-    self.voiceListArr = [[LYDataManager instance] selectVoiceListWithMenuID:APP_DELEGATE.currentMenuModel.ID];
-
-    self.voiceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64)
-                                                       style:UITableViewStylePlain];
+    //列表
+    self.voiceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64) style:UITableViewStylePlain];
     self.voiceTableView.separatorColor = ClearColor;
-    
     [self.view addSubview:self.voiceTableView];
-    
-    //刷新
+    //刷新列表
     [self performSelector:@selector(reloadData) withObject:nil afterDelay:0.01];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
-    //告诉系统，我们要接受远程控制事件
-    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    [self becomeFirstResponder];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-
-    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
-    [self resignFirstResponder];
-}
-
--(BOOL)canBecomeFirstResponder
-{
-    return YES;
 }
 
 //刷新reloadData
@@ -87,52 +72,8 @@
 {
     self.voiceTableView.dataSource = self;
     self.voiceTableView.delegate = self;
-    self.voiceListArr = [[LYDataManager instance] selectVoiceListWithMenuID:APP_DELEGATE.currentMenuModel.ID];
+    self.voiceListArr  = [[LYDataManager instance] selectVoiceListWithMenuID:APP_DELEGATE.currentMenuModel.ID];
     [self.voiceTableView reloadData];
-}
-
--(void)remoteControlReceivedWithEvent:(UIEvent *)event{
-    
-    //if it is a remote control event handle it correctly
-    if (event.type == UIEventTypeRemoteControl) {
-        switch (event.subtype) {
-            case UIEventSubtypeRemoteControlTogglePlayPause:
-            {
-                CLog(@"UIEventSubtypeRemoteControlTogglePlayPause...");
-//                [self pauseOrPlay];
-                break;
-            }
-            case UIEventSubtypeRemoteControlPlay:
-            {
-                CLog(@"UIEventSubtypeRemoteControlPlay...");
-                [APP_DELEGATE.audioPlayer play];
-                break;
-            }
-            case UIEventSubtypeRemoteControlPause:
-            {
-                CLog(@"UIEventSubtypeRemoteControlPause...");
-                [APP_DELEGATE.audioPlayer pause];
-                break;
-            }
-            case UIEventSubtypeRemoteControlStop:
-            {
-                CLog(@"UIEventSubtypeRemoteControlStop...");
-                break;
-            }
-            case UIEventSubtypeRemoteControlNextTrack:
-            {
-                CLog(@"UIEventSubtypeRemoteControlNextTrack...");
-                break;
-            }
-            case UIEventSubtypeRemoteControlPreviousTrack:
-            {
-                CLog(@"UIEventSubtypeRemoteControlPreviousTrack...");
-                break;
-            }
-            default:
-                break;
-        }
-    }
 }
 
 #pragma mark - Button Events
@@ -201,55 +142,6 @@
     }
 }
 
-#pragma mark - 播放音频
-- (void)playWithModel:(VoiceModel *)model
-{
-    if ([model.ID isEqualToString:APP_DELEGATE.currentVoiceModel.ID] && [model.menuID isEqualToString:APP_DELEGATE.currentVoiceModel.menuID])
-    {
-        return;
-    }
-    APP_DELEGATE.currentVoiceModel = model;
-    
-    NSString *voiceName = [NSString stringWithFormat:@"%@_%@", model.menuID, model.ID];
-    [APP_DELEGATE.audioPlayer stop];
-    APP_DELEGATE.audioPlayer = nil;
-    
-    NSString *string = [[NSBundle mainBundle] pathForResource:voiceName ofType:@"mp3"];
-    NSURL *url = [NSURL fileURLWithPath:string];
-    if (url)
-    {
-        APP_DELEGATE.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
-        [APP_DELEGATE.audioPlayer prepareToPlay];
-        [APP_DELEGATE.audioPlayer play];
-        
-        //
-        [self configNowPlayingInfoCenter];
-    }
-    else
-    {
-        CLog(@"音频播放错误：获取音频的URL为空！");
-    }
-}
-
-//设置锁屏状态，显示的歌曲信息
--(void)configNowPlayingInfoCenter
-{
-    if (NSClassFromString(@"MPNowPlayingInfoCenter"))
-    {
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:APP_DELEGATE.currentVoiceModel.name forKey:MPMediaItemPropertyTitle];
-        [dict setObject:@"罗永浩" forKey:MPMediaItemPropertyArtist];
-        [dict setObject:APP_DELEGATE.currentMenuModel.name forKey:MPMediaItemPropertyAlbumTitle];
-        [dict setObject:[NSNumber numberWithDouble:APP_DELEGATE.audioPlayer.duration] forKey:MPMediaItemPropertyPlaybackDuration];
-        
-        UIImage *image = [UIImage imageNamed:@"left_luoyonghao.png"];
-        MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:image];
-        [dict setObject:artwork forKey:MPMediaItemPropertyArtwork];
-        
-        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
-    }
-}
-
 #pragma mark - UITableView dataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -290,12 +182,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
-    
     //播放语音
-//    [self playWithModel:voiceModel];
-    [self performSelectorInBackground:@selector(playWithModel:) withObject:voiceModel];
+    [APP_DELEGATE performSelectorInBackground:@selector(playWithModel:) withObject:voiceModel];
     
-    [APP_DELEGATE.playerView showWithModel:voiceModel];
+    APP_DELEGATE.currentVoiceLists = [NSMutableArray arrayWithArray:self.voiceListArr];
+    APP_DELEGATE.currentVoiceIndex = (int)indexPath.row;
     
     [tableView reloadData];
 }
@@ -319,6 +210,5 @@
 }
 
 @end
-
 
 

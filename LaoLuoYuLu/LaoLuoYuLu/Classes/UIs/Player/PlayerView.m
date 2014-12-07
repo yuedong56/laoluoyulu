@@ -86,6 +86,7 @@
         [self.preButton setImage:ImageWithFile(@"player_prev.png") forState:UIControlStateNormal];
         [self.preButton setImage:ImageWithFile(@"player_prev_h.png") forState:UIControlStateHighlighted];
         [self.playBgView addSubview:self.preButton];
+        [self.preButton addTarget:self action:@selector(preButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
         //中
         self.playButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -101,6 +102,7 @@
         [self.nextButton setImage:ImageWithFile(@"player_next.png") forState:UIControlStateNormal];
         [self.nextButton setImage:ImageWithFile(@"player_next_h.png") forState:UIControlStateHighlighted];
         [self.playBgView addSubview:self.nextButton];
+        [self.nextButton addTarget:self action:@selector(nextButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -112,7 +114,9 @@
 
 - (void)showWithModel:(VoiceModel *)model
 {
-    self.titleLabel.text = model.name;
+    self.titleLabel.text = [NSString stringWithFormat:@"%@ - %@", model.menuName, model.name];
+    
+    NSTimeInterval duration = !self.hidden ? 0 : 0.25;
     
     self.hidden = NO;
     self.mainBgView.hidden = NO;
@@ -121,7 +125,7 @@
     self.mainBgView.alpha = 0;
     self.playBgView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, kPlayerView_H);
     
-    [UIView animateWithDuration:0.25
+    [UIView animateWithDuration:duration
                           delay:0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
@@ -187,6 +191,34 @@
         [self.playButton setImage:ImageWithFile(@"player_pause.png") forState:UIControlStateNormal];
         [self.playButton setImage:ImageWithFile(@"player_pause_h.png") forState:UIControlStateHighlighted];
     }
+}
+
+- (void)preButtonClick:(UIButton *)button
+{
+    if (APP_DELEGATE.currentVoiceIndex == 0) {
+        APP_DELEGATE.currentVoiceIndex = (int)APP_DELEGATE.currentVoiceLists.count-1;
+    } else {
+        APP_DELEGATE.currentVoiceIndex --;
+    }
+    
+    VoiceModel *currentVoiceModel = [APP_DELEGATE.currentVoiceLists objectAtIndex:APP_DELEGATE.currentVoiceIndex];
+    [APP_DELEGATE playWithModel:currentVoiceModel];
+    
+    [APP_DELEGATE.centerVC.voiceTableView reloadData];
+}
+
+- (void)nextButtonClick:(UIButton *)button
+{
+    if (APP_DELEGATE.currentVoiceIndex < APP_DELEGATE.currentVoiceLists.count-1) {
+        APP_DELEGATE.currentVoiceIndex ++;
+    } else {
+        APP_DELEGATE.currentVoiceIndex = 0;
+    }
+    
+    VoiceModel *currentVoiceModel = [APP_DELEGATE.currentVoiceLists objectAtIndex:APP_DELEGATE.currentVoiceIndex];
+    [APP_DELEGATE playWithModel:currentVoiceModel];
+    
+    [APP_DELEGATE.centerVC.voiceTableView reloadData];
 }
 
 @end

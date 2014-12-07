@@ -197,8 +197,8 @@
     if (indexPath.section == 0)  //老罗语录
     {
         MenuModel *menu = [self.menuListArr objectAtIndex:indexPath.row];
-        CenterViewController *centerVC = [[CenterViewController alloc] initWithMenu:menu];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:centerVC];
+        APP_DELEGATE.centerVC = [[CenterViewController alloc] initWithMenu:menu];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:APP_DELEGATE.centerVC];
         [APP_DELEGATE.drawerController setCenterViewController:nav
                                             withCloseAnimation:YES
                                                     completion:nil];

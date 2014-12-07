@@ -11,6 +11,7 @@
 #import "CenterViewController.h"
 #import "PlayerViewController.h"
 #import "MMExampleDrawerVisualStateManager.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @implementation LYAppDelegate
 
@@ -19,7 +20,8 @@
 {
     self.leftNavCol = [[UINavigationController alloc] initWithRootViewController:[LeftMenuViewController new]];
     MenuModel *menuMol = [[[LYDataManager instance] selectMenuList] objectAtIndex:0];
-    self.centerNavCol = [[UINavigationController alloc] initWithRootViewController:[[CenterViewController alloc] initWithMenu:menuMol]];
+    self.centerVC = [[CenterViewController alloc] initWithMenu:menuMol];
+    self.centerNavCol = [[UINavigationController alloc] initWithRootViewController:self.centerVC];
     self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.centerNavCol
                                                             leftDrawerViewController:self.leftNavCol];
     [self.drawerController setMaximumLeftDrawerWidth:LeftMenuWidth];
@@ -78,7 +80,6 @@
         self.playerView.currentTimeLabel.text = [LYTimeUtils timeFormatted:self.audioPlayer.currentTime];
         self.playerView.totalTimeLabel.text = [LYTimeUtils timeFormatted:self.audioPlayer.duration];
         self.playerView.playSlider.value = self.audioPlayer.currentTime/self.audioPlayer.duration*1.0;
-        
     }
     else  //未播放
     {
@@ -98,7 +99,7 @@
 //    }
     toastView.textLabel.text = text;
     toastView.hidden = NO;
-    [APP_DELEGATE.window addSubview:toastView];
+    [self.window addSubview:toastView];
     
     //1秒后消失
     [self hideToastViewAfter:1 toastView:toastView];
@@ -133,6 +134,113 @@
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     [session setActive:YES error:nil];
+    
+    //告诉系统，我们要接受远程控制事件
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    //if it is a remote control event handle it correctly
+    if (event.type == UIEventTypeRemoteControl) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+            {
+                CLog(@"UIEventSubtypeRemoteControlTogglePlayPause...");
+                //                [self pauseOrPlay];
+                break;
+            }
+            case UIEventSubtypeRemoteControlPlay:
+            {
+                CLog(@"UIEventSubtypeRemoteControlPlay...");
+                [self.audioPlayer play];
+                break;
+            }
+            case UIEventSubtypeRemoteControlPause:
+            {
+                CLog(@"UIEventSubtypeRemoteControlPause...");
+                [self.audioPlayer pause];
+                break;
+            }
+            case UIEventSubtypeRemoteControlStop:
+            {
+                CLog(@"UIEventSubtypeRemoteControlStop...");
+                break;
+            }
+            case UIEventSubtypeRemoteControlNextTrack:
+            {
+                CLog(@"UIEventSubtypeRemoteControlNextTrack...");
+                break;
+            }
+            case UIEventSubtypeRemoteControlPreviousTrack:
+            {
+                CLog(@"UIEventSubtypeRemoteControlPreviousTrack...");
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
+
+//设置锁屏状态，显示的歌曲信息
+-(void)configNowPlayingInfoCenter
+{
+    if (NSClassFromString(@"MPNowPlayingInfoCenter"))
+    {
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        [dict setObject:self.currentVoiceModel.name forKey:MPMediaItemPropertyTitle];
+        [dict setObject:@"罗永浩" forKey:MPMediaItemPropertyArtist];
+        [dict setObject:self.currentMenuModel.name forKey:MPMediaItemPropertyAlbumTitle];
+        [dict setObject:[NSNumber numberWithDouble:self.audioPlayer.duration] forKey:MPMediaItemPropertyPlaybackDuration];
+        
+        UIImage *image = [UIImage imageNamed:@"left_luoyonghao.png"];
+        MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:image];
+        [dict setObject:artwork forKey:MPMediaItemPropertyArtwork];
+        
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
+    }
+}
+
+#pragma mark - 播放音频
+- (void)playWithModel:(VoiceModel *)model
+{
+    [APP_DELEGATE.playerView showWithModel:model];
+
+    if ([model.ID isEqualToString:self.currentVoiceModel.ID] && [model.menuID isEqualToString:self.currentVoiceModel.menuID])
+    {
+        return;
+    }
+    
+    APP_DELEGATE.currentVoiceModel = model;
+    [self.audioPlayer stop];
+    self.audioPlayer = nil;
+
+    NSString *voiceName = [NSString stringWithFormat:@"%@_%@", model.menuID, model.ID];
+    [self.audioPlayer stop];
+    self.audioPlayer = nil;
+    
+    NSString *string = [[NSBundle mainBundle] pathForResource:voiceName ofType:@"mp3"];
+    NSURL *url = [NSURL fileURLWithPath:string];
+    if (url)
+    {
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+        [self.audioPlayer prepareToPlay];
+        [self.audioPlayer play];
+        
+        //
+        [self configNowPlayingInfoCenter];
+    }
+    else
+    {
+        CLog(@"音频播放错误：获取音频的URL为空！");
+    }
 }
 
 ///** 遍历数据库中的语音文件列表 */
