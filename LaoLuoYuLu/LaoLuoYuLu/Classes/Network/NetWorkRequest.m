@@ -33,7 +33,7 @@
  */
 + (void)startGetRequestWithURL:(NSString *)urlStr
                     requestKey:(NSString *)key
-                         block:(void(^)(NSDictionary *jsonDic, NSError *error))block
+                         block:(CompleteBlock)block
 {
     NSURL *url = [NSURL URLWithString:urlStr];
     __unsafe_unretained __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
@@ -62,7 +62,7 @@
  * @param authorizeCode 登录页面返回的code
  */
 + (void)requestAccessTokenWithAuthorizeCode:(NSString *)authorizeCode
-                                      block:(void(^)(NSDictionary *jsonDic, NSError *error))block
+                                      block:(CompleteBlock)block
 {
     if (![self checkNetWorkStateAndShowAlertView]) {
         return;
@@ -92,11 +92,9 @@
 }
 
 #pragma mark - 用户
-/**
- * @brief 根据用户ID获取用户信息
- */
+/** 根据用户ID获取用户信息 */
 + (void)requestUserInfoWithUID:(NSString *)uid
-                         block:(void(^)(NSDictionary *jsonDic, NSError *error))block
+                         block:(CompleteBlock)block
 {
     if (![self checkNetWorkStateAndShowAlertView]) {
         return;
@@ -113,6 +111,38 @@
             block(jsonDic, nil);
         }
     }];
+}
+
+/** 检查更新接口 */
++ (void)requestUpdateWithAppID:(NSString *)appID
+                         block:(CompleteBlock)block
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",appID]];
+    __block ASIFormDataRequest *versionRequest = [ASIFormDataRequest requestWithURL:url];
+    [versionRequest setTimeOutSeconds:15];
+    [versionRequest addRequestHeader:@"Content-Type" value:@"application/json"];
+    
+    [versionRequest setCompletionBlock:^{
+        if ([versionRequest error]) {
+            block(nil,[versionRequest error]);
+        } else {
+            NSDictionary *dic = [LYUtils toDictionaryWithJsonString:[versionRequest responseString]];
+            NSArray *array = [dic valueForKey:@"results"];
+            if (array.count) {
+                block([array objectAtIndex:0], nil);
+            } else {
+                block(nil, nil);
+            }
+        }
+        [versionRequest clearDelegatesAndCancel];
+    }];
+    
+    [versionRequest setFailedBlock:^{
+        block(nil,[versionRequest error]);
+        [versionRequest clearDelegatesAndCancel];
+    }];
+    
+    [versionRequest startAsynchronous];
 }
 
 @end

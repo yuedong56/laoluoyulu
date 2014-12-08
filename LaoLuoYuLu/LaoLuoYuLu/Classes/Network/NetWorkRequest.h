@@ -10,6 +10,7 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 
+typedef void(^CompleteBlock)(id data, NSError *error);
 @interface NetWorkRequest : NSObject
 
 #pragma mark - 登录
@@ -24,13 +25,18 @@
  * @param authorizeCode 登录页面返回的code
  */
 + (void)requestAccessTokenWithAuthorizeCode:(NSString *)authorizeCode
-                                      block:(void(^)(NSDictionary *jsonDic, NSError *error))block;
+                                      block:(CompleteBlock)block;
 
 #pragma mark - 用户
-/**
- * @brief 根据用户ID获取用户信息
- */
+/** 根据用户ID获取用户信息 */
 + (void)requestUserInfoWithUID:(NSString *)uid
-                         block:(void(^)(NSDictionary *jsonDic, NSError *error))block;
+                         block:(CompleteBlock)block;
+
+/** 检查更新接口 */
++ (void)requestUpdateWithAppID:(NSString *)appID
+                         block:(CompleteBlock)block;
+
 
 @end
+
+

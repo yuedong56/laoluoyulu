@@ -45,6 +45,7 @@
 		3061C31E18D2D2C000D5D023 /* LYDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C31D18D2D2C000D5D023 /* LYDataManager.m */; };
 		3061C32518D2D5C900D5D023 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C32418D2D5C900D5D023 /* MenuModel.m */; };
 		3061C32818D2D5FC00D5D023 /* VoiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3061C32718D2D5FC00D5D023 /* VoiceModel.m */; };
+		30665D391A32BD44001447EE /* SuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30665D381A32BD44001447EE /* SuggestViewController.m */; };
 		3067E5F518E3EAA9005932F9 /* CenterVoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3067E5F418E3EAA9005932F9 /* CenterVoiceCell.m */; };
 		306B6C6B19E4ED4F000300DC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306B6C6A19E4ED4F000300DC /* SettingViewController.m */; };
 		307BDB1F19FF964800D576D7 /* LYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307BDB1E19FF964800D576D7 /* LYToastView.m */; };
@@ -336,6 +337,8 @@
 		3061C32418D2D5C900D5D023 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
 		3061C32618D2D5FC00D5D023 /* VoiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceModel.h; sourceTree = "<group>"; };
 		3061C32718D2D5FC00D5D023 /* VoiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceModel.m; sourceTree = "<group>"; };
+		30665D371A32BD44001447EE /* SuggestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestViewController.h; sourceTree = "<group>"; };
+		30665D381A32BD44001447EE /* SuggestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestViewController.m; sourceTree = "<group>"; };
 		3067E5F318E3EAA9005932F9 /* CenterVoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterVoiceCell.h; sourceTree = "<group>"; };
 		3067E5F418E3EAA9005932F9 /* CenterVoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterVoiceCell.m; sourceTree = "<group>"; };
 		306B6C6919E4ED4F000300DC /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
@@ -732,6 +735,8 @@
 				306B6C6A19E4ED4F000300DC /* SettingViewController.m */,
 				30F27B3C19F0BABB00807F57 /* SettingCell.h */,
 				30F27B3D19F0BABB00807F57 /* SettingCell.m */,
+				30665D371A32BD44001447EE /* SuggestViewController.h */,
+				30665D381A32BD44001447EE /* SuggestViewController.m */,
 				30F0CD8519E6823A0056A8DB /* AboutViewController.h */,
 				30F0CD8619E6823A0056A8DB /* AboutViewController.m */,
 				30F0CD8819E682B40056A8DB /* RecommendViewController.h */,
@@ -1482,6 +1487,7 @@
 				703A3F2D18CA0515009179DE /* CenterViewController.m in Sources */,
 				703A3F1D18CA01F0009179DE /* MMDrawerBarButtonItem.m in Sources */,
 				3014434F18D82F6400DDC64A /* ASIInputStream.m in Sources */,
+				30665D391A32BD44001447EE /* SuggestViewController.m in Sources */,
 				307BDB1F19FF964800D576D7 /* LYToastView.m in Sources */,
 				703A3F1E18CA01F0009179DE /* MMDrawerController.m in Sources */,
 				705DEFA418E5BA5300C34FC6 /* WebControlView.m in Sources */,

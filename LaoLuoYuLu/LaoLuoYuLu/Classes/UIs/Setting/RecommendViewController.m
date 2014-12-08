@@ -30,10 +30,15 @@
     self.view.backgroundColor = WhiteColor;
     
     self.titleLabel.text = @"应用推荐";
-    [self.leftButton setTitle:@"返回" forState:UIControlStateNormal];
+    [self.leftButton setTitle:@"关闭" forState:UIControlStateNormal];
     [self.leftButton addTarget:self
                         action:@selector(leftButtonPress:)
               forControlEvents:UIControlEventTouchUpInside];
+    
+    //demo label
+    UILabel *label = [self.view labelWithFrame:CGRectMake(0, 170, ScreenWidth, 100) font:[UIFont boldSystemFontOfSize:22] textColor:LightGrayColor bgColor:ClearColor alignment:NSTextAlignmentCenter];
+    label.text = @"暂时没有应用推荐";
+    [self.view addSubview:label];
 }
 
 #pragma mark - Button Events

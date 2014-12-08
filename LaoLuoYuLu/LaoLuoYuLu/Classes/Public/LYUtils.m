@@ -48,4 +48,39 @@
     return library;
 }
 
+/** 评分、升级时跳到 AppStore */
++ (void)goToAppstore
+{
+    NSString *iTunesLink = [NSString stringWithFormat:@"https://itunes.apple.com/cn/app/id%@?mt=8", AppStoreID];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+}
+
+/** 将json字符串转为字典(NSDictionary) */
++ (NSDictionary *)toDictionaryWithJsonString:(NSString *)jsonStr
+{
+    if (jsonStr) {
+        NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error = nil;
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+        return jsonDic;
+    }
+    return nil;
+}
+
+/** 将id类型(如NSArray、NSDictionary)转为json字符串 */
++ (NSString *)toJsonStringWithData:(id)data
+{
+    if (data)
+    {
+        NSError *error = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:&error];
+        if ([jsonData length] > 0 && error == nil) {
+            return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
+    }
+    return nil;
+}
+
 @end
+
+

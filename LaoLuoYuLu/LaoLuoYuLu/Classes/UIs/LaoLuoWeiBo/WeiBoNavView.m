@@ -32,9 +32,12 @@
         [self.navBgView addSubview:self.titleLabel];
         
         //返回按钮
-        CGRect leftBtnFrame = CGRectMake(10, 20, 44, 44);
+        CGRect leftBtnFrame = CGRectMake(0, 20, 50, 44);
         self.leftButton = [self buttonWithFrame:leftBtnFrame
                                           title:@"关闭"];
+        self.leftButton.titleLabel.font = [UIFont systemFontOfSize:17];
+        [self.leftButton setTitleColor:WhiteColor forState:UIControlStateNormal];
+        [self.leftButton setTitleColor:DarkGrayColor forState:UIControlStateHighlighted];
         [self.navBgView addSubview:self.leftButton];
     }
     return self;

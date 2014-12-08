@@ -44,13 +44,13 @@
     self.leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.leftButton.frame = CGRectMake(10, 0, 44, 44);
     [self.leftButton setTitleColor:WhiteColor forState:UIControlStateNormal];
-    [self.leftButton setTitleColor:GrayColor forState:UIControlStateHighlighted];
+    [self.leftButton setTitleColor:DarkGrayColor forState:UIControlStateHighlighted];
     [self.navigationController.navigationBar addSubview:self.leftButton];
     
     //
     self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.rightButton setTitleColor:WhiteColor forState:UIControlStateNormal];
-    [self.rightButton setTitleColor:GrayColor forState:UIControlStateHighlighted];
+    [self.rightButton setTitleColor:DarkGrayColor forState:UIControlStateHighlighted];
     self.rightButton.frame = CGRectMake(ScreenWidth-44, 0, 44, 44);
     [self.navigationController.navigationBar addSubview:self.rightButton];
 }

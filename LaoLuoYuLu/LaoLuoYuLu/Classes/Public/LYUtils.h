@@ -23,4 +23,13 @@
 /** 获取photo句柄单例 */
 + (ALAssetsLibrary *)defaultAssetsLibrary;
 
+/** 评分、升级时跳到 AppStore */
++ (void)goToAppstore;
+
+/** 将json字符串转为字典(NSDictionary) */
++ (NSDictionary *)toDictionaryWithJsonString:(NSString *)jsonStr;
+
+/** 将id类型(如NSArray、NSDictionary)转为json字符串 */
++ (NSString *)toJsonStringWithData:(id)data;
+
 @end

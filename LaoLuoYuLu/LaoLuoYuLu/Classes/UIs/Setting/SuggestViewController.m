@@ -1,18 +1,18 @@
 //
-//  AboutViewController.m
+//  SuggestViewController.m
 //  LaoLuoYuLu
 //
-//  Created by 老岳 on 14-10-9.
+//  Created by 老岳 on 14-12-6.
 //  Copyright (c) 2014年 LYue. All rights reserved.
 //
 
-#import "AboutViewController.h"
+#import "SuggestViewController.h"
 
-@interface AboutViewController ()
+@interface SuggestViewController ()
 
 @end
 
-@implementation AboutViewController
+@implementation SuggestViewController
 
 - (void)viewDidLoad
 {
@@ -26,7 +26,7 @@
 /** 设置导航栏样式 */
 - (void)setNavStyle
 {
-    self.title = @"关于作者";
+    self.title = @"吐槽提意见";
     NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
     [attributes setValue:WhiteColor forKey:NSForegroundColorAttributeName];
     [attributes setValue:[UIFont boldSystemFontOfSize:20] forKey:NSFontAttributeName];

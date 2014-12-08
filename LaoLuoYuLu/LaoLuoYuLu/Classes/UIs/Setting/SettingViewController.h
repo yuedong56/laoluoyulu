@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 LYue. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface SettingViewController : BaseViewController<UITableViewDelegate, UITableViewDataSource>
+@interface SettingViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @end

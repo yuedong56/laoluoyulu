@@ -12,7 +12,10 @@
 #import "SettingViewController.h"
 #import "SettingCell.h"
 
-@interface SettingViewController ()
+#import "AboutViewController.h"
+#import "SuggestViewController.h"
+
+@interface SettingViewController ()<UIAlertViewDelegate>
 {
     UITableView *table;
     NSMutableArray *lists;
@@ -36,13 +39,29 @@
 {
     [super viewDidLoad];
         
-    self.titleLabel.text = @"系统设置";
-    [self.leftButton setTitle:@"返回" forState:UIControlStateNormal];
-    [self.leftButton addTarget:self
-                        action:@selector(leftButtonPress:)
-              forControlEvents:UIControlEventTouchUpInside];
-    
+    [self setNavStyle];
     [self initTableView];
+}
+
+/** 设置导航栏样式 */
+- (void)setNavStyle
+{
+    self.title = @"系统设置";
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+    [attributes setValue:WhiteColor forKey:NSForegroundColorAttributeName];
+    [attributes setValue:[UIFont boldSystemFontOfSize:20] forKey:NSFontAttributeName];
+    self.navigationController.navigationBar.titleTextAttributes = attributes;
+    
+    self.navigationController.navigationBar.barTintColor = GrayColor;
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"关闭"
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(leftButtonPress:)];
+    item.tintColor = WhiteColor;
+    self.navigationItem.leftBarButtonItem = item;
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 /** 初始化数组 */
@@ -138,6 +157,71 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    switch (indexPath.section) {
+        case 0:
+        {
+            if (indexPath.row == 0) {//吐槽提意见
+                SuggestViewController *vc = [[SuggestViewController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+        } break;
+        case 1:
+        {
+            if (indexPath.row == 0) {//检查更新
+                [NetWorkRequest requestUpdateWithAppID:AppStoreID
+                                                 block:^(id data, NSError *error)
+                 {
+                     if (data)
+                     {
+                         CLog(@"jsonDic === %@", data);
+                         //AppStore版本号
+                         NSString *version_appstore = [data valueForKey:@"version"];
+                         
+                         //本地版本
+                         NSString *version_local = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+                         NSString *mes = [NSString stringWithFormat: @"是否立即升级到最新版本？"];
+                         CLog(@"version_local = %@, version_appstore = %@",version_local, version_appstore);
+                         if (![version_appstore isEqualToString:version_local])
+                         {
+                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"检查到新版本!" message:mes delegate:self cancelButtonTitle:@"以后再说" otherButtonTitles:@"立即更新", nil];
+                             alert.tag = 2000;
+                             [alert show];
+                         }
+                         else
+                         {
+                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前版本已为最新版本，暂不需要更新！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                             [alert show];
+                         }
+                     }
+                }];
+            } else if (indexPath.row == 1) {//我要打分
+                [LYUtils goToAppstore];
+            }
+        } break;
+        case 2:
+        {
+            if (indexPath.row == 0) {//关于作者
+                AboutViewController *vc = [[AboutViewController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+        } break;
+        default: break;
+    }
+}
+
+#pragma mark - UIAlertView Delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (alertView.tag) {
+        case 2000:
+        {
+            if (buttonIndex == 1) {
+                [LYUtils goToAppstore];
+            }
+        } break;
+        default: break;
+    }
 }
 
 @end

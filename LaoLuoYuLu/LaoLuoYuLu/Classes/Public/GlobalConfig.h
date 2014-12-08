@@ -24,7 +24,7 @@
 #define RedirectUri @"http://"
 
 //AppId
-#define AppIdentifier @""
+#define AppStoreID @"915711237"
 
 //LYAppDelegate
 #define APP_DELEGATE ((LYAppDelegate *)[[UIApplication sharedApplication] delegate])
