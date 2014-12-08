@@ -51,6 +51,7 @@
 		307BDB1F19FF964800D576D7 /* LYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307BDB1E19FF964800D576D7 /* LYToastView.m */; };
 		307BDB3119FFA6CD00D576D7 /* center_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307BDB3019FFA6CD00D576D7 /* center_delete@2x.png */; };
 		307BDB3319FFA76500D576D7 /* center_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 307BDB3219FFA76500D576D7 /* center_delete.png */; };
+		309396281A35C1730089D615 /* MyWeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 309396271A35C1730089D615 /* MyWeiboViewController.m */; };
 		30A179BD18ED5A8A00A42A81 /* player_stylus_lp_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A179BA18ED5A8A00A42A81 /* player_stylus_lp_bg.png */; };
 		30A179BE18ED5A8A00A42A81 /* player_stylus_lp_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A179BB18ED5A8A00A42A81 /* player_stylus_lp_top.png */; };
 		30A179BF18ED5A8A00A42A81 /* player_stylus_lp.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A179BC18ED5A8A00A42A81 /* player_stylus_lp.png */; };
@@ -347,6 +348,8 @@
 		307BDB1E19FF964800D576D7 /* LYToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYToastView.m; sourceTree = "<group>"; };
 		307BDB3019FFA6CD00D576D7 /* center_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "center_delete@2x.png"; sourceTree = "<group>"; };
 		307BDB3219FFA76500D576D7 /* center_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = center_delete.png; sourceTree = "<group>"; };
+		309396261A35C1730089D615 /* MyWeiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWeiboViewController.h; sourceTree = "<group>"; };
+		309396271A35C1730089D615 /* MyWeiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWeiboViewController.m; sourceTree = "<group>"; };
 		30A179BA18ED5A8A00A42A81 /* player_stylus_lp_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_stylus_lp_bg.png; sourceTree = "<group>"; };
 		30A179BB18ED5A8A00A42A81 /* player_stylus_lp_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_stylus_lp_top.png; sourceTree = "<group>"; };
 		30A179BC18ED5A8A00A42A81 /* player_stylus_lp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_stylus_lp.png; sourceTree = "<group>"; };
@@ -739,6 +742,8 @@
 				30665D381A32BD44001447EE /* SuggestViewController.m */,
 				30F0CD8519E6823A0056A8DB /* AboutViewController.h */,
 				30F0CD8619E6823A0056A8DB /* AboutViewController.m */,
+				309396261A35C1730089D615 /* MyWeiboViewController.h */,
+				309396271A35C1730089D615 /* MyWeiboViewController.m */,
 				30F0CD8819E682B40056A8DB /* RecommendViewController.h */,
 				30F0CD8919E682B40056A8DB /* RecommendViewController.m */,
 			);
@@ -1489,6 +1494,7 @@
 				3014434F18D82F6400DDC64A /* ASIInputStream.m in Sources */,
 				30665D391A32BD44001447EE /* SuggestViewController.m in Sources */,
 				307BDB1F19FF964800D576D7 /* LYToastView.m in Sources */,
+				309396281A35C1730089D615 /* MyWeiboViewController.m in Sources */,
 				703A3F1E18CA01F0009179DE /* MMDrawerController.m in Sources */,
 				705DEFA418E5BA5300C34FC6 /* WebControlView.m in Sources */,
 				7059540318E854EA002C77D9 /* CDView.m in Sources */,

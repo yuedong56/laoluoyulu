@@ -44,6 +44,10 @@
 #define DarkGrayColor [UIColor darkGrayColor]        //深灰色
 #define RedColor [UIColor redColor]
 
+//font
+#define FONT(X) [UIFont systemFontOfSize:X]
+#define FONT_BOLD(X) [UIFont boldSystemFontOfSize:X]
+
 //图片
 #define ImageWithFile(name) ([UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:nil]])
 #define ImageNamed(name) [UIImage imageNamed:name]

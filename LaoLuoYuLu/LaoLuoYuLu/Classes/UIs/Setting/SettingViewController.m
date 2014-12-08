@@ -46,7 +46,7 @@
 /** 设置导航栏样式 */
 - (void)setNavStyle
 {
-    self.title = @"系统设置";
+    self.title = @"设置";
     NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
     [attributes setValue:WhiteColor forKey:NSForegroundColorAttributeName];
     [attributes setValue:[UIFont boldSystemFontOfSize:20] forKey:NSFontAttributeName];
@@ -79,7 +79,7 @@
     [lists addObject:sections1];
     
     NSMutableArray *sections2 = [NSMutableArray arrayWithCapacity:0];
-    [sections2 addObject:@"关于作者"];
+    [sections2 addObject:@"关于"];
     [lists addObject:sections2];
 }
 
@@ -201,7 +201,7 @@
         } break;
         case 2:
         {
-            if (indexPath.row == 0) {//关于作者
+            if (indexPath.row == 0) {//关于
                 AboutViewController *vc = [[AboutViewController alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
             }

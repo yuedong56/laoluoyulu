@@ -11,3 +11,15 @@
 @interface AboutViewController : UIViewController
 
 @end
+
+
+
+@interface AboutCell : UITableViewCell
+{
+    UIImageView *seperateLine;
+}
+
+/** isLast: 是否是最后一个cell */
+- (void)setContentWithType:(BOOL)isLast;
+
+@end

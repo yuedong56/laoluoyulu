@@ -147,7 +147,7 @@
         cell.titleLabel.text = model.name;
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            cell.titleLabel.text = @"系统设置";
+            cell.titleLabel.text = @"设置";
         } else if (indexPath.row == 1) {
             cell.titleLabel.text = @"应用推荐";
         }
@@ -208,7 +208,7 @@
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if (indexPath.row == 0)
-        {//系统设置
+        {//设置
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[SettingViewController alloc] init]];
             [self presentViewController:nav animated:YES completion:NULL];
         }
