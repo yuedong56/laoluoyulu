@@ -176,11 +176,13 @@
             case UIEventSubtypeRemoteControlNextTrack:
             {
                 CLog(@"UIEventSubtypeRemoteControlNextTrack...");
+                [self.playerView preButtonClick:nil];
                 break;
             }
             case UIEventSubtypeRemoteControlPreviousTrack:
             {
                 CLog(@"UIEventSubtypeRemoteControlPreviousTrack...");
+                [self.playerView nextButtonClick:nil];
                 break;
             }
             default:
@@ -242,24 +244,6 @@
         CLog(@"音频播放错误：获取音频的URL为空！");
     }
 }
-
-///** 遍历数据库中的语音文件列表 */
-//- (void)initAllVoiceDataFromDataBase
-//{
-//    self.voiceMutableArray = [NSMutableArray array];
-//    self.menuLists = [[LYDataManager instance] selectMenuList];
-//    self.centerNavContainer = [NSMutableArray array];
-//    
-//    for (MenuModel *menuModel in self.menuLists)
-//    {
-//        NSMutableArray *array = [[LYDataManager instance] selectVoiceListWithMenuID:menuModel.ID];
-//        [self.voiceMutableArray addObject:array];
-//        
-//        CenterViewController *centerVC = [[CenterViewController alloc] initWithMenu:menuModel voiceLists:array];
-//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:centerVC];
-//        [self.centerNavContainer addObject:nav];
-//    }
-//}
 
 #pragma mark - AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

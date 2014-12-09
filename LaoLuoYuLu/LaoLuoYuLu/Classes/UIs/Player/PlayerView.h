@@ -27,6 +27,9 @@
 - (void)showWithModel:(VoiceModel *)model;
 - (void)hide;
 
+- (void)preButtonClick:(UIButton *)button;
+- (void)nextButtonClick:(UIButton *)button;
+
 @end
 
 
