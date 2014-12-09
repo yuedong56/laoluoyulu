@@ -46,7 +46,6 @@
 
 #pragma mark - toastView
 - (void)showToastView:(NSString *)text;
-- (void)hideToastViewAfter:(NSTimeInterval)duration;
 
 @end
 
