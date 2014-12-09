@@ -176,8 +176,11 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, LeftMenuWidth, Header_Height)];
+    headerView.backgroundColor = GrayColor;
+    headerView.alpha = 0.8;
+    
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:headerView.frame];
-    titleLabel.backgroundColor = GrayColor;
+    titleLabel.backgroundColor = ClearColor;
     titleLabel.font = [UIFont boldSystemFontOfSize:15];
     titleLabel.textColor = WhiteColor;
     titleLabel.textAlignment = NSTextAlignmentCenter;

@@ -182,8 +182,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     VoiceModel *voiceModel = [self.voiceListArr objectAtIndex:indexPath.row];
+    
     //播放语音
-    [APP_DELEGATE performSelectorInBackground:@selector(playWithModel:) withObject:voiceModel];
+//    [APP_DELEGATE performSelectorInBackground:@selector(playWithModel:) withObject:voiceModel];
+    [APP_DELEGATE playWithModel:voiceModel];
     
     APP_DELEGATE.currentVoiceLists = [NSMutableArray arrayWithArray:self.voiceListArr];
     APP_DELEGATE.currentVoiceIndex = (int)indexPath.row;

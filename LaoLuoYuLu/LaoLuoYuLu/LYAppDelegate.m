@@ -125,7 +125,20 @@
 #pragma mark - AVAudioPlayer Delegate
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
-    
+    if (flag) {
+        if (self.currentVoiceIndex < self.currentVoiceLists.count-1) {
+            self.currentVoiceIndex ++;
+        } else {
+            self.currentVoiceIndex = 0;
+        }
+        
+        VoiceModel *currentVoiceModel = [self.currentVoiceLists objectAtIndex:APP_DELEGATE.currentVoiceIndex];
+        [self playWithModel:currentVoiceModel];
+        
+        [self.centerVC.voiceTableView reloadData];
+        
+        [self.playerView resetPlayPauseState];
+    }
 }
 
 /** 配置播放器，允许后台播放语音 */
@@ -274,6 +287,7 @@
     {
         self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
         [self.audioPlayer prepareToPlay];
+        self.audioPlayer.delegate = self;
         [self.audioPlayer play];
         
         //
