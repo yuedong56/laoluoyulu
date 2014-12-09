@@ -27,6 +27,7 @@
 - (void)showWithModel:(VoiceModel *)model;
 - (void)hide;
 
+- (void)resetPlayPauseState;
 - (void)preButtonClick:(UIButton *)button;
 - (void)nextButtonClick:(UIButton *)button;
 

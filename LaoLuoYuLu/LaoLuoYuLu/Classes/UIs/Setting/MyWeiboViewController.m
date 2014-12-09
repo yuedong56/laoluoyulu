@@ -9,7 +9,7 @@
 #import "MyWeiboViewController.h"
 #import "WebControlView.h"
 
-@interface MyWeiboViewController ()<UIWebViewDelegate>
+@interface MyWeiboViewController ()<UIWebViewDelegate, UIScrollViewDelegate>
 {
     BOOL isControlViewHide;
 }
@@ -47,7 +47,6 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
-
 
 /** 初始化 webView */
 - (void)loadingLaoLuoWeiBoWebView

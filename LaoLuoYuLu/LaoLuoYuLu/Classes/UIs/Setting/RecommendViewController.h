@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 LYue. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface RecommendViewController : BaseViewController
+@interface RecommendViewController : UIViewController
 
 @end

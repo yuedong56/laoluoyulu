@@ -53,6 +53,7 @@
 {
     table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, kAboutHeader_H+kAboutCell_H*3) style:UITableViewStylePlain];
     table.separatorColor = ClearColor;
+    table.bounces = NO;
     table.delegate = self;
     table.dataSource = self;
     [self.view addSubview:table];

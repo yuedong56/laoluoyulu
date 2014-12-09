@@ -176,13 +176,13 @@
             case UIEventSubtypeRemoteControlNextTrack:
             {
                 CLog(@"UIEventSubtypeRemoteControlNextTrack...");
-                [self.playerView preButtonClick:nil];
+                [self.playerView nextButtonClick:nil];
                 break;
             }
             case UIEventSubtypeRemoteControlPreviousTrack:
             {
                 CLog(@"UIEventSubtypeRemoteControlPreviousTrack...");
-                [self.playerView nextButtonClick:nil];
+                [self.playerView preButtonClick:nil];
                 break;
             }
             default:
@@ -261,6 +261,13 @@
     [self configAudio];
     
     return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    if (!self.playerView.hidden) {
+        [self.playerView resetPlayPauseState];
+    }
 }
 
 @end

@@ -177,6 +177,17 @@
     APP_DELEGATE.audioPlayer.currentTime = slider.value * APP_DELEGATE.audioPlayer.duration;
 }
 
+- (void)resetPlayPauseState
+{
+    if (APP_DELEGATE.audioPlayer.isPlaying) {
+        [self.playButton setImage:ImageWithFile(@"player_pause.png") forState:UIControlStateNormal];
+        [self.playButton setImage:ImageWithFile(@"player_pause_h.png") forState:UIControlStateHighlighted];
+    } else {
+        [self.playButton setImage:ImageWithFile(@"player_play.png") forState:UIControlStateNormal];
+        [self.playButton setImage:ImageWithFile(@"player_play_h.png") forState:UIControlStateHighlighted];
+    }
+}
+
 #pragma mark - button event
 - (void)playPauseButtonClick:(UIButton *)button
 {
