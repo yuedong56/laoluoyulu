@@ -15,7 +15,7 @@
 #import "LYToastView.h"
 #import "CenterViewController.h"
 
-@interface LYAppDelegate : UIResponder <UIApplicationDelegate, AVAudioPlayerDelegate>
+@interface LYAppDelegate : UIResponder <UIApplicationDelegate, AVAudioPlayerDelegate, UIAlertViewDelegate>
 {
 //    LYToastView *toastView;
 }

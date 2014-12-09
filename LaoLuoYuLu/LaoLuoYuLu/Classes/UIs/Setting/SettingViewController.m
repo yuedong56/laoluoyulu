@@ -174,17 +174,14 @@
                  {
                      if (data)
                      {
-                         CLog(@"jsonDic === %@", data);
                          //AppStore版本号
                          NSString *version_appstore = [data valueForKey:@"version"];
                          
                          //本地版本
                          NSString *version_local = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-                         NSString *mes = [NSString stringWithFormat: @"是否立即升级到最新版本？"];
-                         CLog(@"version_local = %@, version_appstore = %@",version_local, version_appstore);
                          if (![version_appstore isEqualToString:version_local])
                          {
-                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"检查到新版本!" message:mes delegate:self cancelButtonTitle:@"以后再说" otherButtonTitles:@"立即更新", nil];
+                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"发现新版本 V%@", version_appstore] message:@"是否立即升级到最新版本？" delegate:self cancelButtonTitle:@"以后再说" otherButtonTitles:@"立即更新", nil];
                              alert.tag = 2000;
                              [alert show];
                          }

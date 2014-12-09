@@ -210,6 +210,46 @@
     }
 }
 
+/** 检查更新 */
+- (void)checkVersion
+{
+    [NetWorkRequest requestUpdateWithAppID:AppStoreID
+                                     block:^(id data, NSError *error)
+    {
+        if (data)
+        {
+            //AppStore版本号
+            NSString *version_appstore = [data valueForKey:@"version"];
+            
+            //本地版本
+            NSString *version_local = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+            CLog(@"version_local = %@, version_appstore = %@",version_local, version_appstore);
+            if (![version_appstore isEqualToString:version_local])
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"发现新版本 V%@", version_appstore] message:@"是否立即升级到最新版本？" delegate:self cancelButtonTitle:@"以后再说" otherButtonTitles:@"立即更新", nil];
+                alert.tag = 1000;
+                [alert show];
+            }
+        }
+    }];
+}
+
+#pragma mark - UIAlertView Delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (alertView.tag) {
+        case 1000: //版本更新
+        {
+            if (buttonIndex == 1) { //立即更新
+                [LYUtils goToAppstore];
+            }
+        } break;
+            
+        default:
+            break;
+    }
+}
+
 #pragma mark - 播放音频
 - (void)playWithModel:(VoiceModel *)model
 {
@@ -259,6 +299,8 @@
     [self startPlayerTimer];
     
     [self configAudio];
+    
+    [self checkVersion];
     
     return YES;
 }
