@@ -8,10 +8,16 @@
 //  http://m.weibo.cn/1905373741/BA3Ag5WPO
 
 #import "SuggestViewController.h"
+#import "MBProgressHUD.h"
 
 @interface SuggestViewController ()<UIWebViewDelegate>
+
 @property (nonatomic, strong) UIWebView *weiboWebView;
+@property (nonatomic, strong) MBProgressHUD *progressHUD;
+
 @end
+
+
 
 @implementation SuggestViewController
 
@@ -51,6 +57,8 @@
     NSURL *url = [NSURL URLWithString:@"http://m.weibo.cn/1905373741/BA3Ag5WPO"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.weiboWebView loadRequest:request];
+    
+    [self showProgressHUDWithText:nil];
 }
 
 /** 初始化webview */
@@ -62,6 +70,43 @@
     [self.view addSubview:self.weiboWebView];
 }
 
+#pragma mark - UIWebView Delegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self hideProgressHUDWithText:nil];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [self hideProgressHUDWithText:nil];
+}
+
+#pragma mark - ProgressHUD
+- (void)showProgressHUDWithText:(NSString *)text
+{
+    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    self.progressHUD.labelText = text;
+    self.progressHUD.userInteractionEnabled = NO;
+    [self.view addSubview:self.progressHUD];
+    [self.progressHUD show:YES];
+}
+
+- (void)hideProgressHUDWithText:(NSString *)text
+{
+    [self.progressHUD hide:YES];
+    [self.progressHUD removeFromSuperview];
+    self.progressHUD = nil;
+}
 
 @end
 

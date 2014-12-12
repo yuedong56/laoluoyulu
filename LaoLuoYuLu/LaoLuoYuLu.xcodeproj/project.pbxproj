@@ -265,6 +265,11 @@
 		70BA644B18D410880043C0D1 /* UINavigationController+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA644A18D410880043C0D1 /* UINavigationController+Rotate.m */; };
 		70D3D26819F3BCEF00A22096 /* WeiBoNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D3D26719F3BCEF00A22096 /* WeiBoNavView.m */; };
 		70D3D26A19F3CFE400A22096 /* left_five.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D3D26919F3CFE400A22096 /* left_five.png */; };
+		70E73EBA1A3A8AB000A393CC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E73EB71A3A8AB000A393CC /* Default-568h@2x.png */; };
+		70E73EBB1A3A8AB000A393CC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E73EB81A3A8AB000A393CC /* Default.png */; };
+		70E73EBC1A3A8AB000A393CC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E73EB91A3A8AB000A393CC /* Default@2x.png */; };
+		70E73EBE1A3A98E000A393CC /* left_chuizilogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E73EBD1A3A98E000A393CC /* left_chuizilogo.png */; };
+		70E73EC01A3A9A3400A393CC /* left_chuizilogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E73EBF1A3A9A3400A393CC /* left_chuizilogo@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -598,6 +603,11 @@
 		70D3D26619F3BCEF00A22096 /* WeiBoNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiBoNavView.h; sourceTree = "<group>"; };
 		70D3D26719F3BCEF00A22096 /* WeiBoNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiBoNavView.m; sourceTree = "<group>"; };
 		70D3D26919F3CFE400A22096 /* left_five.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_five.png; sourceTree = "<group>"; };
+		70E73EB71A3A8AB000A393CC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		70E73EB81A3A8AB000A393CC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		70E73EB91A3A8AB000A393CC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		70E73EBD1A3A98E000A393CC /* left_chuizilogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_chuizilogo.png; sourceTree = "<group>"; };
+		70E73EBF1A3A9A3400A393CC /* left_chuizilogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_chuizilogo@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -658,6 +668,8 @@
 				3014431B18D82EC600DDC64A /* left_about.png */,
 				3014432118D82EC600DDC64A /* left_recommend.png */,
 				304A584A19ECF5DB0013EB59 /* left_luoyonghao.png */,
+				70E73EBD1A3A98E000A393CC /* left_chuizilogo.png */,
+				70E73EBF1A3A9A3400A393CC /* left_chuizilogo@2x.png */,
 				3014432418D82EC600DDC64A /* left_sina.png */,
 				30AF43CC19D93630004CA2F6 /* center_leftButton.png */,
 				30AF43CD19D93630004CA2F6 /* center_leftButton@2x.png */,
@@ -812,8 +824,11 @@
 				703A3EEB18C9FEC2009179DE /* main.m */,
 				703A3EED18C9FEC2009179DE /* LaoLuoYuLu-Prefix.pch */,
 				7059540818E86ACA002C77D9 /* icon.png */,
-				7059540718E86ACA002C77D9 /* icon_120.png */,
 				30AF43CA19D8F373004CA2F6 /* icon@2x.png */,
+				7059540718E86ACA002C77D9 /* icon_120.png */,
+				70E73EB81A3A8AB000A393CC /* Default.png */,
+				70E73EB91A3A8AB000A393CC /* Default@2x.png */,
+				70E73EB71A3A8AB000A393CC /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1281,6 +1296,7 @@
 				705504521A21DBD900EDD50C /* 4_106.mp3 in Resources */,
 				3014433018D82EC600DDC64A /* left_sina.png in Resources */,
 				7055044B1A21DBD900EDD50C /* 4_99.mp3 in Resources */,
+				70E73EBA1A3A8AB000A393CC /* Default-568h@2x.png in Resources */,
 				705504141A21DBD900EDD50C /* 2_44.mp3 in Resources */,
 				705504061A21DBD900EDD50C /* 1_30.mp3 in Resources */,
 				705503F61A21DBD900EDD50C /* 1_14.mp3 in Resources */,
@@ -1343,6 +1359,7 @@
 				705503F31A21DBD900EDD50C /* 1_11.mp3 in Resources */,
 				7055045A1A21DBD900EDD50C /* 4_114.mp3 in Resources */,
 				705504711A21DBD900EDD50C /* 5_137.mp3 in Resources */,
+				70E73EBC1A3A8AB000A393CC /* Default@2x.png in Resources */,
 				7055042A1A21DBD900EDD50C /* 2_66.mp3 in Resources */,
 				7055040D1A21DBD900EDD50C /* 1_37.mp3 in Resources */,
 				705504271A21DBD900EDD50C /* 2_63.mp3 in Resources */,
@@ -1361,6 +1378,7 @@
 				7055046B1A21DBD900EDD50C /* 4_131.mp3 in Resources */,
 				705504641A21DBD900EDD50C /* 4_124.mp3 in Resources */,
 				7055045F1A21DBD900EDD50C /* 4_119.mp3 in Resources */,
+				70E73EBE1A3A98E000A393CC /* left_chuizilogo.png in Resources */,
 				705953FB18E853DC002C77D9 /* player_play_h.png in Resources */,
 				705503FA1A21DBD900EDD50C /* 1_18.mp3 in Resources */,
 				705503EF1A21DBD900EDD50C /* 1_7.mp3 in Resources */,
@@ -1371,6 +1389,7 @@
 				705504331A21DBD900EDD50C /* 2_75.mp3 in Resources */,
 				705953F918E853DC002C77D9 /* player_pause_h.png in Resources */,
 				7055047B1A21DBD900EDD50C /* 20_147.mp3 in Resources */,
+				70E73EC01A3A9A3400A393CC /* left_chuizilogo@2x.png in Resources */,
 				705503E91A21DBD900EDD50C /* 1_1.mp3 in Resources */,
 				705503EB1A21DBD900EDD50C /* 1_3.mp3 in Resources */,
 				705504051A21DBD900EDD50C /* 1_29.mp3 in Resources */,
@@ -1423,6 +1442,7 @@
 				30AF43CE19D93630004CA2F6 /* center_leftButton.png in Resources */,
 				705504631A21DBD900EDD50C /* 4_123.mp3 in Resources */,
 				7055042F1A21DBD900EDD50C /* 2_71.mp3 in Resources */,
+				70E73EBB1A3A8AB000A393CC /* Default.png in Resources */,
 				7055044E1A21DBD900EDD50C /* 4_102.mp3 in Resources */,
 				705953F718E853DC002C77D9 /* player_next_h.png in Resources */,
 				705504741A21DBD900EDD50C /* 5_140.mp3 in Resources */,
@@ -1634,8 +1654,6 @@
 		703A3F0918C9FEC2009179DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaoLuoYuLu/LaoLuoYuLu-Prefix.pch";
 				INFOPLIST_FILE = "LaoLuoYuLu/LaoLuoYuLu-Info.plist";
@@ -1649,8 +1667,6 @@
 		703A3F0A18C9FEC2009179DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaoLuoYuLu/LaoLuoYuLu-Prefix.pch";
 				INFOPLIST_FILE = "LaoLuoYuLu/LaoLuoYuLu-Info.plist";

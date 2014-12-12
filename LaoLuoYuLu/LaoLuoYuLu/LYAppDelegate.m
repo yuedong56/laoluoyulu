@@ -282,9 +282,10 @@
     self.audioPlayer = nil;
     
     NSString *string = [[NSBundle mainBundle] pathForResource:voiceName ofType:@"mp3"];
-    NSURL *url = [NSURL fileURLWithPath:string];
-    if (url)
+    if (string.length>0)
     {
+        NSURL *url = [NSURL fileURLWithPath:string];
+
         self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
         [self.audioPlayer prepareToPlay];
         self.audioPlayer.delegate = self;
