@@ -172,6 +172,7 @@
                 [NetWorkRequest requestUpdateWithAppID:AppStoreID
                                                  block:^(id data, NSError *error)
                  {
+                     CLog(@"检查版本更新-%@", data);
                      if (data)
                      {
                          //AppStore版本号
@@ -187,9 +188,14 @@
                          }
                          else
                          {
-                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前版本已为最新版本，暂不需要更新！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您当前版本已为最新版本，暂不需要更新！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                              [alert show];
                          }
+                     }
+                     else
+                     {
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"网络异常，请稍后重试！" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+                         [alert show];
                      }
                 }];
             } else if (indexPath.row == 1) {//我要打分
