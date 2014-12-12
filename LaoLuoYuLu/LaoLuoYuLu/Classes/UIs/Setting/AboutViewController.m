@@ -182,7 +182,7 @@
 - (void)setContentWithType:(BOOL)isLast
 {
     if (isLast) {
-        seperateLine.frame = CGRectMake(0, kAboutCell_H-1, ScreenWidth, 1);
+        seperateLine.frame = CGRectMake(0, kAboutCell_H-0.5, ScreenWidth, 1);
     } else {
         seperateLine.frame = CGRectMake(16, kAboutCell_H-0.5, ScreenWidth-32, 1);
     }
